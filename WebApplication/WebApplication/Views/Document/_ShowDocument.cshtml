@@ -1,0 +1,38 @@
+﻿@model IEnumerable<WebApplication.Models.DocumentViewModel>
+@using Constants;
+@if (Model != null && Model.ToList().Count>0)
+{
+<table class="table">
+    @foreach (var item in Model)
+    {
+        <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateTime)
+                </td>
+                <td>
+                    @("http://localhost:43351/" + Constant.downloadController + item.Id)
+                </td>
+                <td>
+                    Access
+                    @Html.CheckBoxFor(modelItem => item.Access, new { @onclick = "Access(" + item.Id.ToString() + ")" })
+                </td>
+                <td>
+                    <a href='@Url.Action("DownloadDocument","Document",new {documentId = item.Id})'>
+                        <i class="glyphicon glyphicon-download"></i>
+                    </a>
+                </td>
+                <td>
+                    <a href='@Url.Action("DeleteDocument","Document",new {documentId = item.Id})'>
+                        <i class="glyphicon glyphicon-remove"></i>
+                    </a>
+                </td>
+            
+        </tr>
+    }
+</table>
+}
+
+

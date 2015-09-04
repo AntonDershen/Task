@@ -1,0 +1,21 @@
+﻿@model IEnumerable<BLL.Interface.Entities.UserEntity>
+
+<table class="table">
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserName)
+            @Html.DisplayFor(modelItem => item.Id)
+        </td>
+        <td>
+            @Html.Label("Пользователь")
+        </td>
+        <td>
+            <a href='@Url.Action("DeleteUser","Administrator",new {userId = item.Id})'>
+                <i class="glyphicon glyphicon-remove"></i>
+            </a>
+        </td>
+    </tr>
+}
+
+</table>
