@@ -184,10 +184,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\Database.mdf" />
-    <Content Include="App_Data\Database_log.ldf">
-      <DependentUpon>Database.mdf</DependentUpon>
-    </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Global.asax" />
@@ -213,10 +209,6 @@
       <Project>{7c6c4cc6-a289-447f-a34c-6e488646e2b6}</Project>
       <Name>BusinessLogic.Interface</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Constants\Constants.csproj">
-      <Project>{4a23677b-dd38-4ec1-ae06-ffb070a79a0d}</Project>
-      <Name>Constants</Name>
-    </ProjectReference>
     <ProjectReference Include="..\ResolveModule\ResolveModule.csproj">
       <Project>{65db6758-f222-435c-a70f-779e1c110bf3}</Project>
       <Name>ResolveModule</Name>
@@ -231,7 +223,9 @@
   <ItemGroup>
     <Content Include="Views\Shared\_Menu.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

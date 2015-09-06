@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DataAccess.Interface.DataTransfer;
 using ORM;
-namespace Dal.Mapper
+namespace DataAccess.Mapper
 {
     public static class UserMapper
     {

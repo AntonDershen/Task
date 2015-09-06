@@ -18,7 +18,8 @@ namespace DataAccess.Mapper
                     Id = authorization.Id,
                     Email = authorization.Email,
                     Password = authorization.Password,
-                    UserId = authorization.UserId
+                    UserId = authorization.UserId,
+                    Confrim = authorization.Confirm
                 };
             }
             return null;
@@ -34,7 +35,8 @@ namespace DataAccess.Mapper
                     Id = dataTransferAuthorization.Id,
                     Email = dataTransferAuthorization.Email,
                     Password = dataTransferAuthorization.Password,
-                    UserId = dataTransferAuthorization.UserId
+                    UserId = dataTransferAuthorization.UserId,
+                    Confirm = dataTransferAuthorization.Confrim
                 };
             }
             return null;

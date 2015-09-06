@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 using DataAccess.Interface.DataTransfer;
 namespace DataAccess.Interface.Repository
 {
-    public interface IUnitOfWork : IDisposable
+    public interface IUserRepository : IRepository<DataTransferUser>
     {
-        IUserRepository UserRepository { get; }
-        IRepository<DataTransferAuthorization> AuthorizationRepository { get; }
-        void Save();
+        IEnumerable<DataTransferAuthorization> GetAuthorization(int id);
     }
 }

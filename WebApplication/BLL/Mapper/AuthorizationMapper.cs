@@ -13,7 +13,9 @@ namespace BusinessLogic.Mapper
                 Id = authorisationEntity.Id,
                 Email = authorisationEntity.Email,
                 Password = authorisationEntity.Password,
-                UserId = authorisationEntity.UserId
+                UserId = authorisationEntity.UserId,
+                Confrim = authorisationEntity.Confirm
+                
             };
         }
         public static AuthorizationEntity ToAuthorizationEntity(this DataTransferAuthorization dataTransferAuthorization)
@@ -23,7 +25,8 @@ namespace BusinessLogic.Mapper
                 Id = dataTransferAuthorization.Id,
                 Email = dataTransferAuthorization.Email,
                 Password = dataTransferAuthorization.Password,
-                UserId = dataTransferAuthorization.UserId
+                UserId = dataTransferAuthorization.UserId,
+                Confirm = dataTransferAuthorization.Confrim
             };
         }
     }

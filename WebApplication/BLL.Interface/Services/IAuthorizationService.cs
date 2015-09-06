@@ -10,6 +10,7 @@ namespace BusinessLogic.Interface.Services
     public interface IAuthorizationService
     {
         void CreateAuthorization(AuthorizationEntity authorization);
+        void UpdateAuthorization(AuthorizationEntity authorization);
         void DeleteAuthorization(AuthorizationEntity authorization);
         AuthorizationEntity Find(int id);
         bool CheckForm(AuthorizationEntity authorization);

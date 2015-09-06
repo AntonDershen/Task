@@ -79,10 +79,6 @@
     <Compile Include="Repository\UserRepository.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Constants\Constants.csproj">
-      <Project>{4a23677b-dd38-4ec1-ae06-ffb070a79a0d}</Project>
-      <Name>Constants</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Dal_Interface\DataAccess.Interface.csproj">
       <Project>{439a73af-497e-4795-b09c-b6e0d92aa265}</Project>
       <Name>DataAccess.Interface</Name>

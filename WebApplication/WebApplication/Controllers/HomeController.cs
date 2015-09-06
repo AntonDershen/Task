@@ -21,7 +21,7 @@ namespace WebApplication.Controllers
             string result = "Вы не авторизованы";
             if (User.Identity.IsAuthenticated)
             {
-                result = Constants.Constant.welcome + User.Identity.Name;
+                result = "" + User.Identity.Name;
             }
             ViewBag.Identity = result;
             return View();

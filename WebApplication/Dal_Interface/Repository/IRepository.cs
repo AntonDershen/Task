@@ -13,6 +13,7 @@ namespace DataAccess.Interface.Repository
         TEntity Find(int Id);
         void Create(TEntity e);
         void Delete(TEntity e);
+        void Update(TEntity e);
         IEnumerable<TEntity> GetAll(Func<TEntity, Boolean> predicate);
         TEntity Get(Func<TEntity, Boolean> predicate);
     }

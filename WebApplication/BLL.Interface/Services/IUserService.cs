@@ -8,9 +8,10 @@ namespace BusinessLogic.Interface.Services
 {
     public interface IUserService
     {
-        int CreateUser(UserEntity user);
+        int CreateUser(UserEntity user,string email);
         void DeleteUser(UserEntity user);
         UserEntity Find(int id);
         UserEntity Get(Func<UserEntity,bool> predicate);
+        IEnumerable<AuthorizationEntity> GetAuthorization(int id);
     }
 }

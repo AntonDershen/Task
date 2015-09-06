@@ -26,9 +26,9 @@ namespace BusinessLogic.Services
             return unitOfWork.UserRepository.Find(id).ToUserEnity();
 
         }
-        public int CreateUser(UserEntity user)
+        public int CreateUser(UserEntity user,string email)
         {
-            if (unitOfWork.UserRepository.Get(x=>x.UserName == user.UserName) == null)
+            if (unitOfWork.AuthorizationRepository.Get(x=>x.Email == email) == null)
             {
                 unitOfWork.UserRepository.Create(user.ToDataTransferUser());
                 unitOfWork.Save();
@@ -43,6 +43,10 @@ namespace BusinessLogic.Services
         }
         public UserEntity Get(Func<UserEntity, Boolean> predicate) {
             return unitOfWork.UserRepository.GetAll().Select(x => x.ToUserEnity()).FirstOrDefault(predicate);
+        }
+        public IEnumerable<AuthorizationEntity> GetAuthorization(int id)
+        {
+            return unitOfWork.UserRepository.GetAuthorization(id).Select(x=>x.ToAuthorizationEntity());
         }
     }
 }

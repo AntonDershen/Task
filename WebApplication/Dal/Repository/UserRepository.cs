@@ -8,17 +8,16 @@ using DataAccess.Interface.DataTransfer;
 using DataAccess.Interface.Repository;
 using ORM;
 using System.Data.Entity;
-using Dal.Mapper;
-using Constants;
+using DataAccess.Mapper;
 namespace DataAccess.Repository
 {
-    public class UserRepository : IRepository<DataTransferUser>
+    public class UserRepository : IUserRepository
         {
-            private  DbContext context;
+            private DbContext context;
             public UserRepository(DbContext context)
-            {
-                this.context = context;
-            }
+                {
+                    this.context = context;
+                }
             public DataTransferUser Find(int id)
             {
                 User user = context.Set<User>().Find(id);
@@ -32,6 +31,12 @@ namespace DataAccess.Repository
             {
                 context.Set<User>().Add(dataTransferUser.ToUser());
      
+            }
+            public void Update(DataTransferUser dataTransferUser)
+            {
+                var user = context.Set<User>().Find(dataTransferUser.Id);
+                user.UserName = dataTransferUser.UserName;
+
             }
             public void Delete(DataTransferUser dataTransferUser)
             {
@@ -56,6 +61,10 @@ namespace DataAccess.Repository
                 {
                     return null;
                 }
+            }
+            public IEnumerable<DataTransferAuthorization> GetAuthorization(int id)
+            {
+                return context.Set<User>().Find(id).Authorizations.Select(x => x.ToDataTransferAuthorization());
             }
             public void Dispose()
             {
