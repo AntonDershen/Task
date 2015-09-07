@@ -7,10 +7,15 @@ using System.Data.Entity;
 
 namespace ORM
 {
-    public partial class EntityModel : DbContext
+    public  class EntityModel : DbContext
     {
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Authorization> Authorization { get; set; }
+        public virtual DbSet<Answer> Answers { get; set; }
+        public virtual DbSet<Photo> Photos { get; set; }
+        public virtual DbSet<Tag> Tags { get; set; }
+        public virtual DbSet<Task> Tasks { get; set; }
+        public virtual DbSet<ORM.Сomment> Comments { get; set; }
         public EntityModel()
             : base("name=EntityModel")
         {

@@ -6,14 +6,13 @@ using System.Threading.Tasks;
 
 namespace ORM
 {
-    public  class Authorization
+    public class Сomment
     {
         public int Id { get; set; }
-        public string Email { get; set; }
-        public string Password { get; set; }
-
-        public bool Confirm { get; set; }
+        public string Text { get; set; }
         public int UserId { get; set; }
         public virtual User User { get; set; }
+        public int TaskId { get; set; }
+        public virtual Task Task { get; set; }
     }
 }

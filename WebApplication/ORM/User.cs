@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace ORM
 {
-    public partial class User
+    public  class User
     {
         public int Id { get; set; }
         public string UserName { get; set; }
         public virtual ICollection<Authorization> Authorizations { get; set; }
+        public virtual ICollection<Rate> Rates { get; set; }
+        public virtual ICollection<ORM.Сomment> Comments { get; set; }
     }
 }

@@ -71,7 +71,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataTransfer\DataTransferAnswer.cs" />
     <Compile Include="DataTransfer\DataTransferAuthorization.cs" />
+    <Compile Include="DataTransfer\DataTransferComment.cs" />
+    <Compile Include="DataTransfer\DataTransferTag.cs" />
+    <Compile Include="DataTransfer\DataTransferTask.cs" />
     <Compile Include="DataTransfer\DataTransferUser.cs" />
     <Compile Include="DataTransfer\IEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
