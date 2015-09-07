@@ -2,7 +2,7 @@
 @if (Request.IsAuthenticated)
 {
     if (User.IsInRole("User")) { 
-   <ul class="nav navbar-nav navbar-right">
+   <ul class="nav navbar-nav navbar-right navbar-inverse">
        <li>
            @Html.ActionLink("Add document", "CreateDocument", "Document")
        </li>
