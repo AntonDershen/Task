@@ -11,7 +11,6 @@ namespace ORM
     {
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Authorization> Authorization { get; set; }
-        public virtual DbSet<Answer> Answers { get; set; }
         public virtual DbSet<Photo> Photos { get; set; }
         public virtual DbSet<Tag> Tags { get; set; }
         public virtual DbSet<Task> Tasks { get; set; }

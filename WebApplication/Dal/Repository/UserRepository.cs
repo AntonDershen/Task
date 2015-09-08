@@ -4,11 +4,9 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
-using DataAccess.Interface.DataTransfer;
+using DataAccess.Interface.EntityFramework;
 using DataAccess.Interface.Repository;
-using ORM;
 using System.Data.Entity;
-using DataAccess.Mapper;
 namespace DataAccess.Repository
 {
     public class UserRepository : IUserRepository
@@ -18,53 +16,38 @@ namespace DataAccess.Repository
                 {
                     this.context = context;
                 }
-            public DataTransferUser Find(int id)
+            public User Find(int id)
             {
-                User user = context.Set<User>().Find(id);
-                return user.ToDataTransferUser();
+                return context.Set<User>().Find(id);
             }
-            public IEnumerable<DataTransferUser> GetAll()
+            public IEnumerable<User> GetAll()
             {
-                return context.Set<User>().Select(user => user.ToDataTransferUser());
+                return context.Set<User>().ToList();
             }
-            public void Create(DataTransferUser dataTransferUser)
+            public void Create(User user)
             {
-                context.Set<User>().Add(dataTransferUser.ToUser());
-     
+                context.Set<User>().Add(user);
             }
-            public void Update(DataTransferUser dataTransferUser)
+            public void Update(User user)
             {
-                var user = context.Set<User>().Find(dataTransferUser.Id);
-                user.UserName = dataTransferUser.UserName;
-
+                throw new NotImplementedException();
             }
-            public void Delete(DataTransferUser dataTransferUser)
+            public void Delete(User user)
             {
-                User user = dataTransferUser.ToUser();
                 user = context.Set<User>().Single(u => u.Id == user.Id);
                 context.Set<User>().Remove(user);
             }
-            public IEnumerable<DataTransferUser> GetAll(Func<DataTransferUser, Boolean> predicate)
+            public IEnumerable<User> GetAll(Func<User, Boolean> predicate)
             {
-                return context.Set<User>().Select(x => x.ToDataTransferUser()).Where(predicate);
+                return context.Set<User>().Where(predicate);
             }
-            public DataTransferUser Get(Func<DataTransferUser, Boolean> predicate)
+            public User Get(Func<User, Boolean> predicate)
             {
-                try
-                {
-                    var users = context.Set<User>().ToList();
-                    DataTransferUser user = null;
-                    user = users.Select(x=>x.ToDataTransferUser()).FirstOrDefault(predicate);
-                    return user;
-                }
-                catch
-                {
-                    return null;
-                }
+                return context.Set<User>().FirstOrDefault(predicate);
             }
-            public IEnumerable<DataTransferAuthorization> GetAuthorization(int id)
+            public IEnumerable<Authorization> GetAuthorization(int id)
             {
-                return context.Set<User>().Find(id).Authorizations.Select(x => x.ToDataTransferAuthorization());
+                return context.Set<User>().Find(id).Authorizations;
             }
             public void Dispose()
             {

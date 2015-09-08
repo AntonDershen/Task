@@ -155,11 +155,8 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Scripts\jquery-1.9.1.min.map" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Document\CreateDocument.cshtml" />
-    <Content Include="Views\Document\_ShowDocument.cshtml" />
     <Content Include="Views\Error\Index.cshtml" />
-    <Content Include="Views\Administrator\_FindUser.cshtml" />
-    <Content Include="Views\Administrator\_FindDocument.cshtml" />
+    <Content Include="Views\Task\CreateTask.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -170,15 +167,20 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\TaskController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\Mappers\AuthorizationMapper.cs" />
     <Compile Include="Infrastructure\Mappers\RegisterMapper.cs" />
+    <Compile Include="Infrastructure\Mappers\TaskMapper.cs" />
     <Compile Include="Infrastructure\Mappers\UserMapper.cs" />
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
+    <Compile Include="Models\AnswerModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\RegisterModel.cs" />
+    <Compile Include="Models\TagModel.cs" />
+    <Compile Include="Models\TaskModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

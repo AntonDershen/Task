@@ -4,13 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DataAccess.Interface.Repository;
-using DataAccess.Interface.DataTransfer;
+using DataAccess.Interface.EntityFramework;
 using System.Data.Entity;
-using ORM;
-using DataAccess.Mapper;
+
 namespace DataAccess.Repository
 {
-    public class AuthorizationRepository : IRepository<DataTransferAuthorization>
+    public class AuthorizationRepository : IRepository<Authorization>
     {
         private  DbContext context;
         public AuthorizationRepository(DbContext context)
@@ -18,51 +17,39 @@ namespace DataAccess.Repository
   
             this.context = context;
         }
-        public DataTransferAuthorization Find(int id)
+        public Authorization Find(int id)
         {
-            return context.Set<Authorization>().Find(id).ToDataTransferAuthorization();
+            return context.Set<Authorization>().Find(id);
         }
-        public IEnumerable<DataTransferAuthorization> GetAll()
+        public IEnumerable<Authorization> GetAll()
         {
-            return context.Set<Authorization>().ToList().Select(user => user.ToDataTransferAuthorization());
+            return context.Set<Authorization>();
         }
-        public void Create(DataTransferAuthorization dataTransferAuthorization)
+        public void Create(Authorization authorization)
         {
-            context.Set<Authorization>().Add(dataTransferAuthorization.ToAuthorization());
-
+            context.Set<Authorization>().Add(authorization);
         }
-        public void Update(DataTransferAuthorization dataTransferAuthorization)
+        public void Update(Authorization authorization)
         {
             using (var database = new EntityModel())
             {
-                var authorization = database.Authorization.Find(dataTransferAuthorization.Id);
-                authorization.Password = dataTransferAuthorization.Password;
-                authorization.Confirm = dataTransferAuthorization.Confrim;
+                var updateAuthorization = database.Authorization.Find(authorization.Id);
+                updateAuthorization.Password = authorization.Password;
+                updateAuthorization.Confirm = authorization.Confirm;
                 database.SaveChanges();
             }
         }
-        public void Delete(DataTransferAuthorization dataTransferAuthorization)
+        public void Delete(Authorization authorization)
         {
-            Authorization auth = dataTransferAuthorization.ToAuthorization();
-            auth = context.Set<Authorization>().Find(auth.Id);
-            context.Set<Authorization>().Remove(auth);
+            context.Set<Authorization>().Remove(authorization);
         }
-        public IEnumerable<DataTransferAuthorization> GetAll(Func<DataTransferAuthorization, Boolean> predicate)
+        public IEnumerable<Authorization> GetAll(Func<Authorization, Boolean> predicate)
         {
-            return context.Set<Authorization>().ToList().Select(x => x.ToDataTransferAuthorization()).Where(predicate);
+            return context.Set<Authorization>().Where(predicate);
         }
-        public DataTransferAuthorization Get(Func<DataTransferAuthorization, Boolean> predicate)
+        public Authorization Get(Func<Authorization, Boolean> predicate)
         {
-            try
-            {
-                var authorize = context.Set<Authorization>().ToList();
-                var userAuthorize = authorize.Select(x => x.ToDataTransferAuthorization()).FirstOrDefault(predicate);
-                return userAuthorize;
-            }
-            catch
-            {
-                return null;
-            }
+            return context.Set<Authorization>().FirstOrDefault(predicate);
         }
         public void Dispose()
         {

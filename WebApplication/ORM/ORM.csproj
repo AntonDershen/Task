@@ -75,13 +75,13 @@
     <Compile Include="Answer.cs" />
     <Compile Include="Authorization.cs" />
     <Compile Include="EntityModel.cs" />
-    <Compile Include="Migrations\201509071141475_wtf.cs" />
-    <Compile Include="Migrations\201509071141475_wtf.Designer.cs">
-      <DependentUpon>201509071141475_wtf.cs</DependentUpon>
+    <Compile Include="Migrations\201509081546323_123.cs" />
+    <Compile Include="Migrations\201509081546323_123.Designer.cs">
+      <DependentUpon>201509081546323_123.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201509071557049_updateDatabaseALALALALALLA.cs" />
-    <Compile Include="Migrations\201509071557049_updateDatabaseALALALALALLA.Designer.cs">
-      <DependentUpon>201509071557049_updateDatabaseALALALALALLA.cs</DependentUpon>
+    <Compile Include="Migrations\201509081621258_absss.cs" />
+    <Compile Include="Migrations\201509081621258_absss.Designer.cs">
+      <DependentUpon>201509081621258_absss.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Photo.cs" />
@@ -99,11 +99,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201509071141475_wtf.resx">
-      <DependentUpon>201509071141475_wtf.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201509081546323_123.resx">
+      <DependentUpon>201509081546323_123.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201509071557049_updateDatabaseALALALALALLA.resx">
-      <DependentUpon>201509071557049_updateDatabaseALALALALALLA.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201509081621258_absss.resx">
+      <DependentUpon>201509081621258_absss.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

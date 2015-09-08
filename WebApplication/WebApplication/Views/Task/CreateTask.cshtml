@@ -1,0 +1,139 @@
+﻿@model WebApplication.Models.CreateTaskModel
+
+@{
+    ViewBag.Title = "CreateTask";
+}
+
+<h2>CreateTask</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal" >
+        <h4>CreateTaskModel</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name)
+                @Html.ValidationMessageFor(model => model.Name)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Complexity, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Complexity)
+                @Html.ValidationMessageFor(model => model.Complexity)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Category, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Category)
+                @Html.ValidationMessageFor(model => model.Category)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Tag, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Tag[0])
+                @Html.ValidationMessageFor(model => model.Tag[0])
+            </div>
+        </div>
+        <div id="Tags">
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="button" id="addTag" value="Add Tag" class="btn btn-default" />
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Answers, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Answers[0])
+                @Html.ValidationMessageFor(model => model.Answers[0])
+            </div>
+        </div>
+        <div id="Answers">
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="button" id="addAnswer" value="Add Answer" class="btn btn-default" />
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Condition, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Condition)
+                @Html.ValidationMessageFor(model => model.Condition)
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-5 col-md-10">
+                <input type="submit" value="Create" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(function () {
+            var answer = 0;
+            $('#addAnswer').click(function () {
+                answer++;
+                var formGroup = document.createElement("div");
+                formGroup.className = "form-group";
+                formGroup.id = "form-group-" + answer;
+                var label = document.createElement("label");
+                label.className = "control-label col-md-2";
+                label.htmlFor = "Answers";
+                label.innerText = "Answer";
+                formGroup.appendChild(label);
+                var colmd = document.createElement("div");
+                colmd.className = "col-md-10";
+                var input = document.createElement("input");
+                input.className="text-box single-line";
+                input.id = "Answers_" + answer + "_";
+                input.name = "Answers[" + answer + "]";
+                input.type = "text";
+                colmd.appendChild(input);
+                formGroup.appendChild(colmd);
+                $('#Answers').append(formGroup);
+            })
+            var tag = 0;
+            $('#addTag').click(function () {
+                tag++;
+                var formGroup = document.createElement("div");
+                formGroup.className = "form-group";
+                formGroup.id = "form-group-" + tag;
+                var label = document.createElement("label");
+                label.className = "control-label col-md-2";
+                label.htmlFor = "Tags";
+                label.innerText = "Tag";
+                formGroup.appendChild(label);
+                var colmd = document.createElement("div");
+                colmd.className = "col-md-10";
+                var input = document.createElement("input");
+                input.className = "text-box single-line";
+                input.id = "Tags" + tag + "_";
+                input.name = "Tags[" + tag + "]";
+                input.type = "text";
+                colmd.appendChild(input);
+                formGroup.appendChild(colmd);
+                $('#Tags').append(formGroup);
+            })
+        })
+    </script>
+
+}

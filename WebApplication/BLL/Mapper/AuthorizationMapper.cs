@@ -1,32 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
 using BusinessLogic.Interface.Entities;
-using DataAccess.Interface.DataTransfer;
+using DataAccess.Interface.EntityFramework;
 namespace BusinessLogic.Mapper
 {
     public static  class AuthorizationMapper
     {
-        public static DataTransferAuthorization ToDataTransferAuthorization(this AuthorizationEntity authorisationEntity)
+        public static Authorization ToAuthorization(this AuthorizationEntity authorisationEntity)
         {
-            return new DataTransferAuthorization()
+            return new Authorization()
             {
                 Id = authorisationEntity.Id,
                 Email = authorisationEntity.Email,
                 Password = authorisationEntity.Password,
                 UserId = authorisationEntity.UserId,
-                Confrim = authorisationEntity.Confirm
-                
+                Confirm = authorisationEntity.Confirm
             };
         }
-        public static AuthorizationEntity ToAuthorizationEntity(this DataTransferAuthorization dataTransferAuthorization)
+        public static AuthorizationEntity ToAuthorizationEntity(this Authorization authorization)
         {
             return new AuthorizationEntity()
             {
-                Id = dataTransferAuthorization.Id,
-                Email = dataTransferAuthorization.Email,
-                Password = dataTransferAuthorization.Password,
-                UserId = dataTransferAuthorization.UserId,
-                Confirm = dataTransferAuthorization.Confrim
+                Id = authorization.Id,
+                Email = authorization.Email,
+                Password = authorization.Password,
+                UserId = authorization.UserId,
+                Confirm = authorization.Confirm
             };
         }
     }

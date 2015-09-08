@@ -1,20 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using BusinessLogic.Interface.Entities;
-using DataAccess.Interface.DataTransfer;
+using DataAccess.Interface.EntityFramework;
 namespace BusinessLogic.Mapper
 {
     public static class BllEntityMappers
     {
-        public static DataTransferUser ToDataTransferUser(this UserEntity userEntity)
+        public static User ToDataTransferUser(this UserEntity userEntity)
         {
-            return new DataTransferUser()
+            return new User()
             {
                 Id = userEntity.Id,
                 UserName = userEntity.UserName
             };
         }
-        public static UserEntity ToUserEnity(this DataTransferUser dataTransferUser)
+        public static UserEntity ToUserEnity(this User dataTransferUser)
         {
             return new UserEntity()
             {
