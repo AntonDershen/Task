@@ -8,7 +8,7 @@
             @Html.DisplayFor(modelItem => item.Id)
         </td>
         <td>
-            @Html.Label("Пользователь")
+            @Html.Label("User")
         </td>
         <td>
             <a href='@Url.Action("DeleteUser","Administrator",new {userId = item.Id})'>

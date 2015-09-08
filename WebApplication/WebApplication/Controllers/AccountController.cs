@@ -76,8 +76,7 @@ namespace WebApplication.Controllers
         [AllowAnonymous]
         public string Confirm(string email)
         {
-            return "На почтовый адрес " + email + "  Вам высланы дальнейшие " +
-                    "инструкции по завершению регистрации";
+            return "Postal address " + email + "  you will be sent further instructions to complete the registration.";
         }
         [AllowAnonymous]
         public ActionResult ConfirmEmail(string token, string email)
@@ -101,12 +100,12 @@ namespace WebApplication.Controllers
             MailAddress to = new MailAddress(email);
             MailMessage m = new MailMessage(from, to);
             m.Subject = "Email confirmation";
-            m.Body = string.Format("Для завершения регистрации перейдите по ссылке:" + 
-                            "<a href=\"{0}\" title=\"Подтвердить регистрацию\">{0}</a>",
+            m.Body = string.Format("To complete the registration please go to:" +
+                            "<a href=\"{0}\" title=\"Submit registration\">{0}</a>",
                 Url.Action("ConfirmEmail", "Account", new { token = id, email = email }, Request.Url.Scheme));
             m.IsBodyHtml = true;
             SmtpClient smtp = new System.Net.Mail.SmtpClient("smtp.gmail.com", 587);
-            // логин и пароль
+            // login and email
             smtp.Credentials = new System.Net.NetworkCredential("dershen95@gmail.com", "Dershen2013");
             smtp.EnableSsl = true;
             smtp.Send(m);

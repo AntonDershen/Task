@@ -18,10 +18,10 @@ namespace WebApplication.Controllers
       
         public ActionResult Index()
         {
-            string result = "Вы не авторизованы";
+            string result = "You are not logged in!";
             if (User.Identity.IsAuthenticated)
             {
-                result = "" + User.Identity.Name;
+                result = User.Identity.Name;
             }
             ViewBag.Identity = result;
             return View();
