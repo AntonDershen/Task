@@ -76,7 +76,7 @@ namespace WebApplication.Controllers
         [AllowAnonymous]
         public string Confirm(string email)
         {
-            return "На почтовый адрес " + email + " Вам высланы дальнейшие" +
+            return "На почтовый адрес " + email + "  Вам высланы дальнейшие " +
                     "инструкции по завершению регистрации";
         }
         [AllowAnonymous]
