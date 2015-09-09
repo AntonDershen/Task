@@ -2,10 +2,10 @@
 
 @{
     ViewBag.Title = "CreateTask";
+    Page.validationRequest = false;
 }
-
+<script src="~/Scripts/tiny/tinymce/tinymce.min.js"></script>
 <h2>CreateTask</h2>
-
 
 @using (Html.BeginForm()) 
 {
@@ -34,48 +34,40 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.Category, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Category)
+            <div class="col-md-10 dropdown">
+                @Html.DropDownListFor(model => model.Category,
+                 new List<SelectListItem> {
+                       new SelectListItem { Value = "python" , Text = "python" },
+                       new SelectListItem { Value = "java" , Text = "java" },
+                       new SelectListItem { Value = "c#" , Text = "c#" },
+                       new SelectListItem { Value = "ruby" , Text = "ruby" }
+                    }, new { @class = "btn btn-default dropdown-toggle" })
                 @Html.ValidationMessageFor(model => model.Category)
             </div>
         </div>
         <div class="form-group">
             @Html.LabelFor(model => model.Tag, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Tag[0])
-                @Html.ValidationMessageFor(model => model.Tag[0])
+            <div id="Tags" class="col-md-10">
+                <a id="addTag" class="col-md-offset-3 col-md-5">
+                    <i class="glyphicon glyphicon-plus-sign"></i>
+                </a>
             </div>
         </div>
-        <div id="Tags">
-        </div>
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="button" id="addTag" value="Add Tag" class="btn btn-default" />
-            </div>
-        </div>
+
         <div class="form-group">
             @Html.LabelFor(model => model.Answers, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Answers[0])
-                @Html.ValidationMessageFor(model => model.Answers[0])
-            </div>
-        </div>
-        <div id="Answers">
-        </div>
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="button" id="addAnswer" value="Add Answer" class="btn btn-default" />
+            <div id="Answers" class="col-md-10">
+                <a id="addAnswer" class="col-md-offset-3 col-md-5">
+                    <i class="glyphicon glyphicon-plus-sign"></i>
+                </a>
             </div>
         </div>
         <div class="form-group">
-            @Html.LabelFor(model => model.Condition, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.TextAreaFor(model => model.Condition)
                 @Html.ValidationMessageFor(model => model.Condition)
             </div>
         </div>
-
-
         <div class="form-group">
             <div class="col-md-offset-5 col-md-10">
                 <input type="submit" value="Create" class="btn btn-success" />
@@ -88,17 +80,17 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
     <script>
+
         $(function () {
-            var answer = 0;
+            var answer = -1;
             $('#addAnswer').click(function () {
                 answer++;
                 var formGroup = document.createElement("div");
                 formGroup.className = "form-group";
                 formGroup.id = "form-group-" + answer;
                 var label = document.createElement("label");
-                label.className = "control-label col-md-2";
+                label.className = "control-label";
                 label.htmlFor = "Answers";
-                label.innerText = "Answer";
                 formGroup.appendChild(label);
                 var colmd = document.createElement("div");
                 colmd.className = "col-md-10";
@@ -111,29 +103,49 @@
                 formGroup.appendChild(colmd);
                 $('#Answers').append(formGroup);
             })
-            var tag = 0;
+            var tag = -1;
             $('#addTag').click(function () {
                 tag++;
                 var formGroup = document.createElement("div");
                 formGroup.className = "form-group";
-                formGroup.id = "form-group-" + tag;
                 var label = document.createElement("label");
-                label.className = "control-label col-md-2";
-                label.htmlFor = "Tags";
-                label.innerText = "Tag";
+                label.className = "control-label tags";
+                label.htmlFor = "Tag";
                 formGroup.appendChild(label);
                 var colmd = document.createElement("div");
                 colmd.className = "col-md-10";
                 var input = document.createElement("input");
                 input.className = "text-box single-line";
-                input.id = "Tags" + tag + "_";
-                input.name = "Tags[" + tag + "]";
+                input.id = "tag-"+tag;
+                input.name = "Tag[" + tag + "]";
                 input.type = "text";
+                //$(input).autocomplete({
+                //    source: function (request, response) {
+                //        $.ajax({
+                //            type: 'POST',
+                //            dataType: 'text',
+                //            url: '/Task/GetTags',
+                //            data: {
+                //                nameStartsWith: request.term
+                //            },
+                //            success: function (data) {
+                //                console.log(data);
+                //                    return data.split('#');
+                //            }
+                //        });
+                //    }
+                //});
                 colmd.appendChild(input);
                 formGroup.appendChild(colmd);
                 $('#Tags').append(formGroup);
             })
         })
     </script>
-
+    <script type="text/javascript">
+        tinymce.init({
+            selector: "textarea",
+            plugins: "contextmenu",
+            contextmenu: ""
+        });
+    </script>
 }

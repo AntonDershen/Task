@@ -19,7 +19,7 @@ namespace BusinessLogic.Services
         public void CreateTask(TaskEntity taskEntity)
         {
             taskEntity.Activate = true;
-            unitOfWork.TaskRepository.Create(taskEntity.ToTask(taskEntity.TagsId));
+            unitOfWork.TaskRepository.Create(taskEntity.ToTask(),taskEntity.TagsId);
             unitOfWork.Save();
             var tasks = unitOfWork.TaskRepository.GetAll(x => x.Condition == taskEntity.Condition);
             int id = tasks.LastOrDefault(x => x.CreateUserId == taskEntity.CreateUserId).Id;

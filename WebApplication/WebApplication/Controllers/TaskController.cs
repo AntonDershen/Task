@@ -37,9 +37,9 @@ namespace WebApplication.Controllers
             return RedirectToAction("Index","Home");
         }
         [HttpPost]
-        public string GetTags(string tagName)
+        public string GetTags(string data)
         {
-            List<string> tags = tagService.GetTags(tagName).ToList();
+            List<string> tags = tagService.GetTags("p").ToList();
             string tagsToAjax = string.Empty;
             foreach (var tag in tags)
                 tagsToAjax += tag + "#";

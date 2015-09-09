@@ -24,7 +24,7 @@ namespace BusinessLogic.Mapper
                 
             };
         }
-        public static Task ToTask(this TaskEntity taskEntity,List<int> tagsId)
+        public static Task ToTask(this TaskEntity taskEntity)
         {
             return new Task()
             {
@@ -34,7 +34,7 @@ namespace BusinessLogic.Mapper
                 CreateUserId = taskEntity.CreateUserId,
                 Name = taskEntity.Name,
                 Condition = taskEntity.Condition,
-                Activate = taskEntity.Activate,
+                Activate = taskEntity.Activate
             };
         }
     }

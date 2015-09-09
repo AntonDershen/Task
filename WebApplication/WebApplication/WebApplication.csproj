@@ -152,11 +152,31 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
+    <Content Include="Scripts\tiny\tinymce\license.txt" />
+    <Content Include="Scripts\tiny\tinymce\skins\lightgray\content.inline.min.css" />
+    <Content Include="Scripts\tiny\tinymce\skins\lightgray\content.min.css" />
+    <Content Include="Scripts\tiny\tinymce\skins\lightgray\fonts\tinymce-small.svg" />
+    <Content Include="Scripts\tiny\tinymce\skins\lightgray\fonts\tinymce.svg" />
+    <Content Include="Scripts\tiny\tinymce\skins\lightgray\img\anchor.gif" />
+    <Content Include="Scripts\tiny\tinymce\skins\lightgray\img\loader.gif" />
+    <Content Include="Scripts\tiny\tinymce\skins\lightgray\img\object.gif" />
+    <Content Include="Scripts\tiny\tinymce\skins\lightgray\img\trans.gif" />
+    <Content Include="Scripts\tiny\tinymce\skins\lightgray\skin.ie7.min.css" />
+    <Content Include="Scripts\tiny\tinymce\skins\lightgray\skin.min.css" />
+    <Content Include="Scripts\tiny\tinymce\tinymce.min.js" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Scripts\jquery-1.9.1.min.map" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Error\Index.cshtml" />
     <Content Include="Views\Task\CreateTask.cshtml" />
+    <Content Include="Scripts\tiny\tinymce\skins\lightgray\fonts\tinymce-small.eot" />
+    <Content Include="Scripts\tiny\tinymce\skins\lightgray\fonts\tinymce-small.json" />
+    <Content Include="Scripts\tiny\tinymce\skins\lightgray\fonts\tinymce-small.ttf" />
+    <Content Include="Scripts\tiny\tinymce\skins\lightgray\fonts\tinymce-small.woff" />
+    <Content Include="Scripts\tiny\tinymce\skins\lightgray\fonts\tinymce.eot" />
+    <Content Include="Scripts\tiny\tinymce\skins\lightgray\fonts\tinymce.json" />
+    <Content Include="Scripts\tiny\tinymce\skins\lightgray\fonts\tinymce.ttf" />
+    <Content Include="Scripts\tiny\tinymce\skins\lightgray\fonts\tinymce.woff" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />

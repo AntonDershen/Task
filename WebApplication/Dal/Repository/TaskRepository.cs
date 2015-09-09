@@ -27,10 +27,10 @@ namespace DataAccess.Repository
         {
             throw new NotImplementedException();
         }
-        public void Create(Task task,List<int> tagsId)
+        public void Create(Task task,List<int> taskId)
         {
             List<Tag> tags = new List<Tag>();
-            foreach (var tagId in tagsId)
+            foreach (var tagId in taskId)
                 tags.Add(context.Set<Tag>().Find(tagId));
             task.Tags = tags;
             context.Set<Task>().Add(task);
