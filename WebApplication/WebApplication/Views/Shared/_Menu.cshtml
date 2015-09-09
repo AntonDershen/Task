@@ -1,12 +1,31 @@
 ﻿<nav class="navbar navbar-default   navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse">
-            </button>
-            <a class="navbar-brand" href=@Url.Action("Index","Home")>Home</a>
+            <a class="navbar-brand" href=@Url.Action("Index","Home")>Course Task</a>
         </div>
-        <div class="navbar-collapse collapse">
-            @Html.Partial("_LoginPartial")
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href=@Url.Action("Index","Home")>Home</a></li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Document <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href=@Url.Action("CreateDocument", "Document")>Create</a></li>
+                        <li><a href="#">Add New</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Register</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href=@Url.Action("Register", "Account")><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                @if (Request.IsAuthenticated)
+                {
+                    <li><a href=@Url.Action("LogOff", "Account")><span class="glyphicon glyphicon-log-in"></span> LogOff</a></li>
+                }
+                else
+                {
+                    <li><a href=@Url.Action("LogIn", "Account")><span class="glyphicon glyphicon-log-out"></span> LogIn</a></li>
+                }
+            </ul>
         </div>
     </div>
 </nav>
