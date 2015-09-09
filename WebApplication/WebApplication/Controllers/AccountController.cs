@@ -65,7 +65,7 @@ namespace WebApplication.Controllers
                 if (id>0)
                 {
                     authService.CreateAuthorization(model.ToAuthorizationEntity(id));
-                    sendEmail(model.Email, id);
+                    SendEmail(model.Email, id);
                     return RedirectToAction("Confirm", "Account", new { email = model.Email });
                 }
                 ModelState.AddModelError("", "");
@@ -94,7 +94,7 @@ namespace WebApplication.Controllers
             }
             return RedirectToAction("Home", "Index");
         }
-        private void sendEmail(string email,int id)
+        private void SendEmail(string email,int id)
         {
             MailAddress from = new MailAddress("dershen95@gmail.com", "Registration to IntransitionTask");
             MailAddress to = new MailAddress(email);

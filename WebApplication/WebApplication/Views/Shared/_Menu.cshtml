@@ -1,4 +1,10 @@
-﻿<nav class="navbar navbar-default   navbar-fixed-top">
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</head>
+<nav class="navbar navbar-default   navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
             <a class="navbar-brand" href=@Url.Action("Index","Home")>Course Task</a>
@@ -16,6 +22,13 @@
                 <li><a href="#">Register</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown">Language <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href=@Url.Action("CreateDocument", "Document")>English</a></li>
+                        <li><a href="#">Russian</a></li>
+                    </ul>
+                </li>
                 <li><a href=@Url.Action("Register", "Account")><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
                 @if (Request.IsAuthenticated)
                 {
@@ -29,3 +42,4 @@
         </div>
     </div>
 </nav>
+</html>
