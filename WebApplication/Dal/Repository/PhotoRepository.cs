@@ -17,11 +17,13 @@ namespace DataAccess.Repository
         }
         public void CreatePhoto(byte[] photo)
         {
-            throw new NotImplementedException();
+            context.Set<Photo>().Add(new Photo(){
+               Context =  photo
+            });
         }
         public Photo Get(Func<Photo,bool> predicate)
         {
-            throw new NotImplementedException();
+            return context.Set<Photo>().FirstOrDefault(predicate);
         }
     }
 }

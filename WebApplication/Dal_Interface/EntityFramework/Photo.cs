@@ -9,8 +9,7 @@ namespace DataAccess.Interface.EntityFramework
     public class Photo
     {
         public int Id { get; set; }
-        public string Content { get; set; }
-        public int TaskId { get; set; }
-        public Task Task { get; set; }
+        public byte[] Context { get; set; }
+        public virtual ICollection<Task> Tasks { get; set; }
     }
 }

@@ -13,6 +13,7 @@ namespace DataAccess.Repository
         private ITaskRepository taskRepository;
         private ITagRepository tagRepository;
         private IAnswerRepository answerRepository;
+        private IPhotoRepository photoRepository;
         public UnitOfWork(DbContext context)
         {
             Context = context;
@@ -60,6 +61,15 @@ namespace DataAccess.Repository
                 if (answerRepository == null)
                     answerRepository = new AnswerRepository(Context);
                 return answerRepository;
+            }
+        }
+        public IPhotoRepository PhotoRepository
+        {
+            get
+            {
+                if (photoRepository == null)
+                    photoRepository = new PhotoRepository(Context);
+                return photoRepository;
             }
         }
         public void Save()

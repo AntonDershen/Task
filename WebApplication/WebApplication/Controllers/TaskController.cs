@@ -15,11 +15,13 @@ namespace WebApplication.Controllers
         private readonly ITaskService taskService;
         private readonly IAuthorizationService authorizationService;
         private readonly ITagService tagService;
-        public TaskController(ITaskService taskService, IAuthorizationService authorizationService, ITagService tagService)
+        private readonly IPhotoService photoService;
+        public TaskController(ITaskService taskService, IAuthorizationService authorizationService, ITagService tagService, IPhotoService photoService)
         {
             this.taskService = taskService;
             this.authorizationService = authorizationService;
             this.tagService = tagService;
+            this.photoService = photoService;
         }
         [HttpGet]
         public ActionResult CreateTask()
@@ -33,9 +35,9 @@ namespace WebApplication.Controllers
             {
                 var auth = authorizationService.Get(x => x.Email == User.Identity.Name);
                 int id = auth.UserId;
-                taskService.CreateTask(model.ToTaskEntity(id,tagService.CreateTags(model.Tag).ToList()));
+                taskService.CreateTask(model.ToTaskEntity(id, tagService.CreateTags(model.Tag).ToList()));
             }
-            return RedirectToAction("Index","Home");
+            return RedirectToAction("Index", "Home");
         }
         [HttpPost]
         public string GetTags(string data)
@@ -52,15 +54,10 @@ namespace WebApplication.Controllers
             var length = Request.ContentLength;
             var bytes = new byte[length];
             Request.InputStream.Read(bytes, 0, length);
-            var fileName = Request.Headers["X-File-Name"];
-            var fileSize = Request.Headers["X-File-Size"];
-            var fileType = Request.Headers["X-File-Type"];
-            var bytList = bytes.ToList();
-            bytList = bytList.Skip(bytes.Length - Int32.Parse(fileSize) - 46).ToList();
-            using (FileStream fstream = new FileStream(@"d:\"+fileName, FileMode.OpenOrCreate))
-            {
-                fstream.Write(bytList.ToArray(), 0, Int32.Parse(fileSize));
-            }
+            var fileSize = Int32.Parse(Request.Headers["X-File-Size"]);
+            var byteList = bytes.ToList();
+            byteList = byteList.Skip(bytes.Length - fileSize - 46).ToList();
+            photoService.CreatePhoto(byteList.Take(fileSize).ToArray());
         }
-	}
+    }
 }

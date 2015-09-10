@@ -8,6 +8,6 @@ namespace BusinessLogic.Interface.Services
 {
     public interface IPhotoService
     {
-         string CreatePhoto(byte[] photo);
+         int CreatePhoto(byte[] photo);
     }
 }

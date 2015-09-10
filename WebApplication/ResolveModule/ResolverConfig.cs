@@ -38,6 +38,9 @@ namespace ResolverConfig
 
             kernel.Bind<ITagService>().To<TagService>();
             kernel.Bind<ITagRepository>().To<TagRepository>();
+
+            kernel.Bind<IPhotoRepository>().To<PhotoRepository>();
+            kernel.Bind<IPhotoService>().To<PhotoService>();
         }
     }
 }

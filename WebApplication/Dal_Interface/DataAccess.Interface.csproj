@@ -84,13 +84,9 @@
     <Compile Include="EntityFramework\User.cs" />
     <Compile Include="EntityFramework\EntityModel.cs" />
     <Compile Include="EntityFramework\IEntity.cs" />
-    <Compile Include="Migrations\201509081941598_notOrm.cs" />
-    <Compile Include="Migrations\201509081941598_notOrm.Designer.cs">
-      <DependentUpon>201509081941598_notOrm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201509101009435_123124243423532.cs" />
-    <Compile Include="Migrations\201509101009435_123124243423532.Designer.cs">
-      <DependentUpon>201509101009435_123124243423532.cs</DependentUpon>
+    <Compile Include="Migrations\201509102100365_1.cs" />
+    <Compile Include="Migrations\201509102100365_1.Designer.cs">
+      <DependentUpon>201509102100365_1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -107,11 +103,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201509081941598_notOrm.resx">
-      <DependentUpon>201509081941598_notOrm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201509101009435_123124243423532.resx">
-      <DependentUpon>201509101009435_123124243423532.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201509102100365_1.resx">
+      <DependentUpon>201509102100365_1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -12,6 +12,7 @@ namespace DataAccess.Interface.Repository
         IUserRepository UserRepository { get; }
         ITagRepository TagRepository { get; }
         IAnswerRepository AnswerRepository { get; }
+        IPhotoRepository PhotoRepository { get; }
         IRepository<Authorization> AuthorizationRepository { get; }
         void Save();
 
