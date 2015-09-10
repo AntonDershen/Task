@@ -67,9 +67,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Mapper\AuthorizationMapper.cs" />
+    <Compile Include="Mapper\CommentMapper.cs" />
+    <Compile Include="Mapper\TagMapper.cs" />
+    <Compile Include="Mapper\TaskMapper.cs" />
     <Compile Include="Mapper\UserMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AuthorizationServices.cs" />
+    <Compile Include="Services\PhotoService.cs" />
+    <Compile Include="Services\TagService.cs" />
+    <Compile Include="Services\TaskService.cs" />
     <Compile Include="Services\UserServices.cs" />
   </ItemGroup>
   <ItemGroup>

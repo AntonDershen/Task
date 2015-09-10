@@ -4,7 +4,7 @@ using System.Linq;
 using DataAccess.Interface.Repository;
 using BusinessLogic.Interface.Services;
 using BusinessLogic.Interface.Entities;
-using DataAccess.Interface.DataTransfer;
+using DataAccess.Interface.EntityFramework;
 using BusinessLogic.Mapper;
 using System.IO;
 using System.Web.Security;

@@ -71,15 +71,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Mapper\AnswerMapper.cs" />
-    <Compile Include="Mapper\AuthorizationMapper.cs" />
-    <Compile Include="Mapper\CommentMapper.cs" />
-    <Compile Include="Mapper\RateMapper.cs" />
-    <Compile Include="Mapper\TagsMapper.cs" />
-    <Compile Include="Mapper\TaskMapper.cs" />
-    <Compile Include="Mapper\UserMapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\AnswerRepository.cs" />
     <Compile Include="Repository\AuthorizationRepository.cs" />
+    <Compile Include="Repository\PhotoRepository.cs" />
+    <Compile Include="Repository\TagRepository.cs" />
+    <Compile Include="Repository\TaskRepository.cs" />
     <Compile Include="Repository\UnitOfWork.cs" />
     <Compile Include="Repository\UserRepository.cs" />
   </ItemGroup>
@@ -87,10 +84,6 @@
     <ProjectReference Include="..\Dal_Interface\DataAccess.Interface.csproj">
       <Project>{439a73af-497e-4795-b09c-b6e0d92aa265}</Project>
       <Name>DataAccess.Interface</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ORM\ORM.csproj">
-      <Project>{b27d740d-ae77-4f40-82b0-f49b5b008b43}</Project>
-      <Name>ORM</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

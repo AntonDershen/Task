@@ -141,7 +141,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\Styles.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -153,13 +152,30 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
+    <Content Include="Scripts\tiny\tinymce\license.txt" />
+    <Content Include="Scripts\tiny\tinymce\skins\lightgray\content.inline.min.css" />
+    <Content Include="Scripts\tiny\tinymce\skins\lightgray\content.min.css" />
+    <Content Include="Scripts\tiny\tinymce\skins\lightgray\fonts\tinymce-small.svg" />
+    <Content Include="Scripts\tiny\tinymce\skins\lightgray\fonts\tinymce.svg" />
+    <Content Include="Scripts\tiny\tinymce\skins\lightgray\img\anchor.gif" />
+    <Content Include="Scripts\tiny\tinymce\skins\lightgray\img\loader.gif" />
+    <Content Include="Scripts\tiny\tinymce\skins\lightgray\img\object.gif" />
+    <Content Include="Scripts\tiny\tinymce\skins\lightgray\img\trans.gif" />
+    <Content Include="Scripts\tiny\tinymce\skins\lightgray\skin.ie7.min.css" />
+    <Content Include="Scripts\tiny\tinymce\skins\lightgray\skin.min.css" />
+    <Content Include="Scripts\tiny\tinymce\tinymce.min.js" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Scripts\jquery-1.9.1.min.map" />
-    <Content Include="Views\Document\CreateDocument.cshtml" />
-    <Content Include="Views\Document\_ShowDocument.cshtml" />
     <Content Include="Views\Error\Index.cshtml" />
-    <Content Include="Views\Administrator\_FindUser.cshtml" />
-    <Content Include="Views\Administrator\_FindDocument.cshtml" />
+    <Content Include="Views\Task\CreateTask.cshtml" />
+    <Content Include="Scripts\tiny\tinymce\skins\lightgray\fonts\tinymce-small.eot" />
+    <Content Include="Scripts\tiny\tinymce\skins\lightgray\fonts\tinymce-small.json" />
+    <Content Include="Scripts\tiny\tinymce\skins\lightgray\fonts\tinymce-small.ttf" />
+    <Content Include="Scripts\tiny\tinymce\skins\lightgray\fonts\tinymce-small.woff" />
+    <Content Include="Scripts\tiny\tinymce\skins\lightgray\fonts\tinymce.eot" />
+    <Content Include="Scripts\tiny\tinymce\skins\lightgray\fonts\tinymce.json" />
+    <Content Include="Scripts\tiny\tinymce\skins\lightgray\fonts\tinymce.ttf" />
+    <Content Include="Scripts\tiny\tinymce\skins\lightgray\fonts\tinymce.woff" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_LocalResources\GlobalRes.Designer.cs">
@@ -180,16 +196,19 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Filters\CultureAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\Mappers\AuthorizationMapper.cs" />
     <Compile Include="Infrastructure\Mappers\RegisterMapper.cs" />
+    <Compile Include="Infrastructure\Mappers\TaskMapper.cs" />
     <Compile Include="Infrastructure\Mappers\UserMapper.cs" />
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
+    <Compile Include="Models\AnswerModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\RegisterModel.cs" />
+    <Compile Include="Models\TagModel.cs" />
+    <Compile Include="Models\TaskModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

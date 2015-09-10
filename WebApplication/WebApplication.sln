@@ -5,8 +5,6 @@ VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication", "WebApplication\WebApplication.csproj", "{FEAB4EA5-AEF9-4D30-9969-E93959296FF7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ORM", "ORM\ORM.csproj", "{B27D740D-AE77-4F40-82B0-F49B5B008B43}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess.Interface", "Dal_Interface\DataAccess.Interface.csproj", "{439A73AF-497E-4795-B09C-B6E0D92AA265}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "Dal\DataAccess.csproj", "{F7440D90-D698-4A7E-80E0-213C5DD88227}"
@@ -27,10 +25,6 @@ Global
 		{FEAB4EA5-AEF9-4D30-9969-E93959296FF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FEAB4EA5-AEF9-4D30-9969-E93959296FF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FEAB4EA5-AEF9-4D30-9969-E93959296FF7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B27D740D-AE77-4F40-82B0-F49B5B008B43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B27D740D-AE77-4F40-82B0-F49B5B008B43}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B27D740D-AE77-4F40-82B0-F49B5B008B43}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B27D740D-AE77-4F40-82B0-F49B5B008B43}.Release|Any CPU.Build.0 = Release|Any CPU
 		{439A73AF-497E-4795-B09C-B6E0D92AA265}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{439A73AF-497E-4795-B09C-B6E0D92AA265}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{439A73AF-497E-4795-B09C-B6E0D92AA265}.Release|Any CPU.ActiveCfg = Release|Any CPU

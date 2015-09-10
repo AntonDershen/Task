@@ -5,8 +5,7 @@ using DataAccess.Repository;
 using DataAccess.Interface.Repository;
 using Ninject;
 using Ninject.Web.Common;
-using ORM;
-using DataAccess.Interface.DataTransfer;
+using DataAccess.Interface.EntityFramework;
 
 namespace ResolverConfig
 {
@@ -29,10 +28,19 @@ namespace ResolverConfig
             kernel.Bind<DbContext>().To<EntityModel>().InRequestScope();
 
             kernel.Bind<IUserService>().To<UserService>();
-            kernel.Bind<IRepository<DataTransferUser>>().To<UserRepository>();
+            kernel.Bind<IRepository<User>>().To<UserRepository>();
 
             kernel.Bind<IAuthorizationService>().To<AuthorizationServices>();
-            kernel.Bind<IRepository<DataTransferAuthorization>>().To<AuthorizationRepository>();
+            kernel.Bind<IRepository<Authorization>>().To<AuthorizationRepository>();
+
+            kernel.Bind<ITaskService>().To<TaskService>();
+            kernel.Bind<ITaskRepository>().To<TaskRepository>();
+
+            kernel.Bind<ITagService>().To<TagService>();
+            kernel.Bind<ITagRepository>().To<TagRepository>();
+
+            kernel.Bind<IPhotoRepository>().To<PhotoRepository>();
+            kernel.Bind<IPhotoService>().To<PhotoService>();
         }
     }
 }

@@ -93,10 +93,6 @@
       <Project>{439a73af-497e-4795-b09c-b6e0d92aa265}</Project>
       <Name>DataAccess.Interface</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ORM\ORM.csproj">
-      <Project>{b27d740d-ae77-4f40-82b0-f49b5b008b43}</Project>
-      <Name>ORM</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
