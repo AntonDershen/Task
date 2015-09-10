@@ -153,6 +153,9 @@
   <data name="CreateDocument" xml:space="preserve">
     <value>CreateDocument</value>
   </data>
+  <data name="Dark" xml:space="preserve">
+    <value>Dark</value>
+  </data>
   <data name="Date" xml:space="preserve">
     <value>Date</value>
   </data>
@@ -170,6 +173,9 @@
   </data>
   <data name="Email" xml:space="preserve">
     <value>Email</value>
+  </data>
+  <data name="English" xml:space="preserve">
+    <value>English</value>
   </data>
   <data name="Enter" xml:space="preserve">
     <value>Enter</value>
@@ -192,6 +198,12 @@
   <data name="Home" xml:space="preserve">
     <value>Home</value>
   </data>
+  <data name="Languages" xml:space="preserve">
+    <value>Languages</value>
+  </data>
+  <data name="Light" xml:space="preserve">
+    <value>Light</value>
+  </data>
   <data name="LogIn" xml:space="preserve">
     <value>Log In</value>
   </data>
@@ -210,11 +222,20 @@
   <data name="PostalAddress" xml:space="preserve">
     <value>Postal address</value>
   </data>
+  <data name="Profile" xml:space="preserve">
+    <value>Profile</value>
+  </data>
+  <data name="Properties" xml:space="preserve">
+    <value>Properties</value>
+  </data>
   <data name="Register" xml:space="preserve">
     <value>Register</value>
   </data>
   <data name="Roles" xml:space="preserve">
     <value>Roles</value>
+  </data>
+  <data name="Russian" xml:space="preserve">
+    <value>Russian</value>
   </data>
   <data name="SearchFor" xml:space="preserve">
     <value>Search for</value>
@@ -222,8 +243,14 @@
   <data name="SentFurtherInstructions" xml:space="preserve">
     <value>you will be sent further instructions to complete the registration</value>
   </data>
+  <data name="SignUp" xml:space="preserve">
+    <value>Sign Up</value>
+  </data>
   <data name="SubmitRegistration" xml:space="preserve">
     <value>Submit registration</value>
+  </data>
+  <data name="Themes" xml:space="preserve">
+    <value>Themes</value>
   </data>
   <data name="User" xml:space="preserve">
     <value>User</value>

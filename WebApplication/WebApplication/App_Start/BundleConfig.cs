@@ -22,7 +22,7 @@ namespace WebApplication
 
             bundles.Add(new StyleBundle("~/bundles/styles").Include(
                       "~/Content/Styles.css",
-                      "~/Content/bootstrapWhite.css"));
+                      "~/Content/bootstrap.css"));
         }
     }
 }
