@@ -8,7 +8,6 @@ using System.Web.Mvc;
 using BusinessLogic.Interface.Services;
 using BusinessLogic.Interface.Entities;
 using WebApplication.Models;
-using WebApplication.Filters;
 
 namespace WebApplication.Controllers
 {

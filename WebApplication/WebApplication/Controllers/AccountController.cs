@@ -8,7 +8,6 @@ using BusinessLogic.Interface.Services;
 using WebApplication.Infrastructure.Mappers;
 using System.Web.Security;
 using System.Net.Mail;
-using WebApplication.Filters;
 
 namespace WebApplication.Controllers
 {
