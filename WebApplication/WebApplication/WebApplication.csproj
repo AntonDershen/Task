@@ -141,6 +141,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrapWhite.css" />
+    <Content Include="Content\Styles.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -154,7 +155,6 @@
     <Content Include="Scripts\jquery-1.9.1.min.js" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Scripts\jquery-1.9.1.min.map" />
-    <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Document\CreateDocument.cshtml" />
     <Content Include="Views\Document\_ShowDocument.cshtml" />
     <Content Include="Views\Error\Index.cshtml" />

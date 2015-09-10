@@ -4,12 +4,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
+
     @Styles.Render("~/Content/css")
+    @Styles.Render("~/bundles/styles")
+
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
-    <link href="~/Content/bootstrapWhite.css" rel="stylesheet" title="white" />
-    <link href="~/Content/bootstrapBlack.css" rel="alternate stylesheet" title="black" />
-
+    @Scripts.Render("~/bundles/bootstrap")
 </head>
 <body>
     @Html.Partial("_Menu")

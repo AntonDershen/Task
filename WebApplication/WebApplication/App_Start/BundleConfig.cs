@@ -9,7 +9,7 @@ namespace WebApplication
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
+                        "~/Scripts/jquery-1.10.2.min.js"));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
@@ -20,7 +20,9 @@ namespace WebApplication
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
-            
+            bundles.Add(new StyleBundle("~/bundles/styles").Include(
+                      "~/Content/Styles.css",
+                      "~/Content/bootstrapWhite.css"));
         }
     }
 }
