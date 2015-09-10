@@ -69,6 +69,5 @@ namespace WebApplication.Controllers
         //    Session["CurrentCulture"] = ddlCulture;
         //    return View("Index");
         //}
-
     }
 }
