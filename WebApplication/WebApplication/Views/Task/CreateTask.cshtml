@@ -4,148 +4,230 @@
     ViewBag.Title = "CreateTask";
     Page.validationRequest = false;
 }
+<script async src="//code.jquery.com/ui/1.10.1/jquery-ui.min.js"></script>
 <script src="~/Scripts/tiny/tinymce/tinymce.min.js"></script>
+<link href="~/Content/style.css" rel="stylesheet" />
 <h2>CreateTask</h2>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
 
-@using (Html.BeginForm()) 
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal" >
-        <h4>CreateTaskModel</h4>
-        <hr />
-        @Html.ValidationSummary(true)
+        <div class="form-horizontal">
+            <h4>CreateTaskModel</h4>
+            <hr />
+            @Html.ValidationSummary(true)
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Name)
-                @Html.ValidationMessageFor(model => model.Name)
+            <div class="form-group">
+                @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Name)
+                    @Html.ValidationMessageFor(model => model.Name)
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Complexity, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Complexity)
-                @Html.ValidationMessageFor(model => model.Complexity)
+            <div class="form-group">
+                @Html.LabelFor(model => model.Complexity, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Complexity)
+                    @Html.ValidationMessageFor(model => model.Complexity)
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Category, new { @class = "control-label col-md-2" })
-            <div class="col-md-10 dropdown">
-                @Html.DropDownListFor(model => model.Category,
+            <div class="form-group">
+                @Html.LabelFor(model => model.Category, new { @class = "control-label col-md-2" })
+                <div class="col-md-10 dropdown">
+                    @Html.DropDownListFor(model => model.Category,
                  new List<SelectListItem> {
                        new SelectListItem { Value = "python" , Text = "python" },
                        new SelectListItem { Value = "java" , Text = "java" },
                        new SelectListItem { Value = "c#" , Text = "c#" },
                        new SelectListItem { Value = "ruby" , Text = "ruby" }
                     }, new { @class = "btn btn-default dropdown-toggle" })
-                @Html.ValidationMessageFor(model => model.Category)
+                    @Html.ValidationMessageFor(model => model.Category)
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.Tag, new { @class = "control-label col-md-2" })
-            <div id="Tags" class="col-md-10">
-                <a id="addTag" class="col-md-offset-3 col-md-5">
-                    <i class="glyphicon glyphicon-plus-sign"></i>
-                </a>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Tag, new { @class = "control-label col-md-2" })
+                <div id="Tags" class="col-md-10">
+                    <a id="addTag" class="col-md-offset-3 col-md-5">
+                        <i class="glyphicon glyphicon-plus-sign"></i>
+                    </a>
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Answers, new { @class = "control-label col-md-2" })
-            <div id="Answers" class="col-md-10">
-                <a id="addAnswer" class="col-md-offset-3 col-md-5">
-                    <i class="glyphicon glyphicon-plus-sign"></i>
-                </a>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Answers, new { @class = "control-label col-md-2" })
+                <div id="Answers" class="col-md-10">
+                    <a id="addAnswer" class="col-md-offset-3 col-md-5">
+                        <i class="glyphicon glyphicon-plus-sign"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-10">
+                    @Html.TextAreaFor(model => model.Condition)
+                    @Html.ValidationMessageFor(model => model.Condition)
+                </div>
+            </div>
+            <div id="dropZone" class="form-group">
+                Для загрузки, перетащите изображение сюда.
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-5 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-success" />
+                </div>
             </div>
         </div>
-        <div class="form-group">
-            <div class="col-md-10">
-                @Html.TextAreaFor(model => model.Condition)
-                @Html.ValidationMessageFor(model => model.Condition)
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-md-offset-5 col-md-10">
-                <input type="submit" value="Create" class="btn btn-success" />
-            </div>
-        </div>
-    </div>
-}
+    }
 
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-    <script>
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+        <script>
+            $(document).ready(function () {
+                var dropZone = $('#dropZone'),
+                    maxFileSize = 1000000;
+                if (typeof (window.FileReader) == 'undefined') {
+                    dropZone.text('Не поддерживается браузером!');
+                    dropZone.addClass('error');
+                }
+                dropZone[0].ondragover = function () {
+                    dropZone.addClass('hover');
+                    return false;
+                };
 
-        $(function () {
-            var answer = -1;
-            $('#addAnswer').click(function () {
-                answer++;
-                var formGroup = document.createElement("div");
-                formGroup.className = "form-group";
-                formGroup.id = "form-group-" + answer;
-                var label = document.createElement("label");
-                label.className = "control-label";
-                label.htmlFor = "Answers";
-                formGroup.appendChild(label);
-                var colmd = document.createElement("div");
-                colmd.className = "col-md-10";
-                var input = document.createElement("input");
-                input.className="text-box single-line";
-                input.id = "Answers_" + answer + "_";
-                input.name = "Answers[" + answer + "]";
-                input.type = "text";
-                colmd.appendChild(input);
-                formGroup.appendChild(colmd);
-                $('#Answers').append(formGroup);
+                dropZone[0].ondragleave = function () {
+                    dropZone.removeClass('hover');
+                    return false;
+                };
+                dropZone[0].ondrop = function (event) {
+                    event.preventDefault();
+                    dropZone.removeClass('hover');
+                    dropZone.addClass('drop');
+                    var file = event.dataTransfer.files[0];
+                    console.log(file.type);
+                    if (file.type.indexOf("image") < 0) {
+                        dropZone.text('Не изображение !');
+                        dropZone.removeClass('drop');
+                        dropZone.addClass('error');
+                        return false;
+                    }
+                    if (file.size > maxFileSize) {
+                        dropZone.text('Файл слишком большой!');
+                        dropZone.removeClass('drop');
+                        dropZone.addClass('error');
+                        return false;
+                    }
+                    var reader = new FileReader();
+                    var xhr = new XMLHttpRequest();
+                    xhr.onreadystatechange = function (event) {
+                        if (event.target.readyState == 4) {
+                            if (event.target.status == 200) {
+                                dropZone.removeClass('drop');
+                                dropZone.addClass('hover');
+                                dropZone.text('Загрузка успешно завершена!');
+                                xhr.context;
+
+                            } else {
+                                dropZone.text('Произошла ошибка!');
+                                dropZone.removeClass('drop');
+                                dropZone.addClass('error');
+                            }
+                        }
+                    };
+                    xhr.upload.addEventListener('progress', function (event) {
+                        var percent = parseInt(event.loaded / event.total * 100);
+                        dropZone.text('Загрузка: ' + percent + '%');
+                    }, false);
+                    xhr.open("POST", "Upload", true);
+                    xhr.setRequestHeader("Content-Type", "multipart/form-data");
+                    xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+                    xhr.setRequestHeader("X-File-Name", file.name);
+                    xhr.setRequestHeader("X-File-Size", file.size);
+                    xhr.setRequestHeader("X-File-Type", file.type);
+                  
+                    var formData = new FormData();
+                    formData.append(file.name, file);
+                    var body = reader.result;
+                    if (xhr.sendAsBinary) {
+                        xhr.sendAsBinary(formData);
+                    } else {
+                        xhr.send(formData);
+                   }
+                   
+                };
+
+            });
+            $(function () {
+                var answer = -1;
+                $('#addAnswer').click(function () {
+                    answer++;
+                    var formGroup = document.createElement("div");
+                    formGroup.className = "form-group";
+                    formGroup.id = "form-group-" + answer;
+                    var label = document.createElement("label");
+                    label.className = "control-label";
+                    label.htmlFor = "Answers";
+                    formGroup.appendChild(label);
+                    var colmd = document.createElement("div");
+                    colmd.className = "col-md-10";
+                    var input = document.createElement("input");
+                    input.className = "text-box single-line";
+                    input.id = "Answers_" + answer + "_";
+                    input.name = "Answers[" + answer + "]";
+                    input.type = "text";
+                    colmd.appendChild(input);
+                    formGroup.appendChild(colmd);
+                    $('#Answers').append(formGroup);
+                })
+                var tag = -1;
+                $('#addTag').click(function () {
+                    tag++;
+                    var formGroup = document.createElement("div");
+                    formGroup.className = "form-group";
+                    var label = document.createElement("label");
+                    label.className = "control-label tags";
+                    label.htmlFor = "Tag";
+                    formGroup.appendChild(label);
+                    var colmd = document.createElement("div");
+                    colmd.className = "col-md-10";
+                    var input = document.createElement("input");
+                    input.className = "text-box single-line";
+                    input.id = "tag";
+                    input.name = "Tag[" + tag + "]";
+                    input.type = "text";
+                    colmd.appendChild(input);
+                    formGroup.appendChild(colmd);
+                    $('#Tags').append(formGroup);
+                    $(input).autocomplete({
+                        source: function (request, response) {
+                            $.ajax({
+                                url: '@Url.Action("GetTags","Task")',
+                                type: "Post",
+                                data: "data="+request.term,
+                                success: function (data) {
+                                    data = data.split('#');
+                                    console.log(data);
+                                    response(data);
+                                }
+                            });
+                        }
+                    });
+                }
+                )
             })
-            var tag = -1;
-            $('#addTag').click(function () {
-                tag++;
-                var formGroup = document.createElement("div");
-                formGroup.className = "form-group";
-                var label = document.createElement("label");
-                label.className = "control-label tags";
-                label.htmlFor = "Tag";
-                formGroup.appendChild(label);
-                var colmd = document.createElement("div");
-                colmd.className = "col-md-10";
-                var input = document.createElement("input");
-                input.className = "text-box single-line";
-                input.id = "tag-"+tag;
-                input.name = "Tag[" + tag + "]";
-                input.type = "text";
-                //$(input).autocomplete({
-                //    source: function (request, response) {
-                //        $.ajax({
-                //            type: 'POST',
-                //            dataType: 'text',
-                //            url: '/Task/GetTags',
-                //            data: {
-                //                nameStartsWith: request.term
-                //            },
-                //            success: function (data) {
-                //                console.log(data);
-                //                    return data.split('#');
-                //            }
-                //        });
-                //    }
-                //});
-                colmd.appendChild(input);
-                formGroup.appendChild(colmd);
-                $('#Tags').append(formGroup);
-            })
-        })
-    </script>
-    <script type="text/javascript">
-        tinymce.init({
-            selector: "textarea",
-            plugins: "contextmenu",
-            contextmenu: ""
-        });
-    </script>
-}
+
+
+        </script>
+        <script type="text/javascript">
+            tinymce.init({
+                selector: "textarea",
+                plugins: [
+                    " lists image charmap  preview anchor",
+                    "searchreplace  code ",
+                    "insertdatetime table contextmenu paste"
+                ],
+                toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
+            });
+        </script>
+    }

@@ -76,6 +76,7 @@
     <Compile Include="Services\ITagService.cs" />
     <Compile Include="Services\ITaskService.cs" />
     <Compile Include="Services\IUserService.cs" />
+    <Compile Include="Services\IPhotoService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

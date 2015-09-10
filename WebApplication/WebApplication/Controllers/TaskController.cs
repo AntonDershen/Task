@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using BusinessLogic.Interface.Services;
 using WebApplication.Models;
 using WebApplication.Infrastructure.Mappers;
+using System.IO;
 namespace WebApplication.Controllers
 {
     [Authorize]
@@ -39,11 +40,27 @@ namespace WebApplication.Controllers
         [HttpPost]
         public string GetTags(string data)
         {
-            List<string> tags = tagService.GetTags("p").ToList();
+            List<string> tags = tagService.GetTags(data).ToList();
             string tagsToAjax = string.Empty;
             foreach (var tag in tags)
                 tagsToAjax += tag + "#";
             return tagsToAjax;
+        }
+        [HttpPost]
+        public void Upload()
+        {
+            var length = Request.ContentLength;
+            var bytes = new byte[length];
+            Request.InputStream.Read(bytes, 0, length);
+            var fileName = Request.Headers["X-File-Name"];
+            var fileSize = Request.Headers["X-File-Size"];
+            var fileType = Request.Headers["X-File-Type"];
+            var bytList = bytes.ToList();
+            bytList = bytList.Skip(bytes.Length - Int32.Parse(fileSize) - 46).ToList();
+            using (FileStream fstream = new FileStream(@"d:\"+fileName, FileMode.OpenOrCreate))
+            {
+                fstream.Write(bytList.ToArray(), 0, Int32.Parse(fileSize));
+            }
         }
 	}
 }
