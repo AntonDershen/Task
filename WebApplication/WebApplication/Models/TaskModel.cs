@@ -16,5 +16,14 @@ namespace WebApplication.Models
         public List<string> Tag { get; set; }
         public List<string> Answers { get; set; }
     }
-
+    public class ViewTaskModel
+    {
+        public string Name { get; set; }
+        public int Complexity { get; set; }
+        public string Category { get; set; }
+        [AllowHtml]
+        public string Condition { get; set; }
+        public List<int> TagsId { get; set; }
+        public List<int> PhotoId { get; set; }
+    }
 }

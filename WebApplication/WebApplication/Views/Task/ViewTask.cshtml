@@ -1,0 +1,48 @@
+﻿@model WebApplication.Models.ViewTaskModel
+
+@{
+    ViewBag.Title = "ViewTask";
+}
+
+<h2>ViewTask</h2>
+
+<div>
+    <h4>ViewTaskModel</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Complexity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Complexity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Category)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Condition)
+        </dt>
+
+        <dd>
+         @Html.Raw(Model.Condition);
+        
+        </dd>
+
+    </dl>
+</div>
+

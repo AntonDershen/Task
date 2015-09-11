@@ -1,23 +1,23 @@
 using System;
 using System.Web.Mvc;
-using Insya.Localization;
+//using Insya.Localization;
 
-namespace WebApplication.Controllers
-{
-    public class LocalesController : Controller
-    {
+//namespace WebApplication.Controllers
+//{
+//    public class LocalesController : Controller
+//    {
 
-        public ActionResult Index(string lang = "en_US")
-        {
-            Response.Cookies["CacheLang"].Value = lang;
+//        public ActionResult Index(string lang = "en_US")
+//        {
+//            Response.Cookies["CacheLang"].Value = lang;
 			
-            if (Request.UrlReferrer != null)
-                Response.Redirect(Request.UrlReferrer.ToString());
+//            if (Request.UrlReferrer != null)
+//                Response.Redirect(Request.UrlReferrer.ToString());
              
-			var message = Localization.Get("changedlng");
+//            var message = Localization.Get("changedlng");
     
-			return Content(message);
-        }
+//            return Content(message);
+//        }
 
-    }
-}
+//    }
+//}
