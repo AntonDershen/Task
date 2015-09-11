@@ -349,6 +349,15 @@ namespace WebApplication.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to More.
+        /// </summary>
+        public static string More {
+            get {
+                return ResourceManager.GetString("More", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No.
         /// </summary>
         public static string No {
@@ -421,7 +430,7 @@ namespace WebApplication.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Search for.
+        ///   Looks up a localized string similar to Search for....
         /// </summary>
         public static string SearchFor {
             get {

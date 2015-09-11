@@ -3,16 +3,16 @@
 <h1>@Identity</h1> 
 @if( User.Identity.IsAuthenticated && User.IsInRole("User")){
      <div id="documents"></div>
-     <button class="btn-default" id="next_page">More</button>
+     <button class="btn-default" id="next_page">@GlobalRes.More</button>
      <output  id="pageCount" style="visibility:hidden" />
 }
 @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
 {
       <div class="input-group">
       <span class="input-group-btn">
-          <button class="btn btn-default" id="submit" type="button">Go!</button>
+          <button class="btn btn-default" id="submit" type="button">@GlobalRes.Go!</button>
       </span>
-      <input type="text" id="search" class="form-control" placeholder="Search for...">
+          <input type="text" id="search" class="form-control" placeholder=@GlobalRes.SearchFor>
     </div>
     <div id="users"></div>
 }

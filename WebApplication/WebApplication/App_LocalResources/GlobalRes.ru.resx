@@ -213,6 +213,9 @@
   <data name="Menu" xml:space="preserve">
     <value>Меню</value>
   </data>
+  <data name="More" xml:space="preserve">
+    <value>Подробнее</value>
+  </data>
   <data name="No" xml:space="preserve">
     <value>Нет</value>
   </data>
@@ -238,7 +241,7 @@
     <value>Русский</value>
   </data>
   <data name="SearchFor" xml:space="preserve">
-    <value>Поиск</value>
+    <value>Поиск...</value>
   </data>
   <data name="SentFurtherInstructions" xml:space="preserve">
     <value>вам высланы дальнейшие инструкции по завершению регистрации</value>
