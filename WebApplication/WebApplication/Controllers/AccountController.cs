@@ -6,11 +6,14 @@ using System.Web.Mvc;
 using WebApplication.Models;
 using BusinessLogic.Interface.Services;
 using WebApplication.Infrastructure.Mappers;
+using WebApplication.Filters;
 using System.Web.Security;
 using System.Net.Mail;
+using WebApplication.App_LocalResources;
 
 namespace WebApplication.Controllers
 {
+    [Culture]
     public class AccountController : Controller
     {
         private readonly IUserService userService;
@@ -77,7 +80,7 @@ namespace WebApplication.Controllers
         [AllowAnonymous]
         public string Confirm(string email)
         {
-            return "Postal address " + email + "  you will be sent further instructions to complete the registration.";
+            return GlobalRes.PostalAddress + email + GlobalRes.SentFurtherInstructions;
         }
         [AllowAnonymous]
         public ActionResult ConfirmEmail(string token, string email)
@@ -100,9 +103,8 @@ namespace WebApplication.Controllers
             MailAddress from = new MailAddress("dershen95@gmail.com", "Registration to IntransitionTask");
             MailAddress to = new MailAddress(email);
             MailMessage m = new MailMessage(from, to);
-            m.Subject = "Email confirmation";
-            m.Body = string.Format("To complete the registration please go to:" +
-                            "<a href=\"{0}\" title=\"Submit registration\">{0}</a>",
+            m.Subject = GlobalRes.EmailConfirmation;
+            m.Body = string.Format(GlobalRes.CompleteRegistration +  "<a href=\"{0}\" title=\"Submit registration\">{0}</a>",
                 Url.Action("ConfirmEmail", "Account", new { token = id, email = email }, Request.Url.Scheme));
             m.IsBodyHtml = true;
             SmtpClient smtp = new System.Net.Mail.SmtpClient("smtp.gmail.com", 587);

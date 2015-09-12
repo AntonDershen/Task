@@ -132,8 +132,14 @@
   <data name="Answer" xml:space="preserve">
     <value>Ответ</value>
   </data>
+  <data name="Answers" xml:space="preserve">
+    <value>Ответы</value>
+  </data>
   <data name="AvailableToAll" xml:space="preserve">
     <value>Доступно всем</value>
+  </data>
+  <data name="Category" xml:space="preserve">
+    <value>Категория</value>
   </data>
   <data name="Change" xml:space="preserve">
     <value>Изменить</value>
@@ -141,8 +147,14 @@
   <data name="CompleteRegistration" xml:space="preserve">
     <value>Для завершения регистрации перейдите по ссылке</value>
   </data>
+  <data name="Complexity" xml:space="preserve">
+    <value>Сложность</value>
+  </data>
+  <data name="Condition" xml:space="preserve">
+    <value>Состояние</value>
+  </data>
   <data name="ConfirmPassword" xml:space="preserve">
-    <value>Подтвердите Пароль</value>
+    <value>Подтвердите пароль</value>
   </data>
   <data name="Content" xml:space="preserve">
     <value>Содержимое</value>
@@ -174,6 +186,9 @@
   <data name="Email" xml:space="preserve">
     <value>Электронная почта</value>
   </data>
+  <data name="EmailConfirmation" xml:space="preserve">
+    <value>Подтверждение электонной почты</value>
+  </data>
   <data name="English" xml:space="preserve">
     <value>Английский</value>
   </data>
@@ -185,6 +200,9 @@
   </data>
   <data name="EnterPassword" xml:space="preserve">
     <value>Введите пароль</value>
+  </data>
+  <data name="EnterUserName" xml:space="preserve">
+    <value>Введите имя пользователя</value>
   </data>
   <data name="Error" xml:space="preserve">
     <value>Ошибка</value>
@@ -213,6 +231,12 @@
   <data name="Menu" xml:space="preserve">
     <value>Меню</value>
   </data>
+  <data name="More" xml:space="preserve">
+    <value>Подробнее</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Имя</value>
+  </data>
   <data name="No" xml:space="preserve">
     <value>Нет</value>
   </data>
@@ -238,7 +262,7 @@
     <value>Русский</value>
   </data>
   <data name="SearchFor" xml:space="preserve">
-    <value>Поиск</value>
+    <value>Поиск...</value>
   </data>
   <data name="SentFurtherInstructions" xml:space="preserve">
     <value>вам высланы дальнейшие инструкции по завершению регистрации</value>
@@ -248,6 +272,12 @@
   </data>
   <data name="SubmitRegistration" xml:space="preserve">
     <value>Подтвердить регистрацию</value>
+  </data>
+  <data name="Tag" xml:space="preserve">
+    <value>Тег</value>
+  </data>
+  <data name="Text" xml:space="preserve">
+    <value>Текст</value>
   </data>
   <data name="Themes" xml:space="preserve">
     <value>Темы</value>

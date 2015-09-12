@@ -16,6 +16,37 @@
                      <li>@Html.ActionLink("Log Off", "LogOff", "Account")</li>
                      <li>@Html.ActionLink("Create Task", "CreateTask", "Task")</li>
                 }
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown">@GlobalRes.Properties<span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">@GlobalRes.Languages<span class="caret-right"></span></a>
+                            <ul class="dropdown-menu" style="left: 160px; top: 0px">
+                                <li><a href='@Url.Action("ChangeCulture", "Home", new {@language = "en"}, null)'>@GlobalRes.English</a></li>
+                                <li><a href='@Url.Action("ChangeCulture", "Home", new {@language = "ru"}, null)'>@GlobalRes.Russian</a></li>
+                            </ul>
+                        </li>
+                        <li class="divider"></li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown">@GlobalRes.Themes<span class="caret-right"></span></a>
+                            <ul class="dropdown-menu" style="left: 160px; top: 0px">
+                                <li><a href="#" onclick="$($('.navbar-default')[0]).css('background-color', '#222'); +
+                                                           $('body').css('background-color', '#777'); +
+                                                           $('body').css('color', '#FFF');">@GlobalRes.Dark</a></li>
+                                <li><a href="#" onclick="$($('.navbar-default')[0]).css('background-color', '#5B3B8C'); +
+                                                           $('body').css('background-color', '#FFF'); +
+                                                           $('body').css('color', '#5B3B8C');">@GlobalRes.Light</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                @if (Request.IsAuthenticated)
+                {
+                    <li><a href=@Url.Action("LogOff", "Account")><span class="glyphicon glyphicon-log-in"></span> @GlobalRes.LogOut</a></li>
+                }
                 else
                 {
                      <li>@Html.ActionLink("Register", "Register", "Account")</li>
@@ -24,4 +55,36 @@
             </ul>
         </div>
     </div>
-</div>
+</nav>
+<script>
+    $(document).ready(function () {
+        $('.nav li.dropdown').hover(function () {
+            $(this).addClass('open');
+        }, function () {
+            $(this).removeClass('open');
+        });
+    });
+</script>
+
+<!--
+<li class="dropdown clearfix">
+    <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Properties<span class="caret"></span></a>
+    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+        <li class="dropdown-submenu">
+            <a tabindex="-1" href="#">Languages</a>
+            <ul class="dropdown-menu">
+                <li><a tabindex="-1" href="#">English</a></li>
+                <li><a tabindex="-1" href="#">Russian</a></li>
+            </ul>
+        </li>
+        <li class="divider"></li>
+        <li class="dropdown-submenu">
+            <a tabindex="2" href="#">Themes</a>
+            <ul class="dropdown-menu">
+                <li><a href="#" onclick="$($('.navbar-default')[0]).css('background-color', '#111'); $('body').css('background-color', '#444');">Dark</a></li>
+                <li><a href="#" onclick="$($('.navbar-default')[0]).css('background-color', '#999'); $('body').css('background-color', '#bbb');">Light</a></li>
+            </ul>
+        </li>
+    </ul>
+</li>
+-->
