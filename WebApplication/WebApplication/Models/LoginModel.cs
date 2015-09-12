@@ -11,7 +11,7 @@ namespace WebApplication.Models
     [Culture]
     public class LoginModel
     {
-        [Display(ResourceType = typeof(GlobalRes),Name = "Email")]
+        [Display(ResourceType = typeof(GlobalRes), Name = "Email")]
         [Required(ErrorMessageResourceName = "EnterEmail", ErrorMessageResourceType = typeof(GlobalRes))]
         public string Email { get; set; }
 

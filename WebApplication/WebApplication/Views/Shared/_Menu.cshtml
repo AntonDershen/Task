@@ -24,16 +24,15 @@
                     <ul class="dropdown-menu">
                         <li><a href="@Url.Action("ChangeCulture", "Home", new {lang = "en"})">@GlobalRes.English</a></li>
                         <li><a href="@Url.Action("ChangeCulture", "Home", new {lang = "ru"})">@GlobalRes.Russian</a></li>
-                            </ul>
-                        </li>
-                        <li class="divider"></li>
-                        <li class="dropdown">
+                    </ul>
+                </li>
+                <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown">@GlobalRes.Themes<span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li onclick="setCookie('style', '1', '/')"><a>@GlobalRes.Dark</a></li>
                         <li onclick="setCookie('style', '2', '/')"><a>@GlobalRes.Light</a></li>
-                            </ul>
-                        </li>
+                    </ul>
+                </li>
                 <li><a href=@Url.Action("Register", "Account")><span class="glyphicon glyphicon-user"></span> @GlobalRes.SignUp</a></li>
                 @if (Request.IsAuthenticated)
                 {
