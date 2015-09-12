@@ -11,5 +11,6 @@ namespace DataAccess.Interface.Repository
     {
         void CreatePhoto(byte[] photo);
         Photo Get(Func<Photo, bool> predicate);
+        Photo Find(int id);
     }
 }

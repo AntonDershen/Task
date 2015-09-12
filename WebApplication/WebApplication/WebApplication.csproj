@@ -156,6 +156,7 @@
     <Content Include="Icon.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\dropZone.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
     <Content Include="Scripts\setCookie.js" />
@@ -183,6 +184,7 @@
     <Content Include="Scripts\tiny\tinymce\skins\lightgray\fonts\tinymce.json" />
     <Content Include="Scripts\tiny\tinymce\skins\lightgray\fonts\tinymce.ttf" />
     <Content Include="Scripts\tiny\tinymce\skins\lightgray\fonts\tinymce.woff" />
+    <Content Include="Views\Task\ViewTask.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_LocalResources\GlobalRes.Designer.cs">

@@ -18,6 +18,6 @@ namespace BusinessLogic.Interface.Entities
         public string Condition { get; set; }
         public List<string> Answers { get; set; }
         public List<int> TagsId { get; set; }
-      
+        public List<int> PhotoId { get; set; }
     }
 }

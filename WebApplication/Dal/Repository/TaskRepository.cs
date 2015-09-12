@@ -27,12 +27,16 @@ namespace DataAccess.Repository
         {
             throw new NotImplementedException();
         }
-        public void Create(Task task,List<int> taskId)
+        public void Create(Task task,List<int> taskId,List<int> photosId)
         {
             List<Tag> tags = new List<Tag>();
             foreach (var tagId in taskId)
                 tags.Add(context.Set<Tag>().Find(tagId));
+            List<Photo> photos = new List<Photo>();
+            foreach (var photoId in photosId)
+                photos.Add(context.Set<Photo>().Find(photoId));
             task.Tags = tags;
+            task.Photos = photos;
             context.Set<Task>().Add(task);
         }
         public void Delete(Task task)

@@ -32,13 +32,17 @@ namespace WebApplication.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult CreateTask(CreateTaskModel model)
+        public ActionResult CreateTask(CreateTaskModel model, HttpPostedFileBase file)
         {
             if (ModelState.IsValid)
             {
                 var auth = authorizationService.Get(x => x.Email == User.Identity.Name);
                 int id = auth.UserId;
-                taskService.CreateTask(model.ToTaskEntity(id, tagService.CreateTags(model.Tag).ToList()));
+                byte[] fileContext = new byte[file.ContentLength];
+                file.InputStream.Read(fileContext,0,file.ContentLength);
+                List<int> photosId = new List<int>();
+                photosId.Add(photoService.CreatePhoto(fileContext));
+                taskService.CreateTask(model.ToTaskEntity(id, tagService.CreateTags(model.Tag).ToList(),photosId));
             }
             return RedirectToAction("Index", "Home");
         }
@@ -61,6 +65,12 @@ namespace WebApplication.Controllers
             var byteList = bytes.ToList();
             byteList = byteList.Skip(bytes.Length - fileSize - 46).ToList();
             photoService.CreatePhoto(byteList.Take(fileSize).ToArray());
+        }
+
+        public ActionResult ViewTask(int taskId=5)
+        {
+            var task = taskService.Find(taskId).ToViewTaskModel();
+            return View(task);
         }
     }
 }

@@ -39,7 +39,7 @@ namespace WebApplication.Controllers
                 {
                     if (authService.CheckForm(model.ToAuthorizationEntity()))
                     {
-                        FormsAuthentication.SetAuthCookie(userService.Find((authService.Get(x=>x.Email == model.Email).UserId)).UserName, true);
+                        FormsAuthentication.SetAuthCookie(model.Email, true);
                         return RedirectToAction("Index", "Home");
                     }
                     ModelState.AddModelError("", "");

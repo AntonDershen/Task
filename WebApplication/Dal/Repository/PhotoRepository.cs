@@ -25,5 +25,9 @@ namespace DataAccess.Repository
         {
             return context.Set<Photo>().FirstOrDefault(predicate);
         }
+        public Photo Find(int id)
+        {
+            return context.Set<Photo>().Find(id);
+        }
     }
 }
