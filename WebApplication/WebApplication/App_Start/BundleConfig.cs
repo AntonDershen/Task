@@ -19,6 +19,11 @@ namespace WebApplication
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
+
+            bundles.Add(new StyleBundle("~/bundles/styles").Include(
+                      "~/Content/style.css"));
+
+
         }
     }
 }

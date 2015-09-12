@@ -11,7 +11,7 @@
     }
     else if (Request.Cookies["style"].Value == "1")
     {
-        <link href="~/Content/bootstrapDarkly.css" rel="stylesheet" />
+        <link href="~/Content/bootstrapDark.css" rel="stylesheet" />
     }
     else if (Request.Cookies["style"].Value == "2")
     {
@@ -21,6 +21,7 @@
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/styles")
 
 </head>
 <body>

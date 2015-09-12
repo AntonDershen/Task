@@ -144,8 +144,8 @@
     <Content Include="App_Data\Database_log.ldf">
       <DependentUpon>Database.mdf</DependentUpon>
     </Content>
+    <Content Include="Content\bootstrapDark.css" />
     <Content Include="Content\bootstrapLight.css" />
-    <Content Include="Content\bootstrapDarkly.css" />
     <Content Include="Content\style.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -156,9 +156,9 @@
     <Content Include="Icon.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\coffee-script.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
+    <Content Include="Scripts\setCookie.js" />
     <Content Include="Scripts\tiny\tinymce\license.txt" />
     <Content Include="Scripts\tiny\tinymce\skins\lightgray\content.inline.min.css" />
     <Content Include="Scripts\tiny\tinymce\skins\lightgray\content.min.css" />

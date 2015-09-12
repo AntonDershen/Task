@@ -1,29 +1,29 @@
 ﻿<nav class="navbar navbar-default   navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href=@Url.Action("Index","Home")>Course Task</a>
+            <a class="navbar-brand" href=@Url.Action("Index", "Home")>Course Task</a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
                 @if (Request.IsAuthenticated)
                 {
-                <li class="active"><a href=@Url.Action("Index","Home")>@GlobalRes.Home</a></li>
-                <li><a href="#">@GlobalRes.Profile</a></li>
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">@GlobalRes.Document<span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">@GlobalRes.Change</a></li>
-                        <li><a href="#">@GlobalRes.Delete</a></li>
-                    </ul>
-                </li>
+                    <li class="active"><a href=@Url.Action("Index", "Home")>@GlobalRes.Home</a></li>
+                    <li><a href="#">@GlobalRes.Profile</a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">@GlobalRes.Document<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">@GlobalRes.Change</a></li>
+                            <li><a href="#">@GlobalRes.Delete</a></li>
+                        </ul>
+                    </li>
                 }
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">@GlobalRes.Languages<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="@Url.Action("ChangeCulture", "Home", new { lang = "en"})">@GlobalRes.English</a></li>
-                        <li><a href="@Url.Action("ChangeCulture", "Home", new { lang = "ru"})">@GlobalRes.Russian</a></li>
+                        <li><a href="@Url.Action("ChangeCulture", "Home", new {lang = "en"})">@GlobalRes.English</a></li>
+                        <li><a href="@Url.Action("ChangeCulture", "Home", new {lang = "ru"})">@GlobalRes.Russian</a></li>
                     </ul>
                 </li>
                 <li class="divider"></li>
@@ -47,6 +47,8 @@
         </div>
     </div>
 </nav>
+
+<script src="~/Scripts/setCookie.js"></script>
 <script>
     $(document).ready(function() {
         $('.nav li.dropdown').hover(function() {
@@ -55,11 +57,4 @@
             $(this).removeClass('open');
         });
     });
-</script>
-<script src="~/Scripts/coffee-script.js"></script>
-<script type="text/coffeescript">
-    window.setCookie = setCookie = (name, value, path) ->
-        document.cookie = name + "=" + escape(value) + ((if (path) then "; path=" + path else ""))
-        location.reload()
-    return
 </script>
