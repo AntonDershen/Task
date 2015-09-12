@@ -1,46 +1,32 @@
-﻿<div class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
+﻿<nav class="navbar navbar-default   navbar-fixed-top">
+    <div class="container-fluid">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            @Html.ActionLink("Application", "Index", "Home", null, new { @class = "navbar-brand" })
+            <a class="navbar-brand" href=@Url.Action("Index", "Home")>Course Task</a>
         </div>
-        <div class="navbar-collapse collapse">
+        <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
-                <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                @if(User.Identity.IsAuthenticated)
+                @if (Request.IsAuthenticated)
                 {
-                     <li>@Html.ActionLink("Log Off", "LogOff", "Account")</li>
-                     <li>@Html.ActionLink("Create Task", "CreateTask", "Task")</li>
+                    <li class="active"><a href=@Url.Action("Index", "Home")>@GlobalRes.Home</a></li>
+                    <li><a href="#">@GlobalRes.Profile</a></li>
+                    <li><a href="@Url.Action("CreateTask", "Task")">@GlobalRes.CreateDocument</a></li>
+                   
                 }
             </ul>
-
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown">@GlobalRes.Properties<span class="caret"></span></a>
-                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">@GlobalRes.Languages<span class="caret-right"></span></a>
-                            <ul class="dropdown-menu" style="left: 160px; top: 0px">
-                                <li><a href='@Url.Action("ChangeCulture", "Home", new {@language = "en"}, null)'>@GlobalRes.English</a></li>
-                                <li><a href='@Url.Action("ChangeCulture", "Home", new {@language = "ru"}, null)'>@GlobalRes.Russian</a></li>
-                            </ul>
-                        </li>
-                        <li class="divider"></li>
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown">@GlobalRes.Themes<span class="caret-right"></span></a>
-                            <ul class="dropdown-menu" style="left: 160px; top: 0px">
-                                <li><a href="#" onclick="$($('.navbar-default')[0]).css('background-color', '#222'); +
-                                                           $('body').css('background-color', '#777'); +
-                                                           $('body').css('color', '#FFF');">@GlobalRes.Dark</a></li>
-                                <li><a href="#" onclick="$($('.navbar-default')[0]).css('background-color', '#5B3B8C'); +
-                                                           $('body').css('background-color', '#FFF'); +
-                                                           $('body').css('color', '#5B3B8C');">@GlobalRes.Light</a></li>
-                            </ul>
-                        </li>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">@GlobalRes.Languages<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="@Url.Action("ChangeCulture", "Home", new {lang = "en"})">@GlobalRes.English</a></li>
+                        <li><a href="@Url.Action("ChangeCulture", "Home", new {lang = "ru"})">@GlobalRes.Russian</a></li>
+                    </ul>
+                </li>
+                <li class="divider"></li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown">@GlobalRes.Themes<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li onclick="setCookie('style', '1', '/')"><a>@GlobalRes.Dark</a></li>
+                        <li onclick="setCookie('style', '2', '/')"><a>@GlobalRes.Light</a></li>
                     </ul>
                 </li>
                 @if (Request.IsAuthenticated)
@@ -49,13 +35,15 @@
                 }
                 else
                 {
-                     <li>@Html.ActionLink("Register", "Register", "Account")</li>
-                     <li>@Html.ActionLink("Log In", "LogIn", "Account")</li>
+                    <li><a href=@Url.Action("Register", "Account")><span class="glyphicon glyphicon-user"></span> @GlobalRes.SignUp</a></li>
+                    <li><a href=@Url.Action("LogIn", "Account")><span class="glyphicon glyphicon-log-out"></span> @GlobalRes.LogIn</a></li>
                 }
             </ul>
         </div>
     </div>
 </nav>
+
+<script src="~/Scripts/setCookie.js"></script>
 <script>
     $(document).ready(function () {
         $('.nav li.dropdown').hover(function () {
@@ -65,26 +53,3 @@
         });
     });
 </script>
-
-<!--
-<li class="dropdown clearfix">
-    <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Properties<span class="caret"></span></a>
-    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-        <li class="dropdown-submenu">
-            <a tabindex="-1" href="#">Languages</a>
-            <ul class="dropdown-menu">
-                <li><a tabindex="-1" href="#">English</a></li>
-                <li><a tabindex="-1" href="#">Russian</a></li>
-            </ul>
-        </li>
-        <li class="divider"></li>
-        <li class="dropdown-submenu">
-            <a tabindex="2" href="#">Themes</a>
-            <ul class="dropdown-menu">
-                <li><a href="#" onclick="$($('.navbar-default')[0]).css('background-color', '#111'); $('body').css('background-color', '#444');">Dark</a></li>
-                <li><a href="#" onclick="$($('.navbar-default')[0]).css('background-color', '#999'); $('body').css('background-color', '#bbb');">Light</a></li>
-            </ul>
-        </li>
-    </ul>
-</li>
--->
