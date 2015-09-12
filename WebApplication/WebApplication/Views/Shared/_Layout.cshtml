@@ -5,9 +5,19 @@
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
 
-    @Styles.Render("~/Content/css")
-    @Styles.Render("~/bundles/styles")
-
+    @if (Request.Cookies["style"] == null)
+    {
+        <link href="~/Content/bootstrapLight.css" rel="stylesheet" />
+    }
+    else if (Request.Cookies["style"].Value == "1")
+    {
+        <link href="~/Content/bootstrapDarkly.css" rel="stylesheet" />
+    }
+    else if (Request.Cookies["style"].Value == "2")
+    {
+        <link href="~/Content/bootstrapLight.css" rel="stylesheet" />
+    }
+    
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
