@@ -5,10 +5,13 @@ using System.Web;
 using System.Web.Mvc;
 using BusinessLogic.Interface.Services;
 using WebApplication.Models;
+using WebApplication.Filters;
 using WebApplication.Infrastructure.Mappers;
 using System.IO;
+
 namespace WebApplication.Controllers
 {
+    [Culture]
     [Authorize]
     public class TaskController : Controller
     {

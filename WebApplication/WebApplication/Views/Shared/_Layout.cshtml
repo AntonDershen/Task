@@ -11,25 +11,11 @@
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+
 </head>
 <body>
     @Html.Partial("_Menu")
     <div class="container">
-        <br />
-        <br />
-        <br />
-        @using (Html.BeginForm("ChangeCulture", "Home"))
-        {
-            <p>
-            "select" : @Html.DropDownList("ddlCulture", new SelectList(new[]{
-             new{value="en",text="english"},
-             new{value="ru",text="rus"}},
-             "value",
-             "text",
-             Session["CurrentCulture"]),
-             new { onchange = "this.form.submit();" })
-            </p>
-        }
         <br />
         <br />
         <br />

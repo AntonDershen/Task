@@ -27,8 +27,8 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">@GlobalRes.Languages<span class="caret-right"></span></a>
                             <ul class="dropdown-menu" style="left: 160px; top: 0px">
-                                <li><a href='@Url.Action("ChangeCulture", "Home", new {@language = "en"}, null)'>@GlobalRes.English</a></li>
-                                <li><a href='@Url.Action("ChangeCulture", "Home", new {@language = "ru"}, null)'>@GlobalRes.Russian</a></li>
+                                <li><a href="@Url.Action("ChangeCulture", "Home", new { lang = "en"})">@GlobalRes.English</a></li>
+                                <li><a href="@Url.Action("ChangeCulture", "Home", new { lang = "ru"})">@GlobalRes.Russian</a></li>
                             </ul>
                         </li>
                         <li class="divider"></li>
