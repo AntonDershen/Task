@@ -159,6 +159,8 @@
     <Content Include="Scripts\dropZone.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
+    <Content Include="Scripts\jquery.tagcloud.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\setCookie.js" />
     <Content Include="Scripts\tiny\tinymce\license.txt" />
     <Content Include="Scripts\tiny\tinymce\skins\lightgray\content.inline.min.css" />
@@ -185,6 +187,10 @@
     <Content Include="Scripts\tiny\tinymce\skins\lightgray\fonts\tinymce.ttf" />
     <Content Include="Scripts\tiny\tinymce\skins\lightgray\fonts\tinymce.woff" />
     <Content Include="Views\Task\ViewTask.cshtml" />
+    <Content Include="Views\Tag\_GetRandomTags.cshtml" />
+    <Content Include="Views\Task\_ViewTaskList.cshtml" />
+    <Content Include="Views\Task\ViewTaskList.cshtml" />
+    <Content Include="Views\Task\_GetLastTask.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_LocalResources\GlobalRes.Designer.cs">
@@ -205,6 +211,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\TagController.cs" />
     <Compile Include="Controllers\TaskController.cs" />
     <Compile Include="Filters\CultureAttribute.cs" />
     <Compile Include="Global.asax.cs">

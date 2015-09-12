@@ -42,9 +42,9 @@ namespace BusinessLogic.Services
                 return true;
             return false;
         }
-        public AuthorizationEntity Get(Func<AuthorizationEntity, Boolean> predicate)
+        public AuthorizationEntity Get(string email)
         {
-            return unitOfWork.AuthorizationRepository.GetAll().Select(x => x.ToAuthorizationEntity()).FirstOrDefault(predicate); ;
+            return unitOfWork.AuthorizationRepository.Get(x => x.Email == email).ToAuthorizationEntity();
 
             
         }

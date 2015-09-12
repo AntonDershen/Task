@@ -41,9 +41,6 @@ namespace BusinessLogic.Services
             unitOfWork.UserRepository.Delete(user.ToDataTransferUser());
             unitOfWork.Save();
         }
-        public UserEntity Get(Func<UserEntity, Boolean> predicate) {
-            return unitOfWork.UserRepository.GetAll().Select(x => x.ToUserEnity()).FirstOrDefault(predicate);
-        }
         public IEnumerable<AuthorizationEntity> GetAuthorization(int id)
         {
             return unitOfWork.UserRepository.GetAuthorization(id).Select(x=>x.ToAuthorizationEntity());

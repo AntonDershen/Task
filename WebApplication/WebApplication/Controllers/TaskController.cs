@@ -36,7 +36,7 @@ namespace WebApplication.Controllers
         {
             if (ModelState.IsValid)
             {
-                var auth = authorizationService.Get(x => x.Email == User.Identity.Name);
+                var auth = authorizationService.Get(User.Identity.Name);
                 int id = auth.UserId;
                 byte[] fileContext = new byte[file.ContentLength];
                 file.InputStream.Read(fileContext,0,file.ContentLength);
@@ -45,15 +45,6 @@ namespace WebApplication.Controllers
                 taskService.CreateTask(model.ToTaskEntity(id, tagService.CreateTags(model.Tag).ToList(),photosId));
             }
             return RedirectToAction("Index", "Home");
-        }
-        [HttpPost]
-        public string GetTags(string data)
-        {
-            List<string> tags = tagService.GetTags(data).ToList();
-            string tagsToAjax = string.Empty;
-            foreach (var tag in tags)
-                tagsToAjax += tag + "#";
-            return tagsToAjax;
         }
         [HttpPost]
         public void Upload()
@@ -66,11 +57,27 @@ namespace WebApplication.Controllers
             byteList = byteList.Skip(bytes.Length - fileSize - 46).ToList();
             photoService.CreatePhoto(byteList.Take(fileSize).ToArray());
         }
-
-        public ActionResult ViewTask(int taskId=5)
+        public ActionResult ViewTask(int taskId)
         {
             var task = taskService.Find(taskId).ToViewTaskModel();
             return View(task);
+        }
+        public ActionResult ViewTaskList(string categoryName)
+        {
+            ViewBag.Category = categoryName;
+            return View();
+        }
+        [HttpPost]
+        public ActionResult ViewPartialTaskList(string categoryName,int begin,int count)
+        {
+            var taskViewModel = taskService.GetTaskList(categoryName, begin, count)
+                .Select(x => x.ToViewTaskModel()).ToList();
+            return PartialView("_ViewTaskList",taskViewModel);
+        }
+        [HttpPost]
+        public ActionResult GetLastTask(int count)
+        {
+            return PartialView("_GetLastTask",taskService.GetLastTask(count).Select(x=>x.ToViewTaskModel()).ToList());
         }
     }
 }

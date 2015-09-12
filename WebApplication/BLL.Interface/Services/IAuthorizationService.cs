@@ -14,6 +14,6 @@ namespace BusinessLogic.Interface.Services
         void DeleteAuthorization(AuthorizationEntity authorization);
         AuthorizationEntity Find(int id);
         bool CheckForm(AuthorizationEntity authorization);
-        AuthorizationEntity Get(Func<AuthorizationEntity, bool> predicate);
+        AuthorizationEntity Get(string email);
     }
 }

@@ -1,13 +1,12 @@
 ﻿@model WebApplication.Models.ViewTaskModel
 
 @{
-    ViewBag.Title = "ViewTask";
+    ViewBag.Title = "View Task";
 }
 
-<h2>ViewTask</h2>
+<h2>View Task</h2>
 
 <div>
-    <h4>ViewTaskModel</h4>
 	<hr />
     <dl class="dl-horizontal">
         <dt>
@@ -39,10 +38,24 @@
         </dt>
 
         <dd>
-         @Html.Raw(Model.Condition);
+         @Html.Raw(Model.Condition)
         
-        </dd>
-
+        <div class="input-group input-group-lg">
+            <input type="text" class="form-control" placeholder="Your Answer" aria-describedby="sizing-addon1">
+        </div>
     </dl>
 </div>
 
+<script>
+    $(document).ready(function () {
+        $.ajax({
+            url: '@Url.Action("GetRandomTags", "Tag")',
+            type: "POST",
+            data: "count=" + 100,
+            success: function (msg) {
+                $('#partialTagsCloud').append(msg);
+            }
+        })
+    })
+
+</script>

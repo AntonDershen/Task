@@ -2,7 +2,6 @@
 
 @{
     ViewBag.Title = "CreateTask";
-    Page.validationRequest = false;
 }
 <script async src="//code.jquery.com/ui/1.10.1/jquery-ui.min.js"></script>
 <script src="~/Scripts/tiny/tinymce/tinymce.min.js"></script>
@@ -87,81 +86,6 @@
     @section Scripts {
         @Scripts.Render("~/bundles/jqueryval")
         <script>
-            //$(document).ready(function () {
-            //    var dropZone = $('#dropZone'),
-            //        maxFileSize = 1000000;
-            //    if (typeof (window.FileReader) == 'undefined') {
-            //        dropZone.text('Не поддерживается браузером!');
-            //        dropZone.addClass('error');
-            //    }
-            //    dropZone[0].ondragover = function () {
-            //        dropZone.addClass('hover');
-            //        return false;
-            //    };
-
-            //    dropZone[0].ondragleave = function () {
-            //        dropZone.removeClass('hover');
-            //        return false;
-            //    };
-            //    dropZone[0].ondrop = function (event) {
-            //        event.preventDefault();
-            //        dropZone.removeClass('hover');
-            //        dropZone.addClass('drop');
-            //        var file = event.dataTransfer.files[0];
-            //        console.log(file.type);
-            //        if (file.type.indexOf("image") < 0) {
-            //            dropZone.text('Не изображение !');
-            //            dropZone.removeClass('drop');
-            //            dropZone.addClass('error');
-            //            return false;
-            //        }
-            //        if (file.size > maxFileSize) {
-            //            dropZone.text('Файл слишком большой!');
-            //            dropZone.removeClass('drop');
-            //            dropZone.addClass('error');
-            //            return false;
-            //        }
-            //        var reader = new FileReader();
-            //        var xhr = new XMLHttpRequest();
-            //        xhr.onreadystatechange = function (event) {
-            //            if (event.target.readyState == 4) {
-            //                if (event.target.status == 200) {
-            //                    dropZone.removeClass('drop');
-            //                    dropZone.addClass('hover');
-            //                    dropZone.text('Загрузка успешно завершена!');
-                                
-
-            //                } else {
-            //                    dropZone.text('Произошла ошибка!');
-            //                    dropZone.removeClass('drop');
-            //                    dropZone.addClass('error');
-            //                }
-            //            }
-            //        };
-            //        xhr.upload.addEventListener('progress', function (event) {
-            //            var percent = parseInt(event.loaded / event.total * 100);
-            //            dropZone.text('Загрузка: ' + percent + '%');
-            //        }, false);
-            //        xhr.open("POST", "Upload", true);
-            //        xhr.setRequestHeader("Content-Type", "multipart/form-data");
-            //        xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
-            //        xhr.setRequestHeader("X-File-Name", file.name);
-            //        xhr.setRequestHeader("X-File-Size", file.size);
-            //        xhr.setRequestHeader("X-File-Type", file.type);
-                    
-            //        var formData = new FormData();
-            //        formData.append(file.name, file);
-            //        var body = reader.result;
-            //        if (xhr.sendAsBinary) {
-            //            xhr.sendAsBinary(formData);
-            //        } else {
-            //            xhr.send(formData);
-                        
-            //       }
-                   
-            //    };
-
-            //});
             $(function () {
                 var answer = -1;
                 $('#addAnswer').click(function () {
@@ -206,7 +130,7 @@
                     $(input).autocomplete({
                         source: function (request, response) {
                             $.ajax({
-                                url: '@Url.Action("GetTags","Task")',
+                                url: '@Url.Action("GetTags","Tags")',
                                 type: "Post",
                                 data: "data="+request.term,
                                 success: function (data) {

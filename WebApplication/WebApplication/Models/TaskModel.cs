@@ -29,6 +29,7 @@ namespace WebApplication.Models
     }
     public class ViewTaskModel
     {
+        public int Id { get; set; }
         public string Name { get; set; }
         public int Complexity { get; set; }
         public string Category { get; set; }
@@ -37,4 +38,5 @@ namespace WebApplication.Models
         public List<int> TagsId { get; set; }
         public List<int> PhotoId { get; set; }
     }
+
 }
