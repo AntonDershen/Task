@@ -22,8 +22,11 @@ namespace WebApplication
 
             bundles.Add(new StyleBundle("~/bundles/styles").Include(
                       "~/Content/style.css",
-                      "~/Content/bootstrapDarkly.css",
                       "~/Content/bootstrap.css"));
+
+            bundles.Add(new StyleBundle("~/bundles/styles").Include(
+                      "~/Content/style.css",
+                      "~/Content/bootstrapDarkly.css"));
         }
     }
 }
