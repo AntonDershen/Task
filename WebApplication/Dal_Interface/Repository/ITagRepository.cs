@@ -11,5 +11,7 @@ namespace DataAccess.Interface.Repository
         void Create(string tagName);
         Tag GetTag(string tagName);
         IEnumerable<string> GetTagsName(string tagName);
+        IEnumerable<string> GetRandomTags(int begin,int count);
+        int GetTagsCount();
     }
 }

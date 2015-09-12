@@ -35,5 +35,13 @@ namespace DataAccess.Repository
         {
            return context.Set<Tag>().Where(x => x.Name.Contains(tagName)).Select(x => x.Name);
         }
+        public IEnumerable<string> GetRandomTags(int begin, int count)
+        {
+            return context.Set<Tag>().ToList().Skip(begin).Take(count).Select(x=>x.Name);
+        }
+        public int GetTagsCount()
+        {
+            return context.Set<Tag>().ToList().Count();
+        }
     }
 }

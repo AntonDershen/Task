@@ -8,6 +8,6 @@ namespace DataAccess.Interface.Repository
     public interface ITaskRepository : IRepository<Task>
     {
         void Create(Task task, List<int> tagsId,List<int> photoId);
-     
+        int GetTaskCount();
     }
 }

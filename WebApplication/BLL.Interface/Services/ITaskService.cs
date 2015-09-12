@@ -10,6 +10,8 @@ namespace BusinessLogic.Interface.Services
     {
         void CreateTask(TaskEntity task);
         TaskEntity Find(int id);
-        TaskEntity Get(Func<TaskEntity, bool> predicate);
+        IEnumerable<TaskEntity> GetTaskList(string categoryName,int begin,int count);
+        IEnumerable<TaskEntity> GetLastTask(int count);
+        IEnumerable<TaskEntity> CheckAnswer(int userId, int taskId, string answer);
     }
 }

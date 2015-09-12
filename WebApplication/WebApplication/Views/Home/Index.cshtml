@@ -1,78 +1,30 @@
 ﻿
 @{ string Identity = ViewBag.Identity;}       
 <h1>@Identity</h1> 
-@if( User.Identity.IsAuthenticated && User.IsInRole("User")){
-     <div id="documents"></div>
-     <button class="btn-default" id="next_page">More</button>
-     <output  id="pageCount" style="visibility:hidden" />
-}
-@if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
-{
-      <div class="input-group">
-      <span class="input-group-btn">
-          <button class="btn btn-default" id="submit" type="button">Go!</button>
-      </span>
-      <input type="text" id="search" class="form-control" placeholder="Search for...">
+<div>
+    <div id="partialTagsCloud" class="col-md-6">
     </div>
-    <div id="users"></div>
-}
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('#submit').click(function (e) {
-            var name = $('#search').val();
-            $.ajax({
-                url:'@Url.Action("FindUser", "Administrator")',
-                type:"POST",
-                data :"userName="+name,
-                success: function (msg) {
-                    $('#users').html(msg);
-                }
-            })
-            $.ajax({
-                url: '@Url.Action("FindDocument", "Administrator")',
-                type: "POST",
-                data: "documentName=" + name,
-                success: function (msg) {
-                    $('#users').append(msg);
-                }
-            })
-        });
-    });
-</script>
+    <div id="partialLastTask" class="col-md-6">
+    </div>
+ </div>
 <script>
     $(document).ready(function () {
-        document.getElementById('pageCount').value = 1;
         $.ajax({
-            url: '@Url.Action("ShowDocument", "Document")',
+            url: '@Url.Action("GetRandomTags", "Tag")',
             type: "POST",
-            data: "count=" + 1,
+            data: "count=" + 100,
             success: function (msg) {
-                $('#documents').append(msg);
+                $('#partialTagsCloud').append(msg);
+            }
+        })
+        $.ajax({
+            url: '@Url.Action("GetLastTask", "Task")',
+            type: "POST",
+            data: "count=" + 10,
+            success: function (msg) {
+                $('#partialLastTask').html(msg);
             }
         })
     })
-    function Access(id) {
-        $.ajax({
-            url: '@Url.Action("ChangeAccess", "Document")',
-            type: "POST",
-            data: "id=" + id,
-            success: function (msg) {
 
-            }
-        })
-    }
-    $('#next_page').click(function (e) {
-        count = document.getElementById('pageCount').value -1 +2;
-        $.ajax({
-            url: '@Url.Action("ShowDocument", "Document")',
-            type: "POST",
-            data: "count=" + count,
-            success: function (msg) {
-                $('#documents').append(msg);
-                document.getElementById('pageCount').value = count;
-            }
-        })
-
-    })
-    
 </script>

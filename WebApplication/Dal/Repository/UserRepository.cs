@@ -37,9 +37,9 @@ namespace DataAccess.Repository
                 user = context.Set<User>().Single(u => u.Id == user.Id);
                 context.Set<User>().Remove(user);
             }
-            public IEnumerable<User> GetAll(Func<User, Boolean> predicate)
+            public IEnumerable<User> GetAll(Func<User, Boolean> predicate,int begin,int count)
             {
-                return context.Set<User>().Where(predicate);
+                return context.Set<User>().Where(predicate).Skip(begin).Take(count);
             }
             public User Get(Func<User, Boolean> predicate)
             {

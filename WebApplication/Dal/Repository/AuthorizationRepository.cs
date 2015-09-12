@@ -43,9 +43,9 @@ namespace DataAccess.Repository
         {
             context.Set<Authorization>().Remove(authorization);
         }
-        public IEnumerable<Authorization> GetAll(Func<Authorization, Boolean> predicate)
+        public IEnumerable<Authorization> GetAll(Func<Authorization, Boolean> predicate,int begin,int count)
         {
-            return context.Set<Authorization>().Where(predicate);
+            return context.Set<Authorization>().Where(predicate).Skip(begin).Take(count);
         }
         public Authorization Get(Func<Authorization, Boolean> predicate)
         {

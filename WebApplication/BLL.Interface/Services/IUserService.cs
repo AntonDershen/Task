@@ -11,7 +11,6 @@ namespace BusinessLogic.Interface.Services
         int CreateUser(UserEntity user,string email);
         void DeleteUser(UserEntity user);
         UserEntity Find(int id);
-        UserEntity Get(Func<UserEntity,bool> predicate);
         IEnumerable<AuthorizationEntity> GetAuthorization(int id);
     }
 }

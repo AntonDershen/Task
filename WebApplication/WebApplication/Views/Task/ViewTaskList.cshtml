@@ -1,0 +1,25 @@
+﻿
+
+
+<body>
+    <div id="partialTaskList" class="col-md-6"></div>
+</body>
+<script>
+    $(document).ready(function () {
+        $(document).ready(function () {
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("ViewPartialTaskList", "Task")',
+                data: {
+                    categoryName: '@ViewBag.Category',
+                    begin : 0,
+                    count: 10
+                },
+                success: function (msg) {
+                    $('#partialTaskList').append(msg);
+                }
+            })
+        })
+    });
+
+</script>

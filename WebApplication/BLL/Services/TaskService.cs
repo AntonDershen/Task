@@ -21,7 +21,7 @@ namespace BusinessLogic.Services
             taskEntity.Activate = true;
             unitOfWork.TaskRepository.Create(taskEntity.ToTask(),taskEntity.TagsId,taskEntity.PhotoId);
             unitOfWork.Save();
-            var tasks = unitOfWork.TaskRepository.GetAll(x => x.Condition == taskEntity.Condition);
+            var tasks = unitOfWork.TaskRepository.GetAll(x => x.Condition == taskEntity.Condition,0,0);
             int id = tasks.LastOrDefault(x => x.CreateUserId == taskEntity.CreateUserId).Id;
             foreach (var answer in taskEntity.Answers)
             {
@@ -33,9 +33,24 @@ namespace BusinessLogic.Services
         {
             return unitOfWork.TaskRepository.Find(id).ToTaskEntity();
         }
-        public TaskEntity Get(Func<TaskEntity, bool> predicate)
+        public IEnumerable<TaskEntity> GetTaskList(string tagName, int begin, int count)
         {
-            return unitOfWork.TaskRepository.GetAll().Select(x => x.ToTaskEntity()).FirstOrDefault(predicate);
+           var tasks =  unitOfWork.TaskRepository
+               .GetAll(x => x.Tags.FirstOrDefault(u=>u.Name == tagName) != null, begin, count)
+               .Select(x=>x.ToTaskEntity())
+               .ToList();
+           return tasks;
+        }
+        public IEnumerable<TaskEntity> GetLastTask(int count)
+        {
+            int taskCount = unitOfWork.TaskRepository.GetTaskCount();
+            return unitOfWork.TaskRepository.GetAll(x=>x.Id>0, taskCount - count, count)
+                .Select(x=>x.ToTaskEntity()).ToList();
+        }
+        public IEnumerable<TaskEntity> CheckAnswer(int userId, int taskId, string answer)
+        {
+            throw new NotImplementedException();
+
         }
     }
 }

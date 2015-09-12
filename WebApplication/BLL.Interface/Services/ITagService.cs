@@ -11,5 +11,6 @@ namespace BusinessLogic.Interface.Services
         int CreateTag(string tagName);
         IEnumerable<int> CreateTags(List<string> tags);
         IEnumerable<string> GetTags(string tagsName);
+        IEnumerable<string> GetRandomTags(int count);
     }
 }

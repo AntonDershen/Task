@@ -15,7 +15,7 @@ namespace DataAccess.Interface.Repository
         void Create(TEntity e);
         void Delete(TEntity e);
         void Update(TEntity e);
-        IEnumerable<TEntity> GetAll(Func<TEntity, Boolean> predicate);
+        IEnumerable<TEntity> GetAll(Func<TEntity, Boolean> predicate,int begin,int count);
         TEntity Get(Func<TEntity, Boolean> predicate);
     }
 }

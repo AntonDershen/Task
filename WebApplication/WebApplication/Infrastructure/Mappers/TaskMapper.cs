@@ -27,6 +27,7 @@ namespace WebApplication.Infrastructure.Mappers
         {
             return new ViewTaskModel()
             {
+                Id = taskEntity.Id,
                 Category = taskEntity.Category,
                 Complexity = taskEntity.Complexity,
                 Condition = taskEntity.Condition,

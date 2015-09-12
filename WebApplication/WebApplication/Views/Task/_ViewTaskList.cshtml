@@ -1,0 +1,13 @@
+﻿@model List<WebApplication.Models.ViewTaskModel>
+
+<div>
+    <h4>ViewTaskModel</h4>
+	<hr />
+    @foreach (var taskmodel in Model) { 
+    <dl class="dl-horizontal">
+        <dt>
+            <a href="@Url.Action("ViewTask", "Task", new { taskId = taskmodel.Id })">@taskmodel.Name</a>
+        </dt>
+    </dl>
+    }
+</div>
