@@ -8,9 +8,9 @@
         <a class="navbar-brand" href=@Url.Action("Index", "Home")>Course Task</a>
     </div>
     <div class="navbar-collapse collapse navbar-responsive-collapse">
-        <ul class="nav navbar-nav">
-            @if (Request.IsAuthenticated)
-            {
+        @if (Request.IsAuthenticated)
+        {
+            <ul class="nav navbar-nav">
                 <li class="active"><a href=@Url.Action("Index", "Home")>@GlobalRes.Home</a></li>
                 <li><a href="#">@GlobalRes.Profile</a></li>
                 <li class="dropdown">
@@ -20,8 +20,8 @@
                         <li><a href="#">@GlobalRes.Delete</a></li>
                     </ul>
                 </li>
-            }
-        </ul>
+            </ul>
+        }
         <form class="navbar-form navbar-left" action="#">
             <input type="text" name="searchQuery" id="tags" class="form-control col-lg-8" placeholder="@GlobalRes.SearchFor">
         </form>

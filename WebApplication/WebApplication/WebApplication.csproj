@@ -160,7 +160,6 @@
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
     <Content Include="Scripts\jquery.tagcloud.js" />
-    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\setCookie.js" />
     <Content Include="Scripts\tiny\tinymce\license.txt" />
     <Content Include="Scripts\tiny\tinymce\skins\lightgray\content.inline.min.css" />
