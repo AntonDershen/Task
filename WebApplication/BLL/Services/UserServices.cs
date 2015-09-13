@@ -45,5 +45,9 @@ namespace BusinessLogic.Services
         {
             return unitOfWork.UserRepository.GetAuthorization(id).Select(x=>x.ToAuthorizationEntity());
         }
+        public int GetUserId(string email)
+        {
+            return unitOfWork.UserRepository.Get(x => x.Authorizations.ToList()[0].Email == email).Id;
+        }
     }
 }

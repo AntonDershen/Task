@@ -13,7 +13,7 @@ namespace DataAccess.Interface.EntityFramework
         public string Condition { get; set; }
         public int Complexity { get; set; }
         public string Category { get; set; }
-        public int CreateUserId { get; set; }
+        public int UserId { get; set; }
         public bool Activate { get; set; }
         public virtual ICollection<Answer> Answers { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }
@@ -21,6 +21,8 @@ namespace DataAccess.Interface.EntityFramework
         public virtual ICollection<Tag> Tags { get; set; }
         public virtual ICollection<Photo> Photos { get; set; }
         public virtual ICollection<Rate> Rates { get; set; }
+
+        public virtual ICollection<UserAnswers> UserAnswers { get; set; }
      
     }
 }

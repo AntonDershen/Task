@@ -38,12 +38,19 @@ namespace BusinessLogic.Services
         }
         public IEnumerable<string> GetRandomTags(int count)
         {
-            int tagsCount = unitOfWork.TagRepository.GetTagsCount();
-            if (tagsCount <= count)
-                return unitOfWork.TagRepository.GetRandomTags(0, tagsCount);
-            Random random = new Random();
-            int begin = (int)(random.NextDouble()*tagsCount);
-            return unitOfWork.TagRepository.GetRandomTags(Math.Abs(begin + count - tagsCount), count);
+            try
+            {
+                int tagsCount = unitOfWork.TagRepository.GetTagsCount();
+                if (tagsCount <= count)
+                    return unitOfWork.TagRepository.GetRandomTags(0, tagsCount);
+                Random random = new Random();
+                int begin = (int)(random.NextDouble() * tagsCount);
+                return unitOfWork.TagRepository.GetRandomTags(Math.Abs(begin + count - tagsCount), count);
+            }
+            catch
+            {
+                return null;
+            }
         }
     }
 }

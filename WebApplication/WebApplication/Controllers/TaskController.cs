@@ -19,12 +19,16 @@ namespace WebApplication.Controllers
         private readonly IAuthorizationService authorizationService;
         private readonly ITagService tagService;
         private readonly IPhotoService photoService;
-        public TaskController(ITaskService taskService, IAuthorizationService authorizationService, ITagService tagService, IPhotoService photoService)
+        private readonly IAnswerService answerService;
+        private readonly IUserService userService;
+        public TaskController(ITaskService taskService, IAuthorizationService authorizationService, ITagService tagService, IPhotoService photoService, IAnswerService answerService,IUserService userService)
         {
             this.taskService = taskService;
             this.authorizationService = authorizationService;
             this.tagService = tagService;
             this.photoService = photoService;
+            this.answerService = answerService;
+            this.userService = userService;
         }
         [HttpGet]
         public ActionResult CreateTask()
@@ -60,6 +64,7 @@ namespace WebApplication.Controllers
         public ActionResult ViewTask(int taskId)
         {
             var task = taskService.Find(taskId).ToViewTaskModel();
+            ViewBag.IsSolved = answerService.IsSolved(taskId, userService.GetUserId(User.Identity.Name));
             return View(task);
         }
         public ActionResult ViewTaskList(string categoryName)
@@ -77,7 +82,14 @@ namespace WebApplication.Controllers
         [HttpPost]
         public ActionResult GetLastTask(int count)
         {
-            return PartialView("_GetLastTask",taskService.GetLastTask(count).Select(x=>x.ToViewTaskModel()).ToList());
+            try
+            {
+                return PartialView("_GetLastTask", taskService.GetLastTask(count).Select(x => x.ToViewTaskModel()).ToList());
+            }
+            catch
+            {
+                return PartialView("_GetLastTask", new List<ViewTaskModel>());
+            }
         }
     }
 }

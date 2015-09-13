@@ -41,6 +41,12 @@ namespace ResolverConfig
 
             kernel.Bind<IPhotoService>().To<PhotoService>();
             kernel.Bind<IPhotoRepository>().To<PhotoRepository>();
+
+
+            kernel.Bind<IAnswerRepository>().To<AnswerRepository>();
+            kernel.Bind<IAnswerService>().To<AnswerService>();
+
+            kernel.Bind<IUserAnswerRepository>().To<UserAnswerRepository>();
          
         }
     }

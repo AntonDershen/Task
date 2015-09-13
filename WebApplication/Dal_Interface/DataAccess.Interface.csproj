@@ -84,9 +84,10 @@
     <Compile Include="EntityFramework\User.cs" />
     <Compile Include="EntityFramework\EntityModel.cs" />
     <Compile Include="EntityFramework\IEntity.cs" />
-    <Compile Include="Migrations\201509122007348_wtf.cs" />
-    <Compile Include="Migrations\201509122007348_wtf.Designer.cs">
-      <DependentUpon>201509122007348_wtf.cs</DependentUpon>
+    <Compile Include="EntityFramework\UserAnswers.cs" />
+    <Compile Include="Migrations\201509131937323_12.cs" />
+    <Compile Include="Migrations\201509131937323_12.Designer.cs">
+      <DependentUpon>201509131937323_12.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -96,6 +97,7 @@
     <Compile Include="Repository\ITagRepository.cs" />
     <Compile Include="Repository\ITaskRepository.cs" />
     <Compile Include="Repository\IUnitOfWork.cs" />
+    <Compile Include="Repository\IUserAnswer.cs" />
     <Compile Include="Repository\IUserRepository.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -103,8 +105,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201509122007348_wtf.resx">
-      <DependentUpon>201509122007348_wtf.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201509131937323_12.resx">
+      <DependentUpon>201509131937323_12.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

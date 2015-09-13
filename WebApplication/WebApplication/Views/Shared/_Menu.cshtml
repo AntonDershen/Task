@@ -13,13 +13,8 @@
             <ul class="nav navbar-nav">
                 <li class="active"><a href=@Url.Action("Index", "Home")>@GlobalRes.Home</a></li>
                 <li><a href="#">@GlobalRes.Profile</a></li>
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">@GlobalRes.Document<span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">@GlobalRes.Change</a></li>
-                        <li><a href="#">@GlobalRes.Delete</a></li>
-                    </ul>
-                </li>
+                <li><a href="@Url.Action("CreateTask", "Task")">@GlobalRes.CreateDocument</a></li>
+
             </ul>
         }
         <form class="navbar-form navbar-left" action="#">
@@ -47,6 +42,8 @@
             else
             {
                 <li><a href=@Url.Action("LogIn", "Account")><span class="glyphicon glyphicon-log-out"></span> @GlobalRes.LogIn</a></li>
+                <li><a href=@Url.Action("Register", "Account")>@GlobalRes.Register</a></li>
+        
             }
         </ul>
     </div>

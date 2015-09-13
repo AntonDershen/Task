@@ -49,6 +49,19 @@ namespace DataAccess.Repository
             {
                 return context.Set<User>().Find(id).Authorizations;
             }
+            public void UpdateRate(int rateCount, int userId)
+            {
+                using(var database = new EntityModel())
+                {
+                    var user = database.Users.Find(userId);
+                    user.Rate += rateCount;
+                    database.SaveChanges();
+                }
+            }
+            public int GetRate(int userId)
+            {
+                return this.Find(userId).Rate;
+            }
             public void Dispose()
             {
                 if (context != null)

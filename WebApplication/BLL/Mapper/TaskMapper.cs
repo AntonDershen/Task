@@ -16,7 +16,7 @@ namespace BusinessLogic.Mapper
                 Id = task.Id,
                 Complexity = task.Complexity,
                 Category = task.Category,
-                CreateUserId = task.CreateUserId,
+                CreateUserId = task.UserId,
                 Name = task.Name,
                 TagsId = task.Tags.Select(x=>x.Id).ToList(),
                 Condition = task.Condition,
@@ -31,7 +31,7 @@ namespace BusinessLogic.Mapper
                 Id = taskEntity.Id,
                 Complexity = taskEntity.Complexity,
                 Category = taskEntity.Category,
-                CreateUserId = taskEntity.CreateUserId,
+                UserId = taskEntity.CreateUserId,
                 Name = taskEntity.Name,
                 Condition = taskEntity.Condition,
                 Activate = taskEntity.Activate

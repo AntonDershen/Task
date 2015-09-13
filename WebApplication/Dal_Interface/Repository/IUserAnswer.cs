@@ -1,0 +1,17 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using DataAccess.Interface.EntityFramework;
+namespace DataAccess.Interface.Repository
+{
+    public interface IUserAnswerRepository
+    {
+       void Create(int userId,int taskId,bool trueAnswer,bool firstAnswer);
+       IEnumerable<UserAnswers> FindUserAnswer(int taskId);
+       UserAnswers FindUserAnswer(int taskId, int userId);
+       void IncrementAnswerCount(int taskId, int userId);
+       void UpdateTrueAnswer(int taskId, int userId);
+    }
+}

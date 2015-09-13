@@ -9,5 +9,6 @@ namespace DataAccess.Interface.Repository
     public interface IAnswerRepository
     {
        void CreateAnswer(string name,int taskId);
+       bool CheckAnswer(int taskId, string name, int userId);
     }
 }

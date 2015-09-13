@@ -12,6 +12,5 @@ namespace BusinessLogic.Interface.Services
         TaskEntity Find(int id);
         IEnumerable<TaskEntity> GetTaskList(string categoryName,int begin,int count);
         IEnumerable<TaskEntity> GetLastTask(int count);
-        IEnumerable<TaskEntity> CheckAnswer(int userId, int taskId, string answer);
     }
 }

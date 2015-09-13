@@ -12,5 +12,6 @@ namespace BusinessLogic.Interface.Services
         void DeleteUser(UserEntity user);
         UserEntity Find(int id);
         IEnumerable<AuthorizationEntity> GetAuthorization(int id);
+        int GetUserId(string email);
     }
 }

@@ -9,5 +9,7 @@ namespace DataAccess.Interface.Repository
     public interface IUserRepository : IRepository<User>
     {
         IEnumerable<Authorization> GetAuthorization(int id);
+        void UpdateRate(int rateCount,int userId);
+        int GetRate(int userId);
     }
 }

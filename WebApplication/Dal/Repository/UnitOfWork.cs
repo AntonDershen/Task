@@ -14,6 +14,7 @@ namespace DataAccess.Repository
         private ITagRepository tagRepository;
         private IAnswerRepository answerRepository;
         private IPhotoRepository photoRepository;
+        private IUserAnswerRepository userAnswerRepository;
         public UnitOfWork(DbContext context)
         {
             Context = context;
@@ -34,6 +35,15 @@ namespace DataAccess.Repository
                 if (taskRepository == null)
                     taskRepository = new TaskRepository(Context);
                 return taskRepository;
+            }
+        }
+        public IUserAnswerRepository UserAnswerRepository
+        {
+            get
+            {
+                if (userAnswerRepository == null)
+                    userAnswerRepository = new UserAnswerRepository(Context);
+                return userAnswerRepository;
             }
         }
         public IUserRepository UserRepository

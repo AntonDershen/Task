@@ -196,7 +196,7 @@ namespace WebApplication.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to CreateDocument.
+        ///   Looks up a localized string similar to Create Task.
         /// </summary>
         public static string CreateDocument {
             get {

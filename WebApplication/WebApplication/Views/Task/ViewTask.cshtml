@@ -39,23 +39,47 @@
 
         <dd>
          @Html.Raw(Model.Condition)
-        
-        <div class="input-group input-group-lg">
-            <input type="text" class="form-control" placeholder="Your Answer" aria-describedby="sizing-addon1">
-        </div>
+         @if (ViewBag.IsSolved==false) { 
+        <input type="text" placeholder="Your Answer" id="answer" >
+        <div id="answerZone"></div>
+        <button class="btn-default" id="AnswerSubmit">Ответить</button>
+         }
+         else
+         {
+             <div>Ты это решал уже мудак</div>
+         }
+
     </dl>
 </div>
 
 <script>
-    $(document).ready(function () {
-        $.ajax({
-            url: '@Url.Action("GetRandomTags", "Tag")',
-            type: "POST",
-            data: "count=" + 100,
-            success: function (msg) {
-                $('#partialTagsCloud').append(msg);
-            }
-        })
-    })
+    $(function () {
+        $('#AnswerSubmit').click(function () {
+            $.ajax({
+                type:"Post",
+                url: '@Url.Action("CheckAnswer","Answer")',
+                data: {
+                    taskId : '@Model.Id',
+                    answer : $('#answer').val()
+                },
+                success: function (data) {
+                    if (data == 'True')
+                    {
+                        console.log(1);
+                        var element = document.createElement("span");
+                        element.className = "glyphicon glyphicon-ok"
+                        $('#answerZone').html(element);
+                        $('#answer').hide();
+                        $('#AnswerSubmit').hide();
 
+                    }
+                    else {
+                        var element = document.createElement("span");
+                        element.className = "glyphicon glyphicon-remove"
+                        $('#answerZone').html(element);
+                    }
+                }
+            })
+        })
+    });
 </script>

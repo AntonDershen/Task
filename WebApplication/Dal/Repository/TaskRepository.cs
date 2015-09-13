@@ -54,12 +54,17 @@ namespace DataAccess.Repository
         public IEnumerable<Task> GetAll(Func<Task, Boolean> predicate,int begin,int count)
         {
             if (count == 0)
-                return context.Set<Task>().Where(predicate);
-            return context.Set<Task>().Where(predicate).Skip(begin).Take(count);
+                return context.Set<Task>().Where(predicate).Where(X=>X.Activate == true);
+            return context.Set<Task>().Where(predicate).Where(x=>x.Activate==true).Skip(begin).Take(count);
         }
         public int GetTaskCount()
         {
-            return context.Set<Task>().ToList().Count;
+            try
+            {
+                var tasks =  context.Set<Task>().Where(x => x.Activate == true).ToList();
+                return tasks.Count;
+            }
+            catch {return 0;}
         }
         public void Dispose()
         {

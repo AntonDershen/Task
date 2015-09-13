@@ -28,13 +28,20 @@ namespace WebApplication.Controllers
         [HttpPost]
         public ActionResult GetRandomTags(int count)
         {
-            var model = tagService.GetRandomTags(count).ToList();
-            Random random = new Random();
-            List<int> rel = new List<int>();
-            for (int i = 0; i < model.Count; i++)
-                rel.Add((int)(random.NextDouble() * 10));
-            ViewBag.Rel = rel;
-            return PartialView("_GetRandomTags", model);
+            List<string> model = new List<string>();
+            try
+            {
+                model = tagService.GetRandomTags(count).ToList();
+                Random random = new Random();
+                List<int> rel = new List<int>();
+                for (int i = 0; i < model.Count; i++)
+                    rel.Add((int)(random.NextDouble() * 10));
+                ViewBag.Rel = rel;
+                return PartialView("_GetRandomTags", model);
+            }
+            catch {
+                return PartialView("_GetRandomTags", model);
+            }
         }
 	}
 }
