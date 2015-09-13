@@ -140,6 +140,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\Database.mdf" />
+    <Content Include="App_Data\Database_log.ldf">
+      <DependentUpon>Database.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrapDark.css" />
     <Content Include="Content\bootstrapLight.css" />
     <Content Include="Content\style.css" />
@@ -262,9 +266,7 @@
   <ItemGroup>
     <Content Include="Views\Shared\_Menu.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="App_LocalResources\GlobalRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
