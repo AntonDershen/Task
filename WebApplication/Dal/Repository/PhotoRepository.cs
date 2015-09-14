@@ -29,5 +29,9 @@ namespace DataAccess.Repository
         {
             return context.Set<Photo>().Find(id);
         }
+        public void Dispose()
+        {
+            context.Dispose();
+        }
     }
 }

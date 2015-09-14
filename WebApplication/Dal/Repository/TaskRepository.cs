@@ -66,6 +66,38 @@ namespace DataAccess.Repository
             }
             catch {return 0;}
         }
+        public double GetRate(int taskId)
+        {
+            return context.Set<Task>().Find(taskId).Rate;
+        }
+        public void UpdateRate(int taskId, int rate,int userId)
+        {
+            using (var db = new EntityModel())
+            {
+                var task = db.Tasks.Find(taskId);
+                task.Rate = (((task.Rate * task.RateCount) + rate) / task.RateCount - 1);
+                task.RateCount++;
+                db.SaveChanges();
+            }
+            context.Set<Rate>().Add(new Rate()
+                {
+                    Rating = rate,
+                    UserId = userId,
+                    TaskId = taskId
+                });
+        }
+        public Task GetMaxRate()
+        {
+            try
+            {
+                double rate = context.Set<Task>().Max(x => x.Rate);
+                return context.Set<Task>().FirstOrDefault(x => x.Rate == rate);
+            }
+            catch
+            {
+                return null; 
+            }
+        }
         public void Dispose()
         {
             context.Dispose();

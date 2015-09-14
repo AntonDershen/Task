@@ -15,6 +15,7 @@ namespace DataAccess.Repository
         private IAnswerRepository answerRepository;
         private IPhotoRepository photoRepository;
         private IUserAnswerRepository userAnswerRepository;
+        private ICommentRepository commentRepository;
         public UnitOfWork(DbContext context)
         {
             Context = context;
@@ -82,6 +83,15 @@ namespace DataAccess.Repository
                 return photoRepository;
             }
         }
+        public ICommentRepository CommentRepository 
+        {
+            get
+            {
+                if (commentRepository == null)
+                    commentRepository = new CommentRepository(Context);
+                return commentRepository;
+            }
+        }
         public void Save()
         {
             if (Context != null)
@@ -91,11 +101,7 @@ namespace DataAccess.Repository
         }
         public void Dispose()
         {
-            if (Context != null)
-            {
-                Context.Dispose();
-
-            }
+            Context.Dispose();
         }
      
     }

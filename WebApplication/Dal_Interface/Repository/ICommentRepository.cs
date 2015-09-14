@@ -3,14 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DataAccess.Interface.Repository;
 using DataAccess.Interface.EntityFramework;
 namespace DataAccess.Interface.Repository
 {
-    public interface IPhotoRepository: IDisposable
+    public interface ICommentRepository :IDisposable
     {
-        void CreatePhoto(byte[] photo);
-        Photo Get(Func<Photo, bool> predicate);
-        Photo Find(int id);
+        void CreateComment(Comment comment);
+        IEnumerable<Comment> Get(Func<Comment, bool> predicate);
     }
 }

@@ -51,5 +51,19 @@ namespace BusinessLogic.Services
             }
             catch { return null; }
         }
+        public void UpdateRate(int taskId, int rate,int userId)
+        {
+            unitOfWork.TaskRepository.UpdateRate(taskId, rate, userId);
+            unitOfWork.Save();
+        }
+        public TaskEntity GetMaxRate()
+        {
+            return unitOfWork.TaskRepository.GetMaxRate().ToTaskEntity();
+        }
+        public double GetRate(int taskId)
+        {
+            return unitOfWork.TaskRepository.GetRate(taskId);
+        }
+        
     }
 }

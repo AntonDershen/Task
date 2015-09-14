@@ -48,21 +48,23 @@
          {
              <div>Ты это решал уже мудак</div>
          }
-
+            <input type="text" placeholder="Your Comment" id="comment">
+            <button class="btn-default" id="CommentSubmit">Добавить</button>
+            <button class="btn-default" id="UpdateComment">Обновить</button>
+            <div id="comments"></div>
     </dl>
 </div>
 
 <script>
-    $(function () {
-        $('#AnswerSubmit').click(function () {
-            $.ajax({
-                type:"Post",
-                url: '@Url.Action("CheckAnswer","Answer")',
-                data: {
-                    taskId : '@Model.Id',
-                    answer : $('#answer').val()
-                },
-                success: function (data) {
+    $('#AnswerSubmit').click(function () {
+       $.ajax({
+            type:"Post",
+            url: '@Url.Action("CheckAnswer","Answer")',
+            data: {
+                taskId : '@Model.Id',
+                answer : $('#answer').val()
+            },
+            success: function (data) {
                     if (data == 'True')
                     {
                         console.log(1);
@@ -79,7 +81,36 @@
                         $('#answerZone').html(element);
                     }
                 }
-            })
+        })
+    })
+       
+    $('#CommentSubmit').click(function () {
+        $.ajax({
+            type: "Post",
+            url: '@Url.Action("CreateComment", "Comment")',
+            data: {
+                taskId: '@Model.Id',
+                text: $('#comment').val()
+            },
+            success: function (data) {
+                if (data == "True") {
+                }
+            }
         })
     });
+    $('#UpdateComment').click(function () {
+        console.log(1);
+        $.ajax({
+            type: "Post",
+            url: '@Url.Action("GetTaskComment", "Comment")',
+            data: {
+                taskId: '@Model.Id'
+            },
+            success: function (data) {
+                $('#comments').html(data);
+            }
+        })
+    });
+    
+  
 </script>

@@ -8,6 +8,8 @@
     </div>
     <div id="partialLastTask" class="col-md-6">
     </div>
+    <div id="partialMaxRate" class="col-md-6">
+    </div>
     
 }
 <script>
@@ -26,6 +28,13 @@
             data: "count=" + 10,
             success: function (msg) {
                 $('#partialLastTask').html(msg);
+            }
+        })
+        $.ajax({
+            url: '@Url.Action("GetMaxRate", "Rate")',
+            type: "POST",
+            success: function (msg) {
+                $('#partialMaxRate').html(msg);
             }
         })
     })

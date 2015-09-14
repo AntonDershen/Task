@@ -54,5 +54,9 @@ namespace DataAccess.Repository
                 db.SaveChanges();
             }
         }
+        public void Dispose()
+        {
+            context.Dispose();
+        }
     }
 }

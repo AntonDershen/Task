@@ -15,7 +15,9 @@ namespace BusinessLogic.Mapper
             {
                 Id = comment.Id,
                 Text = comment.Text,
-                UserId = comment.UserId
+                UserId = comment.UserId,
+                TaskId = comment.TaskId,
+                Time = comment.Time
             };
         }
         public static Comment ToComment(this CommentEntity commentEntity)
@@ -24,7 +26,9 @@ namespace BusinessLogic.Mapper
             {
                 Id = commentEntity.Id,
                 Text = commentEntity.Text,
-                UserId = commentEntity.UserId
+                UserId = commentEntity.UserId,
+                TaskId = commentEntity.TaskId,
+                Time = commentEntity.Time
             };
         }
     }

@@ -186,6 +186,9 @@
     <Content Include="Views\Task\_ViewTaskList.cshtml" />
     <Content Include="Views\Task\ViewTaskList.cshtml" />
     <Content Include="Views\Task\_GetLastTask.cshtml" />
+    <Content Include="Views\Comment\CommentView.cshtml" />
+    <Content Include="Views\Rate\_TaskRate.cshtml" />
+    <Content Include="Views\Rate\_MaxRate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_LocalResources\GlobalRes.Designer.cs">
@@ -205,8 +208,10 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AnswerController.cs" />
+    <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\RateController.cs" />
     <Compile Include="Controllers\TagController.cs" />
     <Compile Include="Controllers\TaskController.cs" />
     <Compile Include="Filters\CultureAttribute.cs" />
@@ -214,11 +219,13 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\Mappers\AuthorizationMapper.cs" />
+    <Compile Include="Infrastructure\Mappers\CommentMapper.cs" />
     <Compile Include="Infrastructure\Mappers\RegisterMapper.cs" />
     <Compile Include="Infrastructure\Mappers\TaskMapper.cs" />
     <Compile Include="Infrastructure\Mappers\UserMapper.cs" />
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
     <Compile Include="Models\AnswerModel.cs" />
+    <Compile Include="Models\CommentViewModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Models\TagModel.cs" />

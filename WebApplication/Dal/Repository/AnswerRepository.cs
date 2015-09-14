@@ -31,5 +31,9 @@ namespace DataAccess.Repository
                 return true;
             return false;
         }
+        public void Dispose()
+        {
+            context.Dispose();
+        }
     }
 }

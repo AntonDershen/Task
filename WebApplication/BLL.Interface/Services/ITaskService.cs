@@ -12,5 +12,8 @@ namespace BusinessLogic.Interface.Services
         TaskEntity Find(int id);
         IEnumerable<TaskEntity> GetTaskList(string categoryName,int begin,int count);
         IEnumerable<TaskEntity> GetLastTask(int count);
+        void UpdateRate(int taskId, int rate,int userId);
+        TaskEntity GetMaxRate();
+        double GetRate(int taskId);
     }
 }

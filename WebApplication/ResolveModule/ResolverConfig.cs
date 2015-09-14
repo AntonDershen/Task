@@ -47,6 +47,9 @@ namespace ResolverConfig
             kernel.Bind<IAnswerService>().To<AnswerService>();
 
             kernel.Bind<IUserAnswerRepository>().To<UserAnswerRepository>();
+
+            kernel.Bind<ICommentRepository>().To<CommentRepository>();
+            kernel.Bind<ICommentService>().To<CommentService>();
          
         }
     }

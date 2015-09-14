@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Interface.Repository
 {
-    public interface IAnswerRepository
+    public interface IAnswerRepository :IDisposable
     {
        void CreateAnswer(string name,int taskId);
        bool CheckAnswer(int taskId, string name, int userId);

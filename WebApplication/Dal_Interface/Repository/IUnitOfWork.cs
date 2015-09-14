@@ -14,6 +14,7 @@ namespace DataAccess.Interface.Repository
         IAnswerRepository AnswerRepository { get; }
         IPhotoRepository PhotoRepository { get; }
         IUserAnswerRepository UserAnswerRepository { get; }
+        ICommentRepository CommentRepository { get; }
         IRepository<Authorization> AuthorizationRepository { get; }
         void Save();
 

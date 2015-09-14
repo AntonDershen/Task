@@ -11,18 +11,25 @@ namespace BusinessLogic.Mapper
     {
         public static TaskEntity ToTaskEntity(this Task task)
         {
-            return new TaskEntity()
+            try
             {
-                Id = task.Id,
-                Complexity = task.Complexity,
-                Category = task.Category,
-                CreateUserId = task.UserId,
-                Name = task.Name,
-                TagsId = task.Tags.Select(x=>x.Id).ToList(),
-                Condition = task.Condition,
-                Activate = task.Activate
-                
-            };
+                return new TaskEntity()
+                    {
+                        Id = task.Id,
+                        Complexity = task.Complexity,
+                        Category = task.Category,
+                        CreateUserId = task.UserId,
+                        Name = task.Name,
+                        TagsId = task.Tags.Select(x => x.Id).ToList(),
+                        Condition = task.Condition,
+                        Activate = task.Activate
+
+                    };
+            }
+            catch
+            {
+                return null;
+            }
         }
         public static Task ToTask(this TaskEntity taskEntity)
         {

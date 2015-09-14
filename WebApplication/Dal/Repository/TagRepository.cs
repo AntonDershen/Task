@@ -43,5 +43,9 @@ namespace DataAccess.Repository
         {
             return context.Set<Tag>().ToList().Count();
         }
+        public void Dispose()
+        {
+            context.Dispose();
+        }
     }
 }

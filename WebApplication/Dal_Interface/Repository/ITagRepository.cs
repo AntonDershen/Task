@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using DataAccess.Interface.EntityFramework;
 namespace DataAccess.Interface.Repository
 {
-    public interface ITagRepository
+    public interface ITagRepository : IDisposable
     {
         void Create(string tagName);
         Tag GetTag(string tagName);

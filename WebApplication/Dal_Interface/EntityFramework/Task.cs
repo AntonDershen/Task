@@ -21,7 +21,8 @@ namespace DataAccess.Interface.EntityFramework
         public virtual ICollection<Tag> Tags { get; set; }
         public virtual ICollection<Photo> Photos { get; set; }
         public virtual ICollection<Rate> Rates { get; set; }
-
+        public int RateCount { get; set; }
+        public double Rate { get; set; }
         public virtual ICollection<UserAnswers> UserAnswers { get; set; }
      
     }

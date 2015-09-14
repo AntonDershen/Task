@@ -9,5 +9,8 @@ namespace DataAccess.Interface.Repository
     {
         void Create(Task task, List<int> tagsId,List<int> photoId);
         int GetTaskCount();
+        double GetRate(int taskId);
+        Task GetMaxRate();
+        void UpdateRate(int taskId,int rate,int userId);
     }
 }

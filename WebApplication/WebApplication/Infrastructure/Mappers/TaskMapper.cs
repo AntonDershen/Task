@@ -25,16 +25,23 @@ namespace WebApplication.Infrastructure.Mappers
         }
         public static ViewTaskModel ToViewTaskModel (this TaskEntity taskEntity)
         {
-            return new ViewTaskModel()
+            try
             {
-                Id = taskEntity.Id,
-                Category = taskEntity.Category,
-                Complexity = taskEntity.Complexity,
-                Condition = taskEntity.Condition,
-                PhotoId = taskEntity.PhotoId,
-                TagsId = taskEntity.TagsId,
-                Name = taskEntity.Name
-            };
+                return new ViewTaskModel()
+                {
+                    Id = taskEntity.Id,
+                    Category = taskEntity.Category,
+                    Complexity = taskEntity.Complexity,
+                    Condition = taskEntity.Condition,
+                    PhotoId = taskEntity.PhotoId,
+                    TagsId = taskEntity.TagsId,
+                    Name = taskEntity.Name
+                };
+            }
+            catch
+            {
+                return null;
+            }
         }
     
     }

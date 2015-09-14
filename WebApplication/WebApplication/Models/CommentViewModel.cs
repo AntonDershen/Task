@@ -1,17 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web;
 
-namespace BusinessLogic.Interface.Entities
+namespace WebApplication.Models
 {
-    public class CommentEntity
+    public class CommentViewModel
     {
-        public int Id { get; set; }
         public string Text { get; set; }
         public DateTime Time { get; set; }
+        public string UserName { get; set; }
         public int UserId { get; set; }
-        public int TaskId { get; set; }
     }
 }
