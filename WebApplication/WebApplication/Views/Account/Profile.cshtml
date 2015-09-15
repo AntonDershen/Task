@@ -1,0 +1,51 @@
+﻿@model WebApplication.Models.UserModel
+
+@{
+    ViewBag.Title = "Profile";
+}
+
+<h2>Profile</h2>
+<div>Rate @ViewBag.UserRate</div>
+<div>
+	<hr />
+    <dl class="dl-horizontal">
+        <dd>
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+
+    </dl>
+</div>
+
+<div id="userTask">
+</div>
+<div id="userAnswerTask">
+</div>
+<script>
+    $(document).ready(function () {
+        $.ajax({
+            type: "Post",
+            url: '@Url.Action("GetUserTask", "Account")',
+            data:
+            {
+               userId: '@Model.Id'
+            },
+            success: function (data) {
+                $('#userTask').html(data);
+            }
+        });
+        $.ajax({
+            type: "Post",
+            url: '@Url.Action("GetAnswerUserTask", "Account")',
+            data:
+            {
+                userId: '@Model.Id'
+            },
+            success: function (data) {
+                $('#userAnswerTask').html(data);
+            }
+        });
+    });
+
+</script>
+
+

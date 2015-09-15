@@ -66,6 +66,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Mapper\AnswerMapper.cs" />
     <Compile Include="Mapper\AuthorizationMapper.cs" />
     <Compile Include="Mapper\CommentMapper.cs" />
     <Compile Include="Mapper\TagMapper.cs" />

@@ -3,6 +3,6 @@
 <div>
     @if(Model!=null)
     { 
-        @Model.Name
+        <a href="@Url.Action("ViewTask", "Task", new { taskId = Model.Id})">@Model.Name</a> 
     }
 </div>

@@ -50,7 +50,7 @@ namespace ResolverConfig
 
             kernel.Bind<ICommentRepository>().To<CommentRepository>();
             kernel.Bind<ICommentService>().To<CommentService>();
-         
+          
         }
     }
 }

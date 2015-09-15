@@ -43,5 +43,15 @@ namespace WebApplication.Controllers
                 return PartialView("_GetRandomTags", model);
             }
         }
+        [HttpPost]
+        public ActionResult GetTagsById(string  tagsStringId,char splitElement)
+        {
+            List<int> tagsId = tagsStringId.Split(splitElement).Select(x => Int32.Parse(x)).ToList();
+            List<string> tagsName = new List<string>();
+            foreach (var tagId in tagsId)
+                tagsName.Add(tagService.GetTag(tagId));
+            ViewBag.Name = tagsName;
+            return PartialView("_TaskTagView");
+        }
 	}
 }

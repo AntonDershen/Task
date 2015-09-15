@@ -64,6 +64,9 @@ namespace BusinessLogic.Services
         {
             return unitOfWork.TaskRepository.GetRate(taskId);
         }
-        
+        public IEnumerable<TaskEntity> GetUserTasks(int userId)
+        {
+            return unitOfWork.TaskRepository.GetAll(x => x.UserId == userId, 0, 0).Select(x => x.ToTaskEntity()).ToList();
+        }
     }
 }

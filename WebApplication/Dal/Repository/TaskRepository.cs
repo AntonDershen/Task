@@ -75,7 +75,7 @@ namespace DataAccess.Repository
             using (var db = new EntityModel())
             {
                 var task = db.Tasks.Find(taskId);
-                task.Rate = (((task.Rate * task.RateCount) + rate) / task.RateCount - 1);
+                task.Rate = (((task.Rate * task.RateCount) + rate) /( task.RateCount + 1));
                 task.RateCount++;
                 db.SaveChanges();
             }

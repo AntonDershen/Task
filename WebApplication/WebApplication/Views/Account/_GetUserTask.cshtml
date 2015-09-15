@@ -1,0 +1,10 @@
+﻿@model IEnumerable<WebApplication.Models.ViewTaskModel>
+
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+           <a href="@Url.Action("ViewTask", "Task", new {taskId = item.Id })">@item.Name</a>
+        </td>
+     </tr>
+}

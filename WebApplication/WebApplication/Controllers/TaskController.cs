@@ -63,6 +63,8 @@ namespace WebApplication.Controllers
         }
         public ActionResult ViewTask(int taskId)
         {
+            ViewBag.Count = answerService.CountOfTrueAnswer(taskId);
+            ViewBag.IsRate = answerService.IsRated(taskId, userService.GetUserId(User.Identity.Name));
             var task = taskService.Find(taskId).ToViewTaskModel();
             ViewBag.IsSolved = answerService.IsSolved(taskId, userService.GetUserId(User.Identity.Name));
             return View(task);

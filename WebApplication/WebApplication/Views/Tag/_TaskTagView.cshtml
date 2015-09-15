@@ -1,0 +1,10 @@
+﻿@{
+    List<string> tagsName = ViewBag.Name;
+}
+<div>
+    @for (int i =0;i<tagsName.Count;i++)
+    {
+        <a href="@Url.Action("ViewTaskList", "Task", new { categoryName = tagsName[i]})">@tagsName[i]</a> 
+
+    }
+</div>

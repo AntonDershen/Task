@@ -54,6 +54,13 @@ namespace DataAccess.Repository
                 db.SaveChanges();
             }
         }
+        public IEnumerable<UserAnswers> FindUserAnswer(int userId, bool isSolved)
+        {
+            if (isSolved)
+                return context.Set<UserAnswers>().Where(x => x.UserId == userId).Where(u => u.TrueAnswer).ToList();
+            else return context.Set<UserAnswers>().Where(x => x.UserId == userId).ToList();
+
+        }
         public void Dispose()
         {
             context.Dispose();

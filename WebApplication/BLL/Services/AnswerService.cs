@@ -52,10 +52,32 @@ namespace BusinessLogic.Services
         public bool IsSolved(int taskId, int userId)
         {
             var userAnswer = unitOfWork.UserAnswerRepository.FindUserAnswer(taskId, userId);
-            if (userAnswer == null)
+            if (userAnswer == null || userAnswer.UserId == userId)
                 return false;
             else return userAnswer.TrueAnswer;
 
+        }
+        public IEnumerable<AnswerEntity> GetUsersSolvedAnswer(int userId)
+        {
+            var answers = unitOfWork.UserAnswerRepository.FindUserAnswer(userId, true).Select(x=>x.ToAnswerEntity()).ToList();
+            for (int i = 0; i < answers.Count; i++)
+                answers[i].Name = unitOfWork.TaskRepository.Find(answers[i].TaskId).Name;
+            return answers;
+        }
+        public bool IsRated(int taskId, int userId)
+        {
+            var userAnswers = unitOfWork.UserAnswerRepository.FindUserAnswer(taskId).ToList();
+            foreach (var userAnswer in userAnswers)
+                if (userAnswer.UserId == userId)
+                    return false;
+            var task = unitOfWork.TaskRepository.Find(taskId);
+            if (task.UserId == userId)
+                return false;
+            return true;
+        }
+        public int CountOfTrueAnswer(int taskId)
+        {
+            return unitOfWork.UserAnswerRepository.FindUserAnswer(taskId).Where(x => x.TrueAnswer).ToList().Count;
         }
     }
 }

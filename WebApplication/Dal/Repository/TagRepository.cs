@@ -43,6 +43,10 @@ namespace DataAccess.Repository
         {
             return context.Set<Tag>().ToList().Count();
         }
+        public Tag Find(int tagId)
+        {
+            return context.Set<Tag>().Find(tagId);
+        }
         public void Dispose()
         {
             context.Dispose();

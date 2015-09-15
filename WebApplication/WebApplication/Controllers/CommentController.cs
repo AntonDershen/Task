@@ -12,7 +12,7 @@ namespace WebApplication.Controllers
     {
         private readonly ICommentService commentService;
         private readonly IUserService userService;
-        public CommentController(IUserService userService,ICommentService commentService)
+        public CommentController(IUserService userService, ICommentService commentService)
         {
             this.userService = userService;
             this.commentService = commentService;
@@ -29,12 +29,6 @@ namespace WebApplication.Controllers
             });
             return true;
         }
-        [HttpPost]
-        public ActionResult GetTaskComment(int taskId)
-        {
-            var model = commentService.GetTaskComment(taskId);
-            var viewModel = model.Select(x => x.ToCommentViewModel(userService.Find(x.UserId).UserName));
-            return PartialView("CommentView",viewModel);
-        }
+       
 	}
 }

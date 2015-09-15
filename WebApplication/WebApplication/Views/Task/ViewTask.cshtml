@@ -5,7 +5,9 @@
 }
 
 <h2>View Task</h2>
-
+<div id="taskTags"></div>
+<div id="Rate"></div>
+<div id="Count">Count  @ViewBag.Count</div>
 <div>
 	<hr />
     <dl class="dl-horizontal">
@@ -36,7 +38,7 @@
         <dt>
             @Html.DisplayNameFor(model => model.Condition)
         </dt>
-
+        
         <dd>
          @Html.Raw(Model.Condition)
          @if (ViewBag.IsSolved==false) { 
@@ -46,44 +48,72 @@
          }
          else
          {
-             <div>Ты это решал уже мудак</div>
+             <div>Ты это решал уже</div>
          }
-            <input type="text" placeholder="Your Comment" id="comment">
-            <button class="btn-default" id="CommentSubmit">Добавить</button>
-            <button class="btn-default" id="UpdateComment">Обновить</button>
-            <div id="comments"></div>
+         <input type="text" placeholder="Your Comment" id="comment">
+         <button class="btn-default" id="CommentSubmit">Добавить</button>
+         <button class="btn-default" id="UpdateComment">Обновить</button>
+         <div id="comments"></div>
+         @if(ViewBag.IsRate == true){
+         <input type="number" placeholder="Set Rate" id="rate">
+         <button class="btn-default" id="RateSubmit">Проголосовать</button>
+          }
     </dl>
 </div>
 
 <script>
+    $(document).ready(function () {
+        $.ajax({
+            type: "Post",
+            url: '@Url.Action("GetTagsById", "Tag")',
+            data:
+            { 
+                tagsStringId: '@string.Join("%",@Model.TagsId)',
+                splitElement : "%"
+            },
+            success: function (data) {
+                $('#taskTags').html(data);
+            }
+        });
+        $.ajax({
+            type: "Post",
+            url: '@Url.Action("GetRate", "Rate")',
+            data:
+            {
+                taskId: '@Model.Id',
+            },
+            success: function (data) {
+                $('#Rate').html(data);
+            }
+        });
+   });
     $('#AnswerSubmit').click(function () {
        $.ajax({
             type:"Post",
             url: '@Url.Action("CheckAnswer","Answer")',
             data: {
-                taskId : '@Model.Id',
-                answer : $('#answer').val()
+                taskId: '@Model.Id',
+                answer: $('#answer').val()
             },
             success: function (data) {
-                    if (data == 'True')
-                    {
-                        console.log(1);
-                        var element = document.createElement("span");
-                        element.className = "glyphicon glyphicon-ok"
-                        $('#answerZone').html(element);
-                        $('#answer').hide();
-                        $('#AnswerSubmit').hide();
+                if (data == 'True') {
+                    console.log(1);
+                    var element = document.createElement("span");
+                    element.className = "glyphicon glyphicon-ok"
+                    $('#answerZone').html(element);
+                    $('#answer').hide();
+                    $('#AnswerSubmit').hide();
 
-                    }
-                    else {
-                        var element = document.createElement("span");
-                        element.className = "glyphicon glyphicon-remove"
-                        $('#answerZone').html(element);
-                    }
                 }
+                else {
+                    var element = document.createElement("span");
+                    element.className = "glyphicon glyphicon-remove"
+                    $('#answerZone').html(element);
+                }
+            }
         })
     })
-       
+
     $('#CommentSubmit').click(function () {
         $.ajax({
             type: "Post",
@@ -99,7 +129,6 @@
         })
     });
     $('#UpdateComment').click(function () {
-        console.log(1);
         $.ajax({
             type: "Post",
             url: '@Url.Action("GetTaskComment", "Comment")',
@@ -111,6 +140,20 @@
             }
         })
     });
-    
-  
+    $('#RateSubmit').click(function () {
+        $.ajax({
+            type: "Post",
+            url: '@Url.Action("UpdateRate", "Rate")',
+            data: {
+                taskId: '@Model.Id',
+                rate: $('#rate').val()
+            },
+            success: function (data) {
+                $('#rate').hide();
+                $('#RateSubmit').hide();
+            }
+        })
+    });
+
+
 </script>

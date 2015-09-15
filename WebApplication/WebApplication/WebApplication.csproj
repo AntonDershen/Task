@@ -45,6 +45,12 @@
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Lucene.Net">
+      <HintPath>..\packages\Lucene.Net.3.0.3\lib\NET40\Lucene.Net.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -186,9 +192,13 @@
     <Content Include="Views\Task\_ViewTaskList.cshtml" />
     <Content Include="Views\Task\ViewTaskList.cshtml" />
     <Content Include="Views\Task\_GetLastTask.cshtml" />
-    <Content Include="Views\Comment\CommentView.cshtml" />
+    <Content Include="Views\Comment\_CommentView.cshtml" />
     <Content Include="Views\Rate\_TaskRate.cshtml" />
     <Content Include="Views\Rate\_MaxRate.cshtml" />
+    <Content Include="Views\Tag\_TaskTagView.cshtml" />
+    <Content Include="Views\Account\Profile.cshtml" />
+    <Content Include="Views\Account\_GetUserTask.cshtml" />
+    <Content Include="Views\Account\_GetAnswerUserTask.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_LocalResources\GlobalRes.Designer.cs">

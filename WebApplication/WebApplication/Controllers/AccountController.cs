@@ -18,10 +18,14 @@ namespace WebApplication.Controllers
     {
         private readonly IUserService userService;
         private readonly IAuthorizationService authService;
-        public AccountController(IUserService userService, IAuthorizationService authService)
+        private readonly IAnswerService answerService;
+        private readonly ITaskService taskService;
+        public AccountController(IUserService userService, IAuthorizationService authService, IAnswerService answerService, ITaskService taskService)
         {
             this.userService = userService;
             this.authService = authService;
+            this.answerService = answerService;
+            this.taskService = taskService;
         }
         [HttpGet]
         public ActionResult LogIn()
@@ -113,11 +117,32 @@ namespace WebApplication.Controllers
             smtp.EnableSsl = true;
             smtp.Send(m);
         }
+        public ActionResult Profile()
+        {
+            var user = userService.Find(userService.GetUserId(User.Identity.Name)).ToMvcUser();
+            var answersUserId = answerService.GetUsersSolvedAnswer(user.Id).Select(x => x.TaskId);
+            double complexity = 0;
+            foreach (var answerUserId in answersUserId)
+                complexity += taskService.Find(answerUserId).Complexity;
+            ViewBag.UserRate = complexity;
+            return View(user);
+        }
+        public ActionResult GetUserTask(int userId)
+        {
+            var model = taskService
+                .GetUserTasks(userId)
+                .Select(x => x.ToViewTaskModel()).ToList();
+            return PartialView("_GetUserTask",model);
+        }
+        public ActionResult GetAnswerUserTask(int userId)
+        {
+            var model = answerService.GetUsersSolvedAnswer(userId);
+            return PartialView("_GetAnswerUserTask",model);
+        }
         public ActionResult LogOff()
         {
             FormsAuthentication.SignOut();
             return RedirectToAction("Index", "Home");
         }
-        
 	}
 }

@@ -52,5 +52,9 @@ namespace BusinessLogic.Services
                 return null;
             }
         }
+        public string GetTag(int tagId)
+        {
+            return unitOfWork.TagRepository.Find(tagId).Name;
+        }
     }
 }

@@ -8,6 +8,7 @@ namespace DataAccess.Interface.Repository
 {
     public interface ITagRepository : IDisposable
     {
+        Tag Find(int tagId);
         void Create(string tagName);
         Tag GetTag(string tagName);
         IEnumerable<string> GetTagsName(string tagName);
