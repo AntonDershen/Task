@@ -53,18 +53,18 @@ namespace BusinessLogic.Services
         }
         public List<int> GetUserAchivement(int userId)
         {
-            var achivement = unitOfWork.AchievementRepository.Get(userId);
-            List<int> achivementLevel = new List<int>();
-            if (achivement.TaskCreated == 0)
-                achivementLevel.Add(0);
-            else achivementLevel.Add((int)(Math.Log(achivement.TaskCreated, 2)));
-            if (achivement.TaskAnswered == 0)
-                achivementLevel.Add(0);
-            else achivementLevel.Add((int)(Math.Log(achivement.TaskAnswered, 2)));
-            if (achivement.FirstAnswered == 0)
-                achivementLevel.Add(0);
-            else achivementLevel.Add((int)(Math.Log(achivement.FirstAnswered, 2)));
-            return achivementLevel;
+            var achievement = unitOfWork.AchievementRepository.Get(userId);
+            List<int> achievementLevel = new List<int>();
+            if (achievement.TaskCreated == 0)
+                achievementLevel.Add(0);
+            else achievementLevel.Add((int)(Math.Log(achievement.TaskCreated, 2)));
+            if (achievement.TaskAnswered == 0)
+                achievementLevel.Add(0);
+            else achievementLevel.Add((int)(Math.Log(achievement.TaskAnswered, 2)));
+            if (achievement.FirstAnswered == 0)
+                achievementLevel.Add(0);
+            else achievementLevel.Add((int)(Math.Log(achievement.FirstAnswered, 2)));
+            return achievementLevel;
         }
     }
 }
