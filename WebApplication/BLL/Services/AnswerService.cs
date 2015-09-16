@@ -22,12 +22,17 @@ namespace BusinessLogic.Services
             if( unitOfWork.AnswerRepository.CheckAnswer(taskId, answer, userId))
             {
                 bool firstAnswer = false;
-                if (unitOfWork.UserAnswerRepository.FindUserAnswer(taskId) == null)
+                if (unitOfWork.UserAnswerRepository.FindUserAnswer(taskId).ToList().Count == 0)
                     firstAnswer = true;
                 if (unitOfWork.UserAnswerRepository.FindUserAnswer(taskId, userId) == null)
                 {
                     unitOfWork.UserAnswerRepository.Create(userId, taskId, true, firstAnswer);
                     unitOfWork.UserRepository.UpdateRate(unitOfWork.TaskRepository.Find(taskId).Complexity, userId);
+                    var achievement = unitOfWork.AchievementRepository.Get(userId);
+                    achievement.TaskAnswered++;
+                    if (firstAnswer)
+                        achievement.FirstAnswered++;
+                    unitOfWork.AchievementRepository.Update(achievement);
                     unitOfWork.Save();
                 }
                 else
@@ -52,8 +57,10 @@ namespace BusinessLogic.Services
         public bool IsSolved(int taskId, int userId)
         {
             var userAnswer = unitOfWork.UserAnswerRepository.FindUserAnswer(taskId, userId);
-            if (userAnswer == null || userAnswer.UserId == userId)
+            if (userAnswer == null)
                 return false;
+            if (userAnswer.UserId == userId)
+                return true;
             else return userAnswer.TrueAnswer;
 
         }

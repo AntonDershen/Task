@@ -15,6 +15,7 @@ namespace DataAccess.Interface.EntityFramework
         public virtual DbSet<Task> Tasks { get; set; }
         public virtual DbSet<Comment> Comments { get; set; }
         public virtual DbSet<UserAnswers> UserAnswers { get; set; }
+        public virtual DbSet<UserAchievement> UsersAchievements { get; set; }
         public EntityModel()
             : base("name=EntityModel")
         {

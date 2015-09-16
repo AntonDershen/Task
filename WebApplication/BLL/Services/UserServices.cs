@@ -32,7 +32,9 @@ namespace BusinessLogic.Services
             {
                 unitOfWork.UserRepository.Create(user.ToDataTransferUser());
                 unitOfWork.Save();
-                return unitOfWork.UserRepository.Get(x => x.UserName == user.UserName).Id;
+                var userId = unitOfWork.UserRepository.Get(x => x.UserName == user.UserName).Id;
+                unitOfWork.AchievementRepository.Create(userId);
+                return userId;
             }
             return 0;
         }
@@ -48,6 +50,21 @@ namespace BusinessLogic.Services
         public int GetUserId(string email)
         {
             return unitOfWork.UserRepository.Get(x => x.Authorizations.ToList()[0].Email == email).Id;
+        }
+        public List<int> GetUserAchivement(int userId)
+        {
+            var achivement = unitOfWork.AchievementRepository.Get(userId);
+            List<int> achivementLevel = new List<int>();
+            if (achivement.TaskCreated == 0)
+                achivementLevel.Add(0);
+            else achivementLevel.Add((int)(Math.Log(achivement.TaskCreated, 2)));
+            if (achivement.TaskAnswered == 0)
+                achivementLevel.Add(0);
+            else achivementLevel.Add((int)(Math.Log(achivement.TaskAnswered, 2)));
+            if (achivement.FirstAnswered == 0)
+                achivementLevel.Add(0);
+            else achivementLevel.Add((int)(Math.Log(achivement.FirstAnswered, 2)));
+            return achivementLevel;
         }
     }
 }

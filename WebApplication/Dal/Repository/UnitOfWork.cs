@@ -16,6 +16,7 @@ namespace DataAccess.Repository
         private IPhotoRepository photoRepository;
         private IUserAnswerRepository userAnswerRepository;
         private ICommentRepository commentRepository;
+        private IAchievementRepository achievementRepository;
         public UnitOfWork(DbContext context)
         {
             Context = context;
@@ -54,6 +55,15 @@ namespace DataAccess.Repository
                 if (userRepository == null)
                     userRepository = new UserRepository(Context);
                 return userRepository;
+            }
+        }
+        public IAchievementRepository AchievementRepository
+        {
+            get
+            {
+                if (achievementRepository == null)
+                    achievementRepository = new AchievementRepository(Context);
+                return achievementRepository;
             }
         }
         public ITagRepository TagRepository

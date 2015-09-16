@@ -125,6 +125,7 @@ namespace WebApplication.Controllers
             foreach (var answerUserId in answersUserId)
                 complexity += taskService.Find(answerUserId).Complexity;
             ViewBag.UserRate = complexity;
+            ViewBag.AchivementLevel = userService.GetUserAchivement(user.Id);
             return View(user);
         }
         public ActionResult GetUserTask(int userId)

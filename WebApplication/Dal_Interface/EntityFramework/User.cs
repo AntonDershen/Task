@@ -16,5 +16,6 @@ namespace DataAccess.Interface.EntityFramework
         public virtual ICollection<Rate> Rates { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }
         public virtual ICollection<UserAnswers> UserAnswers { get; set; }
+        public virtual ICollection<UserAchievement> UserAchievement { get; set; }
     }
 }

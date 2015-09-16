@@ -13,5 +13,6 @@ namespace BusinessLogic.Interface.Services
         UserEntity Find(int id);
         IEnumerable<AuthorizationEntity> GetAuthorization(int id);
         int GetUserId(string email);
+        List<int> GetUserAchivement(int userId);
     }
 }

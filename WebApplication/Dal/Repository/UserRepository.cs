@@ -43,7 +43,7 @@ namespace DataAccess.Repository
             }
             public User Get(Func<User, Boolean> predicate)
             {
-                return context.Set<User>().FirstOrDefault(predicate);
+                return context.Set<User>().LastOrDefault(predicate);
             }
             public IEnumerable<Authorization> GetAuthorization(int id)
             {

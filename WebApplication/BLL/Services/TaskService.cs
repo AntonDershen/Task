@@ -21,6 +21,9 @@ namespace BusinessLogic.Services
             taskEntity.Activate = true;
             unitOfWork.TaskRepository.Create(taskEntity.ToTask(),taskEntity.TagsId,taskEntity.PhotoId);
             unitOfWork.Save();
+            var achievement = unitOfWork.AchievementRepository.Get(taskEntity.CreateUserId);
+            achievement.TaskCreated++;
+            unitOfWork.AchievementRepository.Update(achievement);
             var tasks = unitOfWork.TaskRepository.GetAll(x => x.Condition == taskEntity.Condition,0,0);
             int id = tasks.LastOrDefault(x => x.UserId == taskEntity.CreateUserId).Id;
             foreach (var answer in taskEntity.Answers)
