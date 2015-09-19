@@ -1,61 +1,37 @@
-﻿<div class="navbar navbar-default">
-    <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href=@Url.Action("Index", "Home")>Course Task</a>
-    </div>
-    <div class="navbar-collapse collapse navbar-responsive-collapse">
-        @if (Request.IsAuthenticated)
-        {
-            <ul class="nav navbar-nav">
-                <li class="active"><a href=@Url.Action("Index", "Home")>@GlobalRes.Home</a></li>
-                <li><a href="@Url.Action("Profile","Account")">@GlobalRes.Profile</a></li>
-                <li><a href="@Url.Action("CreateTask", "Task")">@GlobalRes.CreateDocument</a></li>
+﻿<div class="templatemo-sidebar">
+    <header class="templatemo-site-header">
+        <div class="square"></div>
+        <h1>Course Task</h1>
+    </header>
 
-            </ul>
-        }
-        <form class="navbar-form navbar-left" action="#">
+    <div class="profile-photo-container">
+        <img class="img-sidebar" src="~/Media/5.jpg" /> 
+        <div class="profile-photo-overlay"></div>
+    </div>
+
+    <form class="templatemo-search-form" role="search">
+        <div class="input-group">
+            <button type="submit" class="fa fa-search"></button>
             <input type="text" name="searchQuery" id="tags" class="form-control col-lg-8" placeholder="@GlobalRes.SearchFor">
-        </form>
-        <ul class="nav navbar-nav navbar-right">
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">@GlobalRes.Languages<span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                    <li><a href="@Url.Action("ChangeCulture", "Home", new {lang = "en"})">@GlobalRes.English</a></li>
-                    <li><a href="@Url.Action("ChangeCulture", "Home", new {lang = "ru"})">@GlobalRes.Russian</a></li>
-                </ul>
-            </li>
-            <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown">@GlobalRes.Themes<span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                    <li onclick="setCookie('style', '1', '/')"><a>@GlobalRes.Dark</a></li>
-                    <li onclick="setCookie('style', '2', '/')"><a>@GlobalRes.Light</a></li>
-                </ul>
-            </li>
+        </div>
+    </form>
+    <div class="mobile-menu-icon">
+        <i class="fa fa-bars"></i>
+    </div>
+    <nav class="templatemo-left-nav">
+        <ul>
+            <li><a href="@Url.Action("Index", "Home")"><i class="fa fa-home fa-fw"></i>@GlobalRes.Home</a></li>
             @if (Request.IsAuthenticated)
             {
-                <li><a href=@Url.Action("LogOff", "Account")><span class="glyphicon glyphicon-log-in"></span> @GlobalRes.LogOut</a></li>
+                <li><a href="@Url.Action("Profile", "Account")"><i class="fa fa-male fa-fw"></i>@GlobalRes.Profile</a></li>
+                <li><a href="@Url.Action("CreateTask", "Task")"><i class="fa fa-pencil fa-fw"></i>@GlobalRes.MyDocuments</a></li>
+                <li><a href="@Url.Action("LogOff", "Account")"><i class="fa fa-arrow-left fa-fw"></i>@GlobalRes.LogOut</a></li>
             }
             else
             {
-                <li><a href=@Url.Action("LogIn", "Account")><span class="glyphicon glyphicon-log-out"></span> @GlobalRes.LogIn</a></li>
-                <li><a href=@Url.Action("Register", "Account")>@GlobalRes.Register</a></li>
-        
-            }
+                <li><a href="@Url.Action("LogIn", "Account")"><i class="fa fa-arrow-right fa-fw"></i>@GlobalRes.LogIn</a></li>
+                <li><a href="@Url.Action("Register", "Account")"><i class="fa fa-check-square-o fa-fw"></i>@GlobalRes.Register</a></li>
+            }      
         </ul>
-    </div>
+    </nav>
 </div>
-
-<script src="~/Scripts/setCookie.js"></script>
-<script>
-    $(document).ready(function () {
-        $('.nav li.dropdown').hover(function () {
-            $(this).addClass('open');
-        }, function () {
-            $(this).removeClass('open');
-        });
-    });
-</script>

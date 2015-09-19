@@ -42,13 +42,17 @@ namespace WebApplication.Controllers
             {
                 var auth = authorizationService.Get(User.Identity.Name);
                 int id = auth.UserId;
-                byte[] fileContext = new byte[file.ContentLength];
-                file.InputStream.Read(fileContext,0,file.ContentLength);
                 List<int> photosId = new List<int>();
-                photosId.Add(photoService.CreatePhoto(fileContext));
+                if (file != null)
+                {
+                    byte[] fileContext = new byte[file.ContentLength];
+                    file.InputStream.Read(fileContext, 0, file.ContentLength);
+                    photosId.Add(photoService.CreatePhoto(fileContext));
+                }
                 taskService.CreateTask(model.ToTaskEntity(id, tagService.CreateTags(model.Tag).ToList(),photosId));
+                return RedirectToAction("Index", "Home");
             }
-            return RedirectToAction("Index", "Home");
+            return View(model);
         }
         [HttpPost]
         public void Upload()
@@ -87,6 +91,20 @@ namespace WebApplication.Controllers
             try
             {
                 return PartialView("_GetLastTask", taskService.GetLastTask(count).Select(x => x.ToViewTaskModel()).ToList());
+            }
+            catch
+            {
+                return PartialView("_GetLastTask", new List<ViewTaskModel>());
+            }
+        }
+       [HttpPost]
+        public ActionResult GetLastUserTask(int count)
+        {
+            try
+            {
+                int id = userService.GetUserId(User.Identity.Name);
+                var lastTask = taskService.GetLastTask(count, id).Select(x => x.ToViewTaskModel()).ToList();
+                return PartialView("_GetLastTask",lastTask);
             }
             catch
             {

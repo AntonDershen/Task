@@ -79,7 +79,7 @@ namespace WebApplication.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to AddDocument.
+        ///   Looks up a localized string similar to Add new task.
         /// </summary>
         public static string AddDocument {
             get {
@@ -93,6 +93,15 @@ namespace WebApplication.App_LocalResources {
         public static string Administrator {
             get {
                 return ResourceManager.GetString("Administrator", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to All Tasks.
+        /// </summary>
+        public static string AllDocuments {
+            get {
+                return ResourceManager.GetString("AllDocuments", resourceCulture);
             }
         }
         
@@ -142,6 +151,15 @@ namespace WebApplication.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Choose file.
+        /// </summary>
+        public static string ChooseFile {
+            get {
+                return ResourceManager.GetString("ChooseFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to To complete the registration please go to.
         /// </summary>
         public static string CompleteRegistration {
@@ -165,6 +183,15 @@ namespace WebApplication.App_LocalResources {
         public static string Condition {
             get {
                 return ResourceManager.GetString("Condition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Conditions.
+        /// </summary>
+        public static string Conditions {
+            get {
+                return ResourceManager.GetString("Conditions", resourceCulture);
             }
         }
         
@@ -196,7 +223,7 @@ namespace WebApplication.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Create Task.
+        ///   Looks up a localized string similar to Create New Task.
         /// </summary>
         public static string CreateDocument {
             get {
@@ -331,6 +358,15 @@ namespace WebApplication.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to File Input.
+        /// </summary>
+        public static string FileInput {
+            get {
+                return ResourceManager.GetString("FileInput", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Go.
         /// </summary>
         public static string Go {
@@ -367,6 +403,24 @@ namespace WebApplication.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Last Tasks.
+        /// </summary>
+        public static string LastTasks {
+            get {
+                return ResourceManager.GetString("LastTasks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Latest Task.
+        /// </summary>
+        public static string LatestTask {
+            get {
+                return ResourceManager.GetString("LatestTask", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Light.
         /// </summary>
         public static string Light {
@@ -376,7 +430,7 @@ namespace WebApplication.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Log In.
+        ///   Looks up a localized string similar to LogIn.
         /// </summary>
         public static string LogIn {
             get {
@@ -385,11 +439,38 @@ namespace WebApplication.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Log Out.
+        ///   Looks up a localized string similar to LogIn Form.
+        /// </summary>
+        public static string LogInForm {
+            get {
+                return ResourceManager.GetString("LogInForm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to LogOut.
         /// </summary>
         public static string LogOut {
             get {
                 return ResourceManager.GetString("LogOut", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Maximum upload size is 5 MB..
+        /// </summary>
+        public static string MaximumSize {
+            get {
+                return ResourceManager.GetString("MaximumSize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Max Rate Task.
+        /// </summary>
+        public static string MaxRateTask {
+            get {
+                return ResourceManager.GetString("MaxRateTask", resourceCulture);
             }
         }
         
@@ -412,6 +493,24 @@ namespace WebApplication.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to My Tasks.
+        /// </summary>
+        public static string MyDocuments {
+            get {
+                return ResourceManager.GetString("MyDocuments", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to My Tasks.
+        /// </summary>
+        public static string MyTasks {
+            get {
+                return ResourceManager.GetString("MyTasks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Name.
         /// </summary>
         public static string Name {
@@ -426,6 +525,15 @@ namespace WebApplication.App_LocalResources {
         public static string No {
             get {
                 return ResourceManager.GetString("No", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Older Task.
+        /// </summary>
+        public static string OlderTask {
+            get {
+                return ResourceManager.GetString("OlderTask", resourceCulture);
             }
         }
         
@@ -457,20 +565,29 @@ namespace WebApplication.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Properties.
-        /// </summary>
-        public static string Properties {
-            get {
-                return ResourceManager.GetString("Properties", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Register.
         /// </summary>
         public static string Register {
             get {
                 return ResourceManager.GetString("Register", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Register Form.
+        /// </summary>
+        public static string RegisterForm {
+            get {
+                return ResourceManager.GetString("RegisterForm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reset.
+        /// </summary>
+        public static string Reset {
+            get {
+                return ResourceManager.GetString("Reset", resourceCulture);
             }
         }
         
@@ -493,7 +610,7 @@ namespace WebApplication.App_LocalResources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Search for....
+        ///   Looks up a localized string similar to Search....
         /// </summary>
         public static string SearchFor {
             get {
@@ -507,6 +624,15 @@ namespace WebApplication.App_LocalResources {
         public static string SentFurtherInstructions {
             get {
                 return ResourceManager.GetString("SentFurtherInstructions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Settings.
+        /// </summary>
+        public static string Settings {
+            get {
+                return ResourceManager.GetString("Settings", resourceCulture);
             }
         }
         
@@ -538,6 +664,15 @@ namespace WebApplication.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Tegs Cloud.
+        /// </summary>
+        public static string TegsCloud {
+            get {
+                return ResourceManager.GetString("TegsCloud", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Text.
         /// </summary>
         public static string Text {
@@ -552,6 +687,15 @@ namespace WebApplication.App_LocalResources {
         public static string Themes {
             get {
                 return ResourceManager.GetString("Themes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Title.
+        /// </summary>
+        public static string Title {
+            get {
+                return ResourceManager.GetString("Title", resourceCulture);
             }
         }
         

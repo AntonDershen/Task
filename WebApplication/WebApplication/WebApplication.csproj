@@ -146,23 +146,49 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrapDark.css" />
     <Content Include="Content\bootstrapLight.css" />
+    <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\templatemo-style.css" />
     <Content Include="Content\style.css" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\FontAwesome.otf" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Icon.png" />
+    <Content Include="Media\4.jpg" />
+    <Content Include="Media\5.jpg" />
+    <Content Include="Media\cloud.jpg" />
+    <Content Include="Media\csharp.png" />
+    <Content Include="Media\Home\icon1.png" />
+    <Content Include="Media\Home\icon2.png" />
+    <Content Include="Media\Home\icon3.png" />
+    <Content Include="Media\Home\icon4.png" />
+    <Content Include="Media\java.jpg" />
+    <Content Include="Media\python.jpg" />
+    <Content Include="Media\ruby.png" />
+    <Content Include="Media\с2.jpg" />
+    <Content Include="Media\с3.jpg" />
+    <Content Include="Scripts\bootstrap-filestyle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\dropZone.js" />
+    <Content Include="Scripts\jquery-1.11.2.min.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
+    <Content Include="Scripts\jquery-migrate-1.2.1.min.js" />
     <Content Include="Scripts\jquery.tagcloud.js" />
     <Content Include="Scripts\setCookie.js" />
+    <Content Include="Scripts\templatemo-script.js" />
     <Content Include="Scripts\tiny\tinymce\license.txt" />
     <Content Include="Scripts\tiny\tinymce\skins\lightgray\content.inline.min.css" />
     <Content Include="Scripts\tiny\tinymce\skins\lightgray\content.min.css" />
@@ -199,6 +225,9 @@
     <Content Include="Views\Account\Profile.cshtml" />
     <Content Include="Views\Account\_GetUserTask.cshtml" />
     <Content Include="Views\Account\_GetAnswerUserTask.cshtml" />
+    <Content Include="Views\Search\Search.cshtml" />
+    <Content Include="Views\Search\_Preview.cshtml" />
+    <Content Include="Views\Shared\_Navbar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_LocalResources\GlobalRes.Designer.cs">
@@ -282,12 +311,14 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Media\Site\" />
     <Folder Include="Views\Answer\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="App_LocalResources\GlobalRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>GlobalRes.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -66,6 +66,15 @@ namespace DataAccess.Repository
             }
             catch {return 0;}
         }
+        public int GetUserTaskCount(int userId)
+        {
+            try
+            {
+                var tasks = context.Set<Task>().Where(u=>u.UserId == userId).Where(x => x.Activate == true).ToList();
+                return tasks.Count;
+            }
+            catch { return 0; }
+        }
         public double GetRate(int taskId)
         {
             return context.Set<Task>().Find(taskId).Rate;
@@ -96,6 +105,18 @@ namespace DataAccess.Repository
             catch
             {
                 return null; 
+            }
+        }
+        public Task GetUserMaxRate(int userId)
+        {
+            try
+            {
+                double rate = context.Set<Task>().Where(u => u.UserId == userId).Max(x => x.Rate);
+                return context.Set<Task>().FirstOrDefault(x => x.Rate == rate);
+            }
+            catch
+            {
+                return null;
             }
         }
         public void Dispose()

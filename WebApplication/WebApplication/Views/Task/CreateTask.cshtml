@@ -1,115 +1,183 @@
 ﻿@model WebApplication.Models.CreateTaskModel
-
 @{
-    ViewBag.Title = "CreateTask";
+    ViewBag.Title = GlobalRes.MyTasks;
 }
-<script async src="//code.jquery.com/ui/1.10.1/jquery-ui.min.js"></script>
-<script src="~/Scripts/tiny/tinymce/tinymce.min.js"></script>
-<script src="~/Scripts/dropZone.js"></script>
-<link href="~/Content/style.css" rel="stylesheet" />
-<h2>CreateTask</h2>
-   @using (Html.BeginForm("CreateTask", "Task", FormMethod.Post,
-    new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" })) 
-    {
-        @Html.AntiForgeryToken()
-
-        <div class="form-horizontal">
-            <h4>CreateTaskModel</h4>
-            <hr />
-            @Html.ValidationSummary(true)
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Name)
-                    @Html.ValidationMessageFor(model => model.Name)
-                </div>
+<div class="templatemo-title-on-page">
+    <h1>@GlobalRes.MyTasks</h1>
+</div>
+<div class="templatemo-content-widget no-padding">
+    <div class="panel panel-default table-responsive">
+        <table class="table table-striped table-bordered templatemo-user-table">
+            <thead>
+            <tr>
+                <td><a href="" class="white-text templatemo-sort-by"># <span class="caret"></span></a></td>
+                <td><a href="" class="white-text templatemo-sort-by">@GlobalRes.Title <span class="caret"></span></a></td>
+                <td><a href="" class="white-text templatemo-sort-by">@GlobalRes.Complexity <span class="caret"></span></a></td>
+                <td><a href="" class="white-text templatemo-sort-by">@GlobalRes.Category <span class="caret"></span></a></td>
+                <td><a href="" class="white-text templatemo-sort-by">@GlobalRes.Tag <span class="caret"></span></a></td>
+                <td>@GlobalRes.Change</td>
+                <td>@GlobalRes.Delete</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>1.</td>
+                <td>124</td>
+                <td>244</td>
+                <td>2422</td>
+                <td>js; company; com</td>
+                <td><a href="" class="templatemo-edit-btn">Change</a></td>
+                <td><a href="" class="templatemo-link">Delete</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="templatemo-flex-row flex-content-row">
+    <div class="templatemo-content-widget pink-bg col-1" onclick="">
+        <i class="fa fa-times"></i>
+        <h2 class="text-uppercase margin-bottom-10">@GlobalRes.LatestTask</h2>
+        <p class="margin-bottom-0" id="lastTask"></p>
+    </div>
+    <div class="templatemo-content-widget blue-bg col-1" onclick="">
+        <i class="fa fa-times"></i>
+        <h2 class="text-uppercase margin-bottom-10">@GlobalRes.MaxRateTask</h2>
+        <p class="margin-bottom-0" id="maxRateTask"></p>
+    </div>
+</div>
+<div class="templatemo-flex-row flex-content-row">
+    <div class="col-1">
+        <div class="panel panel-default margin-10">
+            <div class="panel-heading">
+                <h2 class="text-uppercase">@GlobalRes.AddDocument</h2>
             </div>
+            <div class="panel-body">
+                @using (Html.BeginForm("CreateTask", "Task", FormMethod.Post,
+                    new {@class = "form-horizontal", role = "form", enctype = "multipart/form-data"}))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="form-horizontal">
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.Complexity, new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Complexity)
-                    @Html.ValidationMessageFor(model => model.Complexity)
-                </div>
-            </div>
+                        @Html.ValidationSummary(true)
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Name, new {@class = "control-label col-md-2"})
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Name)
+                                @Html.ValidationMessageFor(model => model.Name)
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Complexity, new {@class = "control-label col-md-2"})
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Complexity)
+                                @Html.ValidationMessageFor(model => model.Complexity)
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Category, new {@class = "control-label col-md-2"})
+                            <div class="col-md-10 dropdown">
+                                @Html.DropDownListFor(model => model.Category,
+                                    new List<SelectListItem>
+                                    {
+                                        new SelectListItem {Value = "python", Text = "python"},
+                                        new SelectListItem {Value = "java", Text = "java"},
+                                        new SelectListItem {Value = "c#", Text = "c#"},
+                                        new SelectListItem {Value = "ruby", Text = "ruby"}
+                                    }, new {@class = "btn btn-default dropdown-toggle"})
+                                @Html.ValidationMessageFor(model => model.Category)
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Tag, new {@class = "control-label col-md-2"})
+                            <div id="Tags" class="col-md-10">
+                                <a id="addTag" class="col-md-offset-3 col-md-5">
+                                    <i class="glyphicon glyphicon-plus-sign"></i>
+                                </a>
+                            </div>
+                        </div>
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.Category, new { @class = "control-label col-md-2" })
-                <div class="col-md-10 dropdown">
-                    @Html.DropDownListFor(model => model.Category,
-                 new List<SelectListItem> {
-                       new SelectListItem { Value = "python" , Text = "python" },
-                       new SelectListItem { Value = "java" , Text = "java" },
-                       new SelectListItem { Value = "c#" , Text = "c#" },
-                       new SelectListItem { Value = "ruby" , Text = "ruby" }
-                    }, new { @class = "btn btn-default dropdown-toggle" })
-                    @Html.ValidationMessageFor(model => model.Category)
-                </div>
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(model => model.Tag, new { @class = "control-label col-md-2" })
-                <div id="Tags" class="col-md-10">
-                    <a id="addTag" class="col-md-offset-3 col-md-5">
-                        <i class="glyphicon glyphicon-plus-sign"></i>
-                    </a>
-                </div>
-            </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Answers, new {@class = "control-label col-md-2"})
+                            <div id="Answers" class="col-md-10">
+                                <a id="addAnswer" class="col-md-offset-3 col-md-5">
+                                    <i class="glyphicon glyphicon-plus-sign"></i>
+                                </a>
+                            </div>
+                        </div>
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.Answers, new { @class = "control-label col-md-2" })
-                <div id="Answers" class="col-md-10">
-                    <a id="addAnswer" class="col-md-offset-3 col-md-5">
-                        <i class="glyphicon glyphicon-plus-sign"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-10">
-                    @Html.TextAreaFor(model => model.Condition)
-                    @Html.ValidationMessageFor(model => model.Condition)
-                </div>
-            </div>
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <label class="control-label">@GlobalRes.Conditions</label>
+                                @Html.TextAreaFor(model => model.Condition)
+                                @Html.ValidationMessageFor(model => model.Condition)
+                            </div>
+                        </div>
+                                
+                        <div class="col-lg-12">
+                            <label class="control-label templatemo-block">@GlobalRes.FileInput</label>
+                            <input name="file" class="form-control" type="file" title=@GlobalRes.ChooseFile data-filename-placement="inside" />       
+                            <p>@GlobalRes.MaximumSize</p>
+                        </div>
 
-            <input name="file" class="form-control" type="file" title="Добавить" data-filename-placement="inside" />
-
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Create" class="btn btn-default" />
-                </div>
+                        <div class="form-group text-right">
+                            <button type="submit" class="templatemo-blue-button">@GlobalRes.Create</button>
+                            <button type="reset" class="templatemo-white-button">@GlobalRes.Reset</button>
+                        </div>
+                    </div>                         
+                }
             </div>
-
         </div>
-    }
+    </div>
+</div>
 
-
-    @section Scripts {
-        @Scripts.Render("~/bundles/jqueryval")
-        <script>
-            $(function () {
-                var answer = -1;
-                $('#addAnswer').click(function () {
-                    answer++;
-                    var formGroup = document.createElement("div");
-                    formGroup.className = "form-group";
-                    formGroup.id = "form-group-" + answer;
-                    var label = document.createElement("label");
-                    label.className = "control-label";
-                    label.htmlFor = "Answers";
-                    formGroup.appendChild(label);
-                    var colmd = document.createElement("div");
-                    colmd.className = "col-md-10";
-                    var input = document.createElement("input");
-                    input.className = "text-box single-line";
-                    input.id = "Answers_" + answer + "_";
-                    input.name = "Answers[" + answer + "]";
-                    input.type = "text";
-                    colmd.appendChild(input);
-                    formGroup.appendChild(colmd);
-                    $('#Answers').append(formGroup);
-                })
-                var tag = -1;
-                $('#addTag').click(function () {
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            var imageUrl = $('img.content-bg-img').attr('src');
+            $('.templatemo-content-img-bg').css('background-image', 'url(' + imageUrl + ')');
+            $('img.content-bg-img').hide();
+            $.ajax({
+                url: '@Url.Action("GetLastUserTask", "Task")',
+                type: "POST",
+                data: "count=" + 1,
+                success: function (msg) {
+                    $('#lastTask').html(msg);
+                }
+            });
+            $.ajax({
+                url: '@Url.Action("GetUserMaxRate", "Rate")',
+                type: "POST",
+                success: function (msg) {
+                    $('#maxRateTask').html(msg);
+                }
+            });
+        });
+    </script>
+    <script>
+        $(function() {
+            var answer = -1;
+            $('#addAnswer').click(function() {
+                answer++;
+                var formGroup = document.createElement("div");
+                formGroup.className = "form-group";
+                formGroup.id = "form-group-" + answer;
+                var label = document.createElement("label");
+                label.className = "control-label";
+                label.htmlFor = "Answers";
+                formGroup.appendChild(label);
+                var colmd = document.createElement("div");
+                colmd.className = "col-md-10";
+                var input = document.createElement("input");
+                input.className = "text-box single-line";
+                input.id = "Answers_" + answer + "_";
+                input.name = "Answers[" + answer + "]";
+                input.type = "text";
+                colmd.appendChild(input);
+                formGroup.appendChild(colmd);
+                $('#Answers').append(formGroup);
+            });
+            var tag = -1;
+            $('#addTag').click(function() {
                     tag++;
                     var formGroup = document.createElement("div");
                     formGroup.className = "form-group";
@@ -128,12 +196,12 @@
                     formGroup.appendChild(colmd);
                     $('#Tags').append(formGroup);
                     $(input).autocomplete({
-                        source: function (request, response) {
+                        source: function(request, response) {
                             $.ajax({
-                                url: '@Url.Action("GetTags","Tags")',
+                                url: '@Url.Action("GetTags", "Tag")',
                                 type: "Post",
-                                data: "data="+request.term,
-                                success: function (data) {
+                                data: "data=" + request.term,
+                                success: function(data) {
                                     data = data.split('#');
                                     console.log(data);
                                     response(data);
@@ -142,20 +210,18 @@
                         }
                     });
                 }
-                )
-            })
-
-
-        </script>
-        <script type="text/javascript">
-            tinymce.init({
-                selector: "textarea",
-                plugins: [
-                    " lists image charmap  preview anchor",
-                    "searchreplace  code ",
-                    "insertdatetime table contextmenu paste"
-                ],
-                toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
-            });
-        </script>
-    }
+            );
+        });
+    </script>
+    <script type="text/javascript">
+        tinymce.init({
+            selector: "textarea",
+            plugins: [
+                " lists image charmap  preview anchor",
+                "searchreplace  code ",
+                "insertdatetime table contextmenu paste"
+            ],
+            toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
+        });
+    </script>
+}

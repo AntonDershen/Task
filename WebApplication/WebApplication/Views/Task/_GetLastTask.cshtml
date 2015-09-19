@@ -1,14 +1,21 @@
 ﻿@model List<WebApplication.Models.ViewTaskModel>
-
 <div>
-    <h4>Last Task:</h4>
-    @foreach (var taskmodel in Model)
-    {
-        <dl class="dl-horizontal">
-            <dt>
-                <a href="@Url.Action("ViewTask", "Task", new { taskId = taskmodel.Id })">@taskmodel.Name</a>
-            </dt>
-        </dl>
-    }
+@foreach (var taskmodel in Model)
+{
+    <div class="panel-body">
+        <h2 class="margin-bottom-10">
+            <a href="@Url.Action("ViewTask", "Task", new {taskId = taskmodel.Id})">@taskmodel.Name</a>
+        </h2>
+        <p>@GlobalRes.Category:</p>
+        <h4 class="margin-bottom-10">@taskmodel.Category</h4>
+        <p>@GlobalRes.Complexity:</p>
+        <h4 class="margin-bottom-10">@taskmodel.Complexity</h4>
+    </div>      
+}
+    <div class="form-group text-right">
+        <button type="submit" class="templatemo-blue-button-litle">@GlobalRes.Change</button>
+        <button type="reset" class="templatemo-white-button-litle">@GlobalRes.Delete</button>
+    </div>
 </div>
+
 

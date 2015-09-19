@@ -9,7 +9,6 @@
 <div id="Rate"></div>
 <div id="Count">Count  @ViewBag.Count</div>
 <div>
-	<hr />
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.Name)
@@ -38,26 +37,31 @@
         <dt>
             @Html.DisplayNameFor(model => model.Condition)
         </dt>
-        
+
         <dd>
-         @Html.Raw(Model.Condition)
-         @if (ViewBag.IsSolved==false) { 
-        <input type="text" placeholder="Your Answer" id="answer" >
-        <div id="answerZone"></div>
-        <button class="btn-default" id="AnswerSubmit">Ответить</button>
-         }
-         else
-         {
-             <div>Ты это решал уже</div>
-         }
-         <input type="text" placeholder="Your Comment" id="comment">
-         <button class="btn-default" id="CommentSubmit">Добавить</button>
-         <button class="btn-default" id="UpdateComment">Обновить</button>
-         <div id="comments"></div>
-         @if(ViewBag.IsRate == true){
-         <input type="number" placeholder="Set Rate" id="rate">
-         <button class="btn-default" id="RateSubmit">Проголосовать</button>
-          }
+            @Html.Raw(Model.Condition)
+
+            @if (ViewBag.IsSolved == false)
+            {
+                <input type="text" placeholder="Your Answer" id="answer">
+                <div id="answerZone"></div>
+                <button class="btn-default" id="AnswerSubmit">Ответить</button>
+            }
+            else
+            {
+                <div>Ты это решал уже</div>
+            }
+            <input type="text" placeholder="Your Comment" id="comment">
+            <button class="btn-default" id="CommentSubmit">Добавить</button>
+            <button class="btn-default" id="UpdateComment">Обновить</button>
+            <div id="comments"></div>
+            @if (ViewBag.IsRate == true)
+            {
+                <input type="number" placeholder="Set Rate" id="rate">
+                <button class="btn-default" id="RateSubmit">Проголосовать</button>
+            }
+        </dd>
+
     </dl>
 </div>
 
@@ -135,10 +139,10 @@
             data: {
                 taskId: '@Model.Id'
             },
-            success: function (data) {
+            success: function(data) {
                 $('#comments').html(data);
             }
-        })
+        });
     });
     $('#RateSubmit').click(function () {
         $.ajax({

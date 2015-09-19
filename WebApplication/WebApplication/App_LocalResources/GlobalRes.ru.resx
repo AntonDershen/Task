@@ -124,10 +124,13 @@
     <value>Добавить</value>
   </data>
   <data name="AddDocument" xml:space="preserve">
-    <value>Добавить Документ</value>
+    <value>Добавить новую задачу</value>
   </data>
   <data name="Administrator" xml:space="preserve">
     <value>Администратор</value>
+  </data>
+  <data name="AllDocuments" xml:space="preserve">
+    <value>Все задачи</value>
   </data>
   <data name="Answer" xml:space="preserve">
     <value>Ответ</value>
@@ -144,6 +147,9 @@
   <data name="Change" xml:space="preserve">
     <value>Изменить</value>
   </data>
+  <data name="ChooseFile" xml:space="preserve">
+    <value>Выбрать файл</value>
+  </data>
   <data name="CompleteRegistration" xml:space="preserve">
     <value>Для завершения регистрации перейдите по ссылке</value>
   </data>
@@ -152,6 +158,9 @@
   </data>
   <data name="Condition" xml:space="preserve">
     <value>Состояние</value>
+  </data>
+  <data name="Conditions" xml:space="preserve">
+    <value>Условие</value>
   </data>
   <data name="ConfirmPassword" xml:space="preserve">
     <value>Подтвердите пароль</value>
@@ -163,7 +172,7 @@
     <value>Создать</value>
   </data>
   <data name="CreateDocument" xml:space="preserve">
-    <value>Создать Задание</value>
+    <value>Создать новую задачу</value>
   </data>
   <data name="Dark" xml:space="preserve">
     <value>Темная</value>
@@ -207,6 +216,9 @@
   <data name="Error" xml:space="preserve">
     <value>Ошибка</value>
   </data>
+  <data name="FileInput" xml:space="preserve">
+    <value>Загрузка файлов</value>
+  </data>
   <data name="Go" xml:space="preserve">
     <value>Поехали</value>
   </data>
@@ -219,14 +231,26 @@
   <data name="Languages" xml:space="preserve">
     <value>Языки</value>
   </data>
+  <data name="LatestTask" xml:space="preserve">
+    <value>Последняя задача</value>
+  </data>
   <data name="Light" xml:space="preserve">
     <value>Светлая</value>
   </data>
   <data name="LogIn" xml:space="preserve">
     <value>Войти</value>
   </data>
+  <data name="LogInForm" xml:space="preserve">
+    <value>Авторизация</value>
+  </data>
   <data name="LogOut" xml:space="preserve">
     <value>Выйти</value>
+  </data>
+  <data name="MaximumSize" xml:space="preserve">
+    <value>Максимальный размер файла 5 MB.</value>
+  </data>
+  <data name="MaxRateTask" xml:space="preserve">
+    <value>Наикрутейшая задача</value>
   </data>
   <data name="Menu" xml:space="preserve">
     <value>Меню</value>
@@ -234,11 +258,20 @@
   <data name="More" xml:space="preserve">
     <value>Подробнее</value>
   </data>
+  <data name="MyDocuments" xml:space="preserve">
+    <value>Мои задачи</value>
+  </data>
+  <data name="MyTasks" xml:space="preserve">
+    <value>Мои задачи</value>
+  </data>
   <data name="Name" xml:space="preserve">
     <value>Имя</value>
   </data>
   <data name="No" xml:space="preserve">
     <value>Нет</value>
+  </data>
+  <data name="OlderTask" xml:space="preserve">
+    <value>Первая задача</value>
   </data>
   <data name="Password" xml:space="preserve">
     <value>Пароль</value>
@@ -249,11 +282,14 @@
   <data name="Profile" xml:space="preserve">
     <value>Профиль</value>
   </data>
-  <data name="Properties" xml:space="preserve">
-    <value>Настройки</value>
-  </data>
   <data name="Register" xml:space="preserve">
     <value>Регистрация</value>
+  </data>
+  <data name="RegisterForm" xml:space="preserve">
+    <value>Регистрация</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>Очистить</value>
   </data>
   <data name="Roles" xml:space="preserve">
     <value>Роли</value>
@@ -266,6 +302,9 @@
   </data>
   <data name="SentFurtherInstructions" xml:space="preserve">
     <value>вам высланы дальнейшие инструкции по завершению регистрации</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Настройки</value>
   </data>
   <data name="SignUp" xml:space="preserve">
     <value>Зарегистрироваться</value>
@@ -282,6 +321,9 @@
   <data name="Themes" xml:space="preserve">
     <value>Темы</value>
   </data>
+  <data name="Title" xml:space="preserve">
+    <value>Название</value>
+  </data>
   <data name="User" xml:space="preserve">
     <value>Пользователь</value>
   </data>
@@ -296,5 +338,11 @@
   </data>
   <data name="YouAreNotLoggedIn" xml:space="preserve">
     <value>Вы не авторизованы</value>
+  </data>
+  <data name="LastTasks" xml:space="preserve">
+    <value>Последних Задач</value>
+  </data>
+  <data name="TegsCloud" xml:space="preserve">
+    <value>Облако Тегов</value>
   </data>
 </root>

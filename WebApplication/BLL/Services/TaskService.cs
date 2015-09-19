@@ -54,6 +54,16 @@ namespace BusinessLogic.Services
             }
             catch { return null; }
         }
+        public IEnumerable<TaskEntity> GetLastTask(int count, int userId)
+        {
+            try
+            {
+                int taskCount = unitOfWork.TaskRepository.GetUserTaskCount(userId);
+                return unitOfWork.TaskRepository.GetAll(x=>x.UserId == userId, taskCount - count, count)
+                    .Select(x => x.ToTaskEntity()).ToList();
+            }
+            catch { return null; }
+        }
         public void UpdateRate(int taskId, int rate,int userId)
         {
             unitOfWork.TaskRepository.UpdateRate(taskId, rate, userId);
@@ -62,6 +72,11 @@ namespace BusinessLogic.Services
         public TaskEntity GetMaxRate()
         {
             return unitOfWork.TaskRepository.GetMaxRate().ToTaskEntity();
+        }
+
+        public TaskEntity GetMaxRate(int userId)
+        {
+            return unitOfWork.TaskRepository.GetUserMaxRate(userId).ToTaskEntity();
         }
         public double GetRate(int taskId)
         {

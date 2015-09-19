@@ -2,34 +2,61 @@
 <html lang="en">
 <head>
 
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width"/>
     <title>@ViewBag.Title</title>
 
     @if (Request.Cookies["style"] == null)
     {
-        <link href="~/Content/bootstrapLight.css" rel="stylesheet" />
+        <link href="~/Content/bootstrapDark.css" rel="stylesheet"/>
     }
     else if (Request.Cookies["style"].Value == "1")
     {
-        <link href="~/Content/bootstrapDark.css" rel="stylesheet" />
+        <link href="~/Content/bootstrapDark.css" rel="stylesheet"/>
     }
     else if (Request.Cookies["style"].Value == "2")
     {
-        <link href="~/Content/bootstrapLight.css" rel="stylesheet" />
+        <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     }
+
+
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet"/>
+    <link href="~/Content/templatemo-style.css" rel="stylesheet"/>
+    <link href="~/Content/style.css" rel="stylesheet" />
 
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/styles")
+    @Scripts.Render("~/bundles/jqueryval")
 
+    <script src="~/Scripts/templatemo-script.js"></script>
+    <script src="~/Scripts/setCookie.js"></script>
+    <script src="~/Scripts/tiny/tinymce/tinymce.min.js"></script>
+    <script src="~/Scripts/dropZone.js"></script>
+    <script src="~/Scripts/bootstrap-filestyle.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('.nav li.dropdown').hover(function () {
+                $(this).addClass('open');
+            }, function () {
+                $(this).removeClass('open');
+            });
+        });
+    </script>
 </head>
+
 <body>
-    @Html.Partial("_Menu")
-    <div class="container">
-        @RenderBody()
+    <div class="templatemo-flex-row">
+        @Html.Partial("_Menu")
+        <div class="templatemo-content col-1 light-gray-bg">
+            @Html.Partial("_Navbar")
+            <div class="templatemo-content-container">
+                @RenderBody()
+            </div>
+        </div>
+        @RenderSection("scripts", required: false)
     </div>
-    @RenderSection("scripts", required: false)
 </body>
 </html>
