@@ -12,19 +12,26 @@ namespace WebApplication.Models
     [Culture]
     public class CreateTaskModel
     {
+       
         public int Id { get; set; }
         [Display(ResourceType = typeof(GlobalRes), Name = "Name")]
+        [Required]
         public string Name { get; set; }
         [Display(ResourceType = typeof(GlobalRes), Name = "Complexity")]
+        [Required]
         public int Complexity { get; set; }
         [Display(ResourceType = typeof(GlobalRes), Name = "Category")]
+        [Required]
         public string Category { get; set; }
         [Display(ResourceType = typeof(GlobalRes), Name = "Condition")]
+        [Required]
         [AllowHtml]
         public string Condition { get; set; }
         [Display(ResourceType = typeof(GlobalRes), Name = "Tag")]
+        [Required]
         public List<string> Tag { get; set; }
         [Display(ResourceType = typeof(GlobalRes), Name = "Answers")]
+        [Required]
         public List<string> Answers { get; set; }
     }
     public class ViewTaskModel

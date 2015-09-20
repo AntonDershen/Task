@@ -36,9 +36,7 @@ namespace WebApplication.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult LogIn(LoginModel model)
         {
-            if (ModelState.IsValid)
-            {
-                
+           
                 if (ModelState.IsValid)
                 {
                     if (authService.CheckForm(model.ToAuthorizationEntity()))
@@ -48,8 +46,6 @@ namespace WebApplication.Controllers
                     }
                     ModelState.AddModelError("", "");
                 }
-            }
-
             return View(model);
         }
         [HttpGet]
@@ -113,7 +109,7 @@ namespace WebApplication.Controllers
             m.IsBodyHtml = true;
             SmtpClient smtp = new System.Net.Mail.SmtpClient("smtp.gmail.com", 587);
             // login and email
-            smtp.Credentials = new System.Net.NetworkCredential("dershen95@gmail.com", "Dershen2013");
+            smtp.Credentials = new System.Net.NetworkCredential("dershen95@gmail.com", "antonDershen");
             smtp.EnableSsl = true;
             smtp.Send(m);
         }

@@ -220,7 +220,6 @@
     <Content Include="Views\Task\_ViewTaskList.cshtml" />
     <Content Include="Views\Task\ViewTaskList.cshtml" />
     <Content Include="Views\Task\_GetLastTask.cshtml" />
-    <Content Include="Views\Comment\_CommentView.cshtml" />
     <Content Include="Views\Rate\_TaskRate.cshtml" />
     <Content Include="Views\Rate\_MaxRate.cshtml" />
     <Content Include="Views\Tag\_TaskTagView.cshtml" />
@@ -230,6 +229,11 @@
     <Content Include="Views\Search\Search.cshtml" />
     <Content Include="Views\Search\_Preview.cshtml" />
     <Content Include="Views\Shared\_Navbar.cshtml" />
+    <Content Include="Views\Search\_SearchTask.cshtml" />
+    <Content Include="Views\Client\GetRandomTask.cshtml" />
+    <Content Include="Views\Client\LogIn.cshtml" />
+    <Content Include="Views\Client\ViewTask.cshtml" />
+    <Content Include="Views\Comment\_Comment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_LocalResources\GlobalRes.Designer.cs">
@@ -249,10 +253,12 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AnswerController.cs" />
+    <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RateController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\TagController.cs" />
     <Compile Include="Controllers\TaskController.cs" />
     <Compile Include="Filters\CultureAttribute.cs" />

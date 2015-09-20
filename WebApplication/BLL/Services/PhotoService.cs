@@ -20,5 +20,9 @@ namespace BusinessLogic.Services
             unitOfWork.Save();
             return unitOfWork.PhotoRepository.Get(x => x.Context == photo).Id;
         }
+        public byte[] FindPhoto(int photoId)
+        {
+            return unitOfWork.PhotoRepository.Find(photoId).Context;
+        }
     }
 }

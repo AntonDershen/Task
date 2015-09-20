@@ -9,5 +9,6 @@ namespace BusinessLogic.Interface.Services
     public interface IPhotoService
     {
          int CreatePhoto(byte[] photo);
+         byte[] FindPhoto(int photoId);
     }
 }

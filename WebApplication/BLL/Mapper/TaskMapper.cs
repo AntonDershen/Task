@@ -22,7 +22,8 @@ namespace BusinessLogic.Mapper
                         Name = task.Name,
                         TagsId = task.Tags.Select(x => x.Id).ToList(),
                         Condition = task.Condition,
-                        Activate = task.Activate
+                        Activate = task.Activate,
+                        PhotoId = task.Photos.Select(x=>x.Id).ToList()
 
                     };
             }
