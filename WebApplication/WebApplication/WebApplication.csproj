@@ -146,12 +146,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\Database.mdf" />
+    <Content Include="App_Data\Database_log.ldf" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrapDark.css" />
-    <Content Include="Content\bootstrapLight.css" />
     <Content Include="Content\font-awesome.min.css" />
-    <Content Include="Content\templatemo-style.css" />
-    <Content Include="Content\style.css" />
+    <Content Include="C:\Users\PC\Desktop\style.css">
+      <Link>Content\style.css</Link>
+    </Content>
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -188,7 +190,7 @@
     <Content Include="Scripts\jquery-migrate-1.2.1.min.js" />
     <Content Include="Scripts\jquery.tagcloud.js" />
     <Content Include="Scripts\setCookie.js" />
-    <Content Include="Scripts\templatemo-script.js" />
+    <Content Include="Scripts\style-script.js" />
     <Content Include="Scripts\tiny\tinymce\license.txt" />
     <Content Include="Scripts\tiny\tinymce\skins\lightgray\content.inline.min.css" />
     <Content Include="Scripts\tiny\tinymce\skins\lightgray\content.min.css" />
@@ -310,7 +312,6 @@
     <Content Include="Views\Shared\_Menu.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Media\Site\" />
     <Folder Include="Views\Answer\" />
   </ItemGroup>

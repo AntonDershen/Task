@@ -70,11 +70,29 @@ namespace WebApplication.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Achievements.
+        /// </summary>
+        public static string Achievements {
+            get {
+                return ResourceManager.GetString("Achievements", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add.
         /// </summary>
         public static string Add {
             get {
                 return ResourceManager.GetString("Add", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add Comment.
+        /// </summary>
+        public static string AddComment {
+            get {
+                return ResourceManager.GetString("AddComment", resourceCulture);
             }
         }
         
@@ -124,6 +142,15 @@ namespace WebApplication.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Author.
+        /// </summary>
+        public static string Author {
+            get {
+                return ResourceManager.GetString("Author", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Available to all.
         /// </summary>
         public static string AvailableToAll {
@@ -156,6 +183,15 @@ namespace WebApplication.App_LocalResources {
         public static string ChooseFile {
             get {
                 return ResourceManager.GetString("ChooseFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Comments.
+        /// </summary>
+        public static string Comments {
+            get {
+                return ResourceManager.GetString("Comments", resourceCulture);
             }
         }
         
@@ -210,6 +246,15 @@ namespace WebApplication.App_LocalResources {
         public static string Content {
             get {
                 return ResourceManager.GetString("Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Count.
+        /// </summary>
+        public static string Count {
+            get {
+                return ResourceManager.GetString("Count", resourceCulture);
             }
         }
         
@@ -565,6 +610,24 @@ namespace WebApplication.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Rate.
+        /// </summary>
+        public static string Rate {
+            get {
+                return ResourceManager.GetString("Rate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rate Task.
+        /// </summary>
+        public static string RateSet {
+            get {
+                return ResourceManager.GetString("RateSet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Register.
         /// </summary>
         public static string Register {
@@ -664,6 +727,15 @@ namespace WebApplication.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Task.
+        /// </summary>
+        public static string Task {
+            get {
+                return ResourceManager.GetString("Task", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tegs Cloud.
         /// </summary>
         public static string TegsCloud {
@@ -696,6 +768,15 @@ namespace WebApplication.App_LocalResources {
         public static string Title {
             get {
                 return ResourceManager.GetString("Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update.
+        /// </summary>
+        public static string Update {
+            get {
+                return ResourceManager.GetString("Update", resourceCulture);
             }
         }
         
@@ -741,6 +822,15 @@ namespace WebApplication.App_LocalResources {
         public static string YouAreNotLoggedIn {
             get {
                 return ResourceManager.GetString("YouAreNotLoggedIn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your Answer.
+        /// </summary>
+        public static string YourAnswer {
+            get {
+                return ResourceManager.GetString("YourAnswer", resourceCulture);
             }
         }
     }

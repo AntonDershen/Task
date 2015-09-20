@@ -21,8 +21,7 @@
 
 
     <link href="~/Content/font-awesome.min.css" rel="stylesheet"/>
-    <link href="~/Content/templatemo-style.css" rel="stylesheet"/>
-    <link href="~/Content/style.css" rel="stylesheet" />
+    <link href="~/Content/style.css" rel="stylesheet"/>
 
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
@@ -30,12 +29,11 @@
     @Scripts.Render("~/bundles/styles")
     @Scripts.Render("~/bundles/jqueryval")
 
-    <script src="~/Scripts/templatemo-script.js"></script>
+    <script src="~/Scripts/style-script.js"></script>
     <script src="~/Scripts/setCookie.js"></script>
     <script src="~/Scripts/tiny/tinymce/tinymce.min.js"></script>
     <script src="~/Scripts/dropZone.js"></script>
     <script src="~/Scripts/bootstrap-filestyle.min.js"></script>
-
     <script>
         $(document).ready(function () {
             $('.nav li.dropdown').hover(function () {
@@ -48,11 +46,11 @@
 </head>
 
 <body>
-    <div class="templatemo-flex-row">
+    <div class="style-flex-row">
         @Html.Partial("_Menu")
-        <div class="templatemo-content col-1 light-gray-bg">
+        <div class="style-content col-1 light-gray-bg">
             @Html.Partial("_Navbar")
-            <div class="templatemo-content-container">
+            <div class="style-content-container">
                 @RenderBody()
             </div>
         </div>

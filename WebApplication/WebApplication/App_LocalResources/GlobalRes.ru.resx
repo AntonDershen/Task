@@ -345,4 +345,34 @@
   <data name="TegsCloud" xml:space="preserve">
     <value>Облако Тегов</value>
   </data>
+  <data name="Achievements" xml:space="preserve">
+    <value>Достижения</value>
+  </data>
+  <data name="Author" xml:space="preserve">
+    <value>Автор</value>
+  </data>
+  <data name="Rate" xml:space="preserve">
+    <value>Рейтинг</value>
+  </data>
+  <data name="Task" xml:space="preserve">
+    <value>Задача</value>
+  </data>
+  <data name="YourAnswer" xml:space="preserve">
+    <value>Ваш ответ</value>
+  </data>
+  <data name="Count" xml:space="preserve">
+    <value>Количество решивших</value>
+  </data>
+  <data name="AddComment" xml:space="preserve">
+    <value>Добавить Комментарий</value>
+  </data>
+  <data name="Comments" xml:space="preserve">
+    <value>Комментарии</value>
+  </data>
+  <data name="RateSet" xml:space="preserve">
+    <value>Оцените Задачу</value>
+  </data>
+  <data name="Update" xml:space="preserve">
+    <value>Обновить</value>
+  </data>
 </root>

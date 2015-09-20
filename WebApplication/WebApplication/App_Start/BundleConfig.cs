@@ -16,7 +16,7 @@ namespace WebApplication
 
             bundles.Add(new ScriptBundle("~/bundles/scripts").Include(
                       "~/Scripts/respond.js",
-                      "~/Scripts/templatemo-script.js"));
+                      "~/Scripts/style-script.js"));
 
             bundles.Add(new StyleBundle("~/bundles/styles").Include(
                       "~/Content/style.css"));
