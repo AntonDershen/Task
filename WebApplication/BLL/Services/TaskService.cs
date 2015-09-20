@@ -44,12 +44,12 @@ namespace BusinessLogic.Services
                .ToList();
            return tasks;
         }
-        public IEnumerable<TaskEntity> GetLastTask(int count)
+        public IEnumerable<TaskEntity> GetLastTask(int count, string category)
         {
             try
             {
                 int taskCount = unitOfWork.TaskRepository.GetTaskCount();
-                return unitOfWork.TaskRepository.GetAll(x => x.Id > 0, taskCount - count, count)
+                return unitOfWork.TaskRepository.GetAll(x => x.Category == category, taskCount - count, count)
                     .Select(x => x.ToTaskEntity()).ToList();
             }
             catch { return null; }
@@ -81,6 +81,18 @@ namespace BusinessLogic.Services
         public double GetRate(int taskId)
         {
             return unitOfWork.TaskRepository.GetRate(taskId);
+        }
+        public IEnumerable<TaskEntity> Search(string input)
+        {
+            var searchResult = unitOfWork.TaskRepository.Search(input);
+            if(searchResult!=null)
+             return  searchResult.Select(x=>x.ToTaskEntity());
+            return null;
+        }
+        public IEnumerable<TaskEntity> GetRandomTask(int count, int userId)
+        {
+
+            return unitOfWork.TaskRepository.GetRandomTask(count, userId).Select(x=>x.ToTaskEntity());
         }
         public IEnumerable<TaskEntity> GetUserTasks(int userId)
         {

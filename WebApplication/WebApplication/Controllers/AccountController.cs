@@ -36,9 +36,7 @@ namespace WebApplication.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult LogIn(LoginModel model)
         {
-            if (ModelState.IsValid)
-            {
-                
+           
                 if (ModelState.IsValid)
                 {
                     if (authService.CheckForm(model.ToAuthorizationEntity()))
@@ -48,8 +46,6 @@ namespace WebApplication.Controllers
                     }
                     ModelState.AddModelError("", "");
                 }
-            }
-
             return View(model);
         }
         [HttpGet]

@@ -1,0 +1,6 @@
+﻿@model List<WebApplication.Models.ViewTaskModel>
+
+@foreach(var search in Model)
+{
+    <a href="@Url.Action("ViewTask", "Task", new {taskId = search.Id })">@search.Name</a>
+}

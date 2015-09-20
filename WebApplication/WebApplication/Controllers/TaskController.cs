@@ -91,11 +91,11 @@ namespace WebApplication.Controllers
             return PartialView("_ViewTaskList",taskViewModel);
         }
         [HttpPost]
-        public ActionResult GetLastTask(int count)
+        public ActionResult GetLastTask(int count,string category)
         {
             try
             {
-                return PartialView("_GetLastTask", taskService.GetLastTask(count).Select(x => x.ToViewTaskModel()).ToList());
+                return PartialView("_GetLastTask", taskService.GetLastTask(count,category).Select(x => x.ToViewTaskModel()).ToList());
             }
             catch
             {

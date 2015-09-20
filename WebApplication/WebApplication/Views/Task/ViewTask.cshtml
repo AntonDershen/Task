@@ -62,7 +62,6 @@
             <input type="text" placeholder="Your Comment" id="comment">
             <button class="btn-default" id="CommentSubmit">Add Comment</button>
             <button class="btn-default" id="UpdateComment">Update Comment</button>
-            <div id="comments"></div>
             @if (ViewBag.IsRate == true)
             {
                 <input type="number" placeholder="Set Rate" id="rate">
@@ -71,10 +70,12 @@
         </dd>
 
     </dl>
+    <div id="comments"></div>
 </div>
 
 <script>
     $(document).ready(function () {
+    var count = 0;
         $.ajax({
             type: "Post",
             url: '@Url.Action("GetTagsById", "Tag")',
@@ -96,6 +97,20 @@
             },
             success: function (data) {
                 $('#Rate').html(data);
+            }
+        });
+        $.ajax({
+            type: "Post",
+            url: '@Url.Action("GetComment", "Comment")',
+            data: {
+                taskId: '@Model.Id',
+                begin : 0,
+                count :10
+            },
+            success: function(data) {
+                $('#comments').html(data);
+                count += 10;
+                console.log(data);
             }
         });
    });
@@ -143,12 +158,14 @@
     $('#UpdateComment').click(function () {
         $.ajax({
             type: "Post",
-            url: '@Url.Action("GetTaskComment", "Comment")',
+            url: '@Url.Action("GetComment", "Comment")',
             data: {
-                taskId: '@Model.Id'
+                taskId: '@Model.Id',
+                begin :count,
+                count : count +10
             },
             success: function(data) {
-                $('#comments').html(data);
+                $('#comments').append(data);
             }
         });
     });

@@ -26,27 +26,8 @@
     <h3 class="text-uppercase margin-bottom-10">5 @GlobalRes.LastTasks</h3>
     <img src="~/Media/python.jpg" alt="Bicycle" class="img-circle img-thumbnail"/>
 
-    <div class="templatemo-content-widget no-padding">
-        <div class="panel panel-default table-responsive">
-            <table class="table table-striped table-bordered templatemo-user-table">
-                <thead>
-                <tr>
-                    <td><a href="" class="white-text templatemo-sort-by"># <span class="caret"></span></a></td>
-                    <td><a href="" class="white-text templatemo-sort-by">@GlobalRes.Title <span class="caret"></span></a></td>
-                    <td><a href="" class="white-text templatemo-sort-by">@GlobalRes.Complexity <span class="caret"></span></a></td>
-                    <td><a href="" class="white-text templatemo-sort-by">@GlobalRes.Tag <span class="caret"></span></a></td>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>1.</td>
-                    <td>1223144</td>
-                    <td>244</td>
-                    <td>js; company; com</td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
+    <div class="templatemo-content-widget no-padding" id="python">
+    
     </div>
 </div>
 
@@ -55,27 +36,8 @@
     <h3 class="text-uppercase margin-bottom-10">5 @GlobalRes.LastTasks</h3>
     <img src="~/Media/csharp.png" alt="Bicycle" class="img-circle img-thumbnail"/>
 
-    <div class="templatemo-content-widget no-padding">
-        <div class="panel panel-default table-responsive">
-            <table class="table table-striped table-bordered templatemo-user-table">
-                <thead>
-                <tr>
-                    <td><a href="" class="white-text templatemo-sort-by"># <span class="caret"></span></a></td>
-                    <td><a href="" class="white-text templatemo-sort-by">@GlobalRes.Title <span class="caret"></span></a></td>
-                    <td><a href="" class="white-text templatemo-sort-by">@GlobalRes.Complexity <span class="caret"></span></a></td>
-                    <td><a href="" class="white-text templatemo-sort-by">@GlobalRes.Tag <span class="caret"></span></a></td>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>1.</td>
-                    <td>1223144</td>
-                    <td>244</td>
-                    <td>js; company; com</td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
+    <div class="templatemo-content-widget no-padding" id="c">
+    
     </div>
 </div>
 
@@ -84,27 +46,7 @@
     <h3 class="text-uppercase margin-bottom-10">5 @GlobalRes.LastTasks</h3>
     <img src="~/Media/java.jpg" alt="Bicycle" class="img-circle img-thumbnail"/>
 
-    <div class="templatemo-content-widget no-padding">
-        <div class="panel panel-default table-responsive">
-            <table class="table table-striped table-bordered templatemo-user-table">
-                <thead>
-                <tr>
-                    <td><a href="" class="white-text templatemo-sort-by"># <span class="caret"></span></a></td>
-                    <td><a href="" class="white-text templatemo-sort-by">@GlobalRes.Title <span class="caret"></span></a></td>
-                    <td><a href="" class="white-text templatemo-sort-by">@GlobalRes.Complexity <span class="caret"></span></a></td>
-                    <td><a href="" class="white-text templatemo-sort-by">@GlobalRes.Tag <span class="caret"></span></a></td>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>1.</td>
-                    <td>1223144</td>
-                    <td>244</td>
-                    <td>js; company; com</td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
+    <div class="templatemo-content-widget no-padding" id="java">
     </div>
 </div>
 
@@ -113,27 +55,8 @@
     <h3 class="text-uppercase margin-bottom-10">5 @GlobalRes.LastTasks</h3>
     <img src="~/Media/ruby.png" alt="Bicycle" class="img-circle img-thumbnail"/>
 
-    <div class="templatemo-content-widget no-padding">
-        <div class="panel panel-default table-responsive">
-            <table class="table table-striped table-bordered templatemo-user-table">
-                <thead>
-                <tr>
-                    <td><a href="" class="white-text templatemo-sort-by"># <span class="caret"></span></a></td>
-                    <td><a href="" class="white-text templatemo-sort-by">@GlobalRes.Title <span class="caret"></span></a></td>
-                    <td><a href="" class="white-text templatemo-sort-by">@GlobalRes.Complexity <span class="caret"></span></a></td>
-                    <td><a href="" class="white-text templatemo-sort-by">@GlobalRes.Tag <span class="caret"></span></a></td>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>1.</td>
-                    <td>1223144</td>
-                    <td>244</td>
-                    <td>js; company; com</td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
+    <div class="templatemo-content-widget no-padding" id="ruby">
+       
     </div>
 </div>
 
@@ -150,9 +73,45 @@
         $.ajax({
             url: '@Url.Action("GetLastTask", "Task")',
             type: "POST",
-            data: "count=" + 10,
+            data: {
+                count: 5,
+                category: "c#"
+            },
             success: function(msg) {
-                $('#partialLastTask').html(msg);
+                $('#c').html(msg);
+            }
+        });
+        $.ajax({
+            url: '@Url.Action("GetLastTask", "Task")',
+            type: "POST",
+            data: {
+                count: 5,
+                category: "ruby"
+            },
+            success: function (msg) {
+                $('#ruby').html(msg);
+            }
+        });
+        $.ajax({
+            url: '@Url.Action("GetLastTask", "Task")',
+            type: "POST",
+            data: {
+                count: 5,
+                category: "java"
+            },
+            success: function (msg) {
+                $('#java').html(msg);
+            }
+        });
+        $.ajax({
+            url: '@Url.Action("GetLastTask", "Task")',
+            type: "POST",
+            data: {
+                count: 5,
+                category: "python"
+            },
+            success: function (msg) {
+                $('#python').html(msg);
             }
         });
         $.ajax({

@@ -14,5 +14,7 @@ namespace DataAccess.Interface.Repository
         Task GetMaxRate();
         Task GetUserMaxRate(int userId);
         void UpdateRate(int taskId,int rate,int userId);
+        IEnumerable<Task> Search(string input);
+        IEnumerable<Task> GetRandomTask(int count, int userId);
     }
 }

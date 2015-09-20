@@ -1,0 +1,93 @@
+﻿@model WebApplication.Models.ViewTaskModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ViewTask</title>
+
+    <link href="~/Content/bootstrapLight.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.9.1.js"></script>
+</head>
+<body>
+    <div>
+        <h4>@Model.Name</h4>
+    	<hr />
+        <dl class="dl-horizontal">
+            <dd>
+                @Html.DisplayFor(model => model.Complexity)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Category)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Category)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Condition)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Condition)
+            </dd>
+    
+        </dl>
+    </div>
+    @if (ViewBag.IsSolved == false)
+    {
+        if (ViewBag.CreateUserId != ViewBag.UserId)
+        {
+            <input type="text" placeholder="Your Answer" id="answer">
+            <div id="answerZone"></div>
+            <button class="btn-default" id="AnswerSubmit">Ответить</button>
+        }
+        else
+        {
+            <div>It`s your task</div>
+        }
+    }
+    else
+    {
+        <div>You are answer</div>
+    }
+    <p>
+        @Html.ActionLink("Go Back", "Index", "Client")
+    </p>
+</body>
+</html>
+<script>
+    $('#AnswerSubmit').click(function () {
+        $.ajax({
+            type: "Post",
+            url: '@Url.Action("CheckAnswer","Answer")',
+            data: {
+                taskId: '@Model.Id',
+                answer: $('#answer').val()
+            },
+            success: function (data) {
+                if (data == 'True') {
+                    console.log(1);
+                    var element = document.createElement("span");
+                    element.className = "glyphicon glyphicon-ok"
+                    $('#answerZone').html(element);
+                    $('#answer').hide();
+                    $('#AnswerSubmit').hide();
+
+                }
+                else {
+                    var element = document.createElement("span");
+                    element.className = "glyphicon glyphicon-remove"
+                    $('#answerZone').html(element);
+                }
+            }
+        })
+    });
+</script>

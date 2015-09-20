@@ -119,6 +119,31 @@ namespace DataAccess.Repository
                 return null;
             }
         }
+        public IEnumerable<Task> Search(string input)
+        {
+            var searchResults = Lucene.LuceneSearch.Search(input);
+            foreach (var searchResult in searchResults)
+            {
+                searchResult.Answers = new List<Answer>();
+                searchResult.Comments = new List<Comment>();
+                searchResult.Photos = new List<Photo>();
+                searchResult.Tags = new List<Tag>();
+                searchResult.UserAnswers = new List<UserAnswers>();
+                searchResult.Users = new List<User>();
+            }
+            return searchResults;
+        }
+        public IEnumerable<Task> GetRandomTask(int count, int userId){
+            var tasks = context.Set<Task>().Where(x => x.UserId != userId).ToList();
+            if (tasks.Count <= count)
+                return tasks;
+            else
+            {
+                Random rand = new Random();
+                int number = (int)(rand.NextDouble()%(tasks.Count - count));
+                return tasks.Skip(number).Take(count).ToList();
+            }
+        }
         public void Dispose()
         {
             context.Dispose();
