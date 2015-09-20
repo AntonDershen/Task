@@ -1,4 +1,4 @@
-﻿@model WebApplication.Models.ViewTaskModel
+@model WebApplication.Models.ViewTaskModel
 
 @{
     ViewBag.Title = "View Task";
@@ -37,28 +37,36 @@
         <dt>
             @Html.DisplayNameFor(model => model.Condition)
         </dt>
+        <dt>
+            <img src ="data:image/png;base64,@ViewBag.Photo" /></dt>
 
         <dd>
             @Html.Raw(Model.Condition)
 
             @if (ViewBag.IsSolved == false)
             {
+                if (ViewBag.CreateUserId != ViewBag.UserId) { 
                 <input type="text" placeholder="Your Answer" id="answer">
                 <div id="answerZone"></div>
                 <button class="btn-default" id="AnswerSubmit">Ответить</button>
+                }
+                else
+                {
+                    <div>It`s your task</div>
+                }
             }
             else
             {
-                <div>Ты это решал уже</div>
+                <div>You are answer</div>
             }
             <input type="text" placeholder="Your Comment" id="comment">
-            <button class="btn-default" id="CommentSubmit">Добавить</button>
-            <button class="btn-default" id="UpdateComment">Обновить</button>
+            <button class="btn-default" id="CommentSubmit">Add Comment</button>
+            <button class="btn-default" id="UpdateComment">Update Comment</button>
             <div id="comments"></div>
             @if (ViewBag.IsRate == true)
             {
                 <input type="number" placeholder="Set Rate" id="rate">
-                <button class="btn-default" id="RateSubmit">Проголосовать</button>
+                <button class="btn-default" id="RateSubmit">Prog</button>
             }
         </dd>
 

@@ -8,7 +8,7 @@ using WebApplication.Models;
 using WebApplication.Filters;
 using WebApplication.Infrastructure.Mappers;
 using System.IO;
-
+using System.Text;
 namespace WebApplication.Controllers
 {
     [Culture]
@@ -69,9 +69,14 @@ namespace WebApplication.Controllers
         {
             ViewBag.Count = answerService.CountOfTrueAnswer(taskId);
             ViewBag.IsRate = answerService.IsRated(taskId, userService.GetUserId(User.Identity.Name));
-            var task = taskService.Find(taskId).ToViewTaskModel();
+            var task = taskService.Find(taskId);
             ViewBag.IsSolved = answerService.IsSolved(taskId, userService.GetUserId(User.Identity.Name));
-            return View(task);
+            ViewBag.CreateUserId = task.CreateUserId;
+            ViewBag.UserId = userService.GetUserId(User.Identity.Name);
+            List<byte> photo = photoService.FindPhoto(task.PhotoId[0]).ToList();
+            ViewBag.Photo = Encoding.Default.GetString(photo.ToArray(),0,photo.Count);
+             
+            return View(task.ToViewTaskModel());
         }
         public ActionResult ViewTaskList(string categoryName)
         {
