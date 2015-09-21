@@ -673,11 +673,29 @@ namespace WebApplication.App_LocalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Search.
+        /// </summary>
+        public static string Search {
+            get {
+                return ResourceManager.GetString("Search", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Search....
         /// </summary>
         public static string SearchFor {
             get {
                 return ResourceManager.GetString("SearchFor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search Result.
+        /// </summary>
+        public static string SearchRes {
+            get {
+                return ResourceManager.GetString("SearchRes", resourceCulture);
             }
         }
         

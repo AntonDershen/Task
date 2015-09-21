@@ -1,8 +1,26 @@
-﻿@using CourseTask.Models
-@model Offer
+﻿@model List<WebApplication.Models.ViewTaskModel>
 
-<tr onclick="location.href='@Url.Action("ShowPage", "OfferPage", new {id = Model.Id})'">
-    <td>@Model.Title</td>
-    <td>@Model.Price</td>
-    <td>@Model.User.UserName</td>
-</tr>
+<p>
+    <div>
+        <div class="col-xs-12 row">
+                <div class="col-xs-offset-1 col-xs-10">
+                    <table class="table table-striped table-hover ">
+                        <thead>
+                            <tr>
+                                <td class="col-xs-6">@GlobalRes.Name</td>
+                                <td class="col-xs-2">@GlobalRes.Tag</td>
+                                <td class="col-xs-4">@GlobalRes.Category</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach (var search in Model)
+                            {
+                                Html.RenderPartial("_SearchTask");
+                            }
+                        </tbody>
+                    </table>
+                </div>
+        </div>
+    </div>
+</p>

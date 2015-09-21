@@ -1,6 +1,19 @@
 ﻿@model List<WebApplication.Models.ViewTaskModel>
 
-@foreach(var search in Model)
-{
-    <a href="@Url.Action("ViewTask", "Task", new {taskId = search.Id })">@search.Name</a>
-}
+<div class="panel panel-default table-responsive">
+    <table class="table table-striped table-bordered style-user-table">
+        <thead>
+            <tr>
+                <td><a href="" class="white-text">@GlobalRes.Title  </a></td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var taskmodel in Model)
+            {
+                <tr>
+                    <td><a href="@Url.Action("ViewTask", "Task", new { taskId = taskmodel.Id})">@taskmodel.Name</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

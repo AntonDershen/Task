@@ -375,4 +375,10 @@
   <data name="Update" xml:space="preserve">
     <value>Обновить</value>
   </data>
+  <data name="Search" xml:space="preserve">
+    <value>Поиск</value>
+  </data>
+  <data name="SearchRes" xml:space="preserve">
+    <value>Результаты поиска</value>
+  </data>
 </root>

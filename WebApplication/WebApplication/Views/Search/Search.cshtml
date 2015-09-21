@@ -1,39 +1,17 @@
-﻿
+﻿WebApplication.Models.ViewTaskModel
 @{
-    ViewBag.Title = "Search";
+    ViewBag.Title = GlobalRes.Search;
 }
-
-<h2>Search</h2>
-
-<div class="row">
-    <div class="col-lg-8 col-lg-offset-2">
-        <div class="list-group">
-            <a class="list-group-item">
-                <h4 align="center" class="list-group-item-heading">
-                    <i class="glyphicon glyphicon-search"></i>
-                    <span style="margin-left: 5px"> @ViewBag.SearchQuery</span>
-                </h4>
-            </a>
-        </div>
-        <ul class="nav nav-tabs" style="margin-bottom: 15px;">
-            @if (ViewBag.SearchMethod == "content")
-            {
-                <li class="active"><a href="#content" data-toggle="tab">@Resources.Resource.Content</a></li>
-                <li><a href="#tag" data-toggle="tab">@Resources.Resource.Tag</a></li>
-                <li><a href="#user" data-toggle="tab">@Resources.Resource.User</a></li>
-            }
-            else if (ViewBag.SearchMethod == "tag")
-            {
-                <li><a href="#content" data-toggle="tab">@Resources.Resource.Content</a></li>
-                <li class="active"><a href="#tag" data-toggle="tab">@Resources.Resource.Tag</a></li>
-                <li><a href="#user" data-toggle="tab">@Resources.Resource.User</a></li>
-            }
-            else if (ViewBag.SearchMethod == "user")
-            {
-                <li><a href="#content" data-toggle="tab">@Resources.Resource.Content</a></li>
-                <li><a href="#tag" data-toggle="tab">@Resources.Resource.Tag</a></li>
-                <li class="active"><a href="#user" data-toggle="tab">@Resources.Resource.User</a></li>
-            }
-        </ul>
+<div class="style-title-on-page">
+    <h1>@GlobalRes.SearchRes</h1>
+</div>
+<div class="style-content-widget col-1 text-center">
+    <h2>
+        <i class="glyphicon glyphicon-search"></i>@ViewBag.SearchQuery
+    </h2>
+    @*Выше вевести что ищем можно тут повесить еще одно поле ввода поиска*@
+</div>
+<div class="style-content-widget col-1">
+    <div class="style-content-widget no-padding" id="search">
     </div>
 </div>
