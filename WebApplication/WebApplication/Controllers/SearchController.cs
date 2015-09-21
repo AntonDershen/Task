@@ -20,15 +20,20 @@ namespace WebApplication.Controllers
         }
         public ActionResult Search(string str)
         {
-            return View(str);
+            try
+            {
+                var task = this.SearchTask(str).Select(x => x.ToViewTaskModel()).ToList();
+                return View(task);
+            }
+            catch
+            {
+                return View(new List<ViewTaskModel>());
+            }
         }
-        [HttpPost]
-        public ActionResult SearhTask(string str)
+       
+        private IEnumerable<TaskEntity> SearchTask(string str)
         {
-            var searchResults = taskService.Search(str);
-            if(searchResults!=null)
-                return PartialView("_SearchTask",searchResults.Select(x=>x.ToViewTaskModel()).ToList());
-            return PartialView("_SearchTask", new List<ViewTaskModel>());
+            return  taskService.Search(str).Take(10).ToList();
         }
 	}
 }

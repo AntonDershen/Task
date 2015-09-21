@@ -1,0 +1,99 @@
+﻿@model WebApplication.Models.UserModel
+@{
+    ViewBag.Title = GlobalRes.Profile;
+}
+<div class="style-title-on-page">
+    <h1>@GlobalRes.Profile</h1>
+</div>
+<div class="style-content-widget col-1 text-center">
+    <h2>@Html.DisplayFor(model => model.UserName)</h2>
+    <h3 class="margin-bottom-10">@GlobalRes.Rate @ViewBag.UserRate</h3>
+</div>
+<div class="style-content-widget col-1">
+    <div class="panel panel-default margin-20 text-center">
+        <div class="panel-heading">
+            <h2 class="text-uppercase">@GlobalRes.Achievements</h2>
+        </div>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="circle yellow-bg"></div>
+                            </td>
+                            <td>Создатель ахуенных задач уровня</td>
+                            <td>@ViewBag.AchivementLevel[0]</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="circle pink-bg"></div>
+                            </td>
+                            <td>Решатель ахуенных задач уровня</td>
+                            <td>@ViewBag.AchivementLevel[1]</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="circle blue-bg"></div>
+                            </td>
+                            <td>Наебал всех и решил первый уровня</td>
+                            <td>@ViewBag.AchivementLevel[2]</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="style-flex-row flex-content-row">
+        <div class="col-1">
+            <div class="style-content-widget orange-bg">
+                <i class=" fa fa-times"></i>
+                <h2 class="text-uppercase margin-bottom-10">@GlobalRes.AllDocuments</h2>
+                <div id="userTask" class="margin-20"></div>
+            </div>
+        </div>
+        <div class="col-1">
+            <div class="style-content-widget blue-bg">
+                <i class="fa fa-times"></i>
+                <h2 class="text-uppercase margin-bottom-10">@GlobalRes.LatestTask</h2>
+                <p class="margin-bottom-0" id="lastTask"></p>
+            </div>
+            <div class="style-content-widget violet-bg">
+                <i class="fa fa-times"></i>
+                <h2 class="text-uppercase margin-bottom-10">@GlobalRes.MaxRateTask</h2>
+                <p class="margin-bottom-0" id="maxRateTask"></p>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $.ajax({
+            type: "Post",
+            url: '@Url.Action("GetUserTask", "Account")',
+            data:
+            {
+               userId: '@Model.Id'
+            },
+            success: function (data) {
+                $('#userTask').html(data);
+            }
+        });
+        $.ajax({
+            url: '@Url.Action("GetLastUserTask", "Task")',
+            type: "POST",
+            data: "count=" + 1,
+            success: function (msg) {
+                $('#lastTask').html(msg);
+            }
+        });
+        $.ajax({
+            url: '@Url.Action("GetUserMaxRate", "Rate")',
+            type: "POST",
+            success: function (msg) {
+                $('#maxRateTask').html(msg);
+            }
+        });
+    });
+</script>
+

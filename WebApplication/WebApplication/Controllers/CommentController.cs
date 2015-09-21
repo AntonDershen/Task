@@ -32,12 +32,13 @@ namespace WebApplication.Controllers
         [HttpPost]
         public ActionResult GetComment(int taskId, int begin,int count)
         {
-            var comments = commentService.GetTaskComment(taskId).ToList();
+
+            var comments = commentService.GetTaskComment(taskId).Select(x=>x.ToCommentViewModel(userService.Find(x.UserId).UserName)).ToList();
             if (comments.Count < begin)
-                return PartialView("_Comment", new List<WebApplication.Models.CommentViewModel>());
-            if(comments.Count > (begin+count))
-             return PartialView("_Comment",comments.Skip(begin).Take(count).ToList());
-            return PartialView("_Comment", comments);
+                return PartialView("_PartialComment", new List<WebApplication.Models.CommentViewModel>());
+            if(comments.Count < (begin+count))
+             return PartialView("_PartialComment",comments.Skip(begin).Take(count).ToList());
+            return PartialView("_PartialComment", comments);
         }
 	}
 }

@@ -119,6 +119,10 @@ namespace DataAccess.Repository
                 return null;
             }
         }
+        public void CreateIndex(Task task)
+        {
+            Lucene.LuceneSearch.AddUpdateLuceneIndex(task);
+        }
         public IEnumerable<Task> Search(string input)
         {
             var searchResults = Lucene.LuceneSearch.Search(input);
@@ -143,6 +147,15 @@ namespace DataAccess.Repository
                 int number = (int)(rand.NextDouble()%(tasks.Count - count));
                 return tasks.Skip(number).Take(count).ToList();
             }
+        }
+        public void BlockTask(int taskId)
+        {
+           using(var database = new EntityModel())
+           {
+              var task =  database.Tasks.Find(taskId);
+              task.Activate = !task.Activate;
+              database.SaveChanges();
+           }
         }
         public void Dispose()
         {

@@ -146,6 +146,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\Database.mdf" />
+    <Content Include="App_Data\Database_log.ldf" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrapDark.css" />
     <Content Include="Content\bootstrapLight.css" />
@@ -231,7 +233,8 @@
     <Content Include="Views\Client\LogIn.cshtml" />
     <Content Include="Views\Client\ViewTask.cshtml" />
     <Content Include="Views\Comment\_Comment.cshtml" />
-    <Content Include="Views\Task\_GetLastTaskUser.cshtml" />
+    <Content Include="Views\Comment\_PartialComment.cshtml" />
+    <Content Include="Views\Account\UserProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_LocalResources\GlobalRes.Designer.cs">
@@ -316,7 +319,6 @@
     <Content Include="Views\Shared\_Menu.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Media\Site\" />
     <Folder Include="Views\Answer\" />
   </ItemGroup>
