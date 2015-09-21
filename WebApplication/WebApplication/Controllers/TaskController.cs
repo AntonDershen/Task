@@ -12,7 +12,7 @@ using System.Text;
 namespace WebApplication.Controllers
 {
     [Culture]
-    [Authorize]
+ 
     public class TaskController : Controller
     {
         private readonly ITaskService taskService;
@@ -21,6 +21,7 @@ namespace WebApplication.Controllers
         private readonly IPhotoService photoService;
         private readonly IAnswerService answerService;
         private readonly IUserService userService;
+           
         public TaskController(ITaskService taskService, IAuthorizationService authorizationService, ITagService tagService, IPhotoService photoService, IAnswerService answerService,IUserService userService)
         {
             this.taskService = taskService;
@@ -30,11 +31,13 @@ namespace WebApplication.Controllers
             this.answerService = answerService;
             this.userService = userService;
         }
+           [Authorize]
         [HttpGet]
         public ActionResult CreateTask()
         {
             return View();
         }
+           [Authorize]
         [HttpPost]
         public ActionResult CreateTask(CreateTaskModel model, HttpPostedFileBase file)
         {
@@ -54,6 +57,7 @@ namespace WebApplication.Controllers
             }
             return View(model);
         }
+           [Authorize]
         [HttpPost]
         public void Upload()
         {
@@ -65,6 +69,7 @@ namespace WebApplication.Controllers
             byteList = byteList.Skip(bytes.Length - fileSize - 46).ToList();
             photoService.CreatePhoto(byteList.Take(fileSize).ToArray());
         }
+           [Authorize]
         public ActionResult ViewTask(int taskId)
         {
             ViewBag.Count = answerService.CountOfTrueAnswer(taskId);
@@ -78,12 +83,14 @@ namespace WebApplication.Controllers
             ViewBag.CreateUserName = userService.Find(userService.GetUserId(User.Identity.Name)).UserName;
             return View(task.ToViewTaskModel());
         }
+           [Authorize]
         public ActionResult ViewTaskList(string categoryName)
         {
             ViewBag.Category = categoryName;
             return View();
         }
         [HttpPost]
+        [Authorize]
         public ActionResult ViewPartialTaskList(string categoryName,int begin,int count)
         {
             var taskViewModel = taskService.GetTaskList(categoryName, begin, count)
@@ -104,6 +111,7 @@ namespace WebApplication.Controllers
             }
         }
        [HttpPost]
+       [Authorize]
         public ActionResult GetLastUserTask(int count)
         {
             try

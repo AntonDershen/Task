@@ -82,6 +82,7 @@ namespace BusinessLogic.Services
         {
             return unitOfWork.TaskRepository.GetRate(taskId);
         }
+
         public IEnumerable<TaskEntity> Search(string input)
         {
             var searchResult = unitOfWork.TaskRepository.Search(input);

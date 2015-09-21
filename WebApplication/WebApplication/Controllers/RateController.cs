@@ -25,9 +25,9 @@ namespace WebApplication.Controllers
             taskService.UpdateRate(taskId, rate, userService.GetUserId(User.Identity.Name));
         }
         [HttpPost]
-        public ActionResult GetRate(int taskId)
+        public double GetRate(int taskId)
         {
-            return PartialView("_TaskRate",taskService.GetRate(taskId));
+            return taskService.GetRate(taskId);
         }
         [HttpPost]
         public ActionResult GetMaxRate()
