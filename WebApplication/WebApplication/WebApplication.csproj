@@ -151,9 +151,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrapDark.css" />
     <Content Include="Content\font-awesome.min.css" />
-    <Content Include="C:\Users\PC\Desktop\style.css">
-      <Link>Content\style.css</Link>
-    </Content>
+    <Content Include="Content\style.css" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

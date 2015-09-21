@@ -1,14 +1,8 @@
-<<<<<<< HEAD
 ﻿@model WebApplication.Models.ViewTaskModel
-=======
-@model WebApplication.Models.ViewTaskModel
-
->>>>>>> 98b1ef0c04f074e0e5924b06837b9d9b65f5ee41
 @{
     ViewBag.Title = GlobalRes.Task;
 }
 
-<<<<<<< HEAD
 <div class="style-title-on-page">
     <h1>@GlobalRes.Task</h1>
 </div>
@@ -44,11 +38,13 @@
                                 <label class="control-label">@GlobalRes.Category: @Html.DisplayFor(model => model.Category)</label>
                             </div>
                         </div>
+                        @*if(Author != User)*@
                         <div class="form-group">
                             <div class="col-md-10">
                                 <label class="control-label">@GlobalRes.Count: @ViewBag.Count</label>
                             </div>
                         </div>
+                        @*END if(Author != User)*@
                     </div>
                     @*if(Author == User)*@
                     <div class="form-group text-right col-1">
@@ -140,135 +136,6 @@
                 },
                 success: function (data) {
                     $('#taskTags').html(data);
-=======
-<h2>View Task</h2>
-<div id="taskTags"></div>
-<div id="Rate"></div>
-<div id="Count">Count  @ViewBag.Count</div>
-<div>
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Complexity)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Complexity)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Category)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Category)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Condition)
-        </dt>
-        <dt>
-            <img src ="data:image/png;base64,@ViewBag.Photo" /></dt>
-
-        <dd>
-            @Html.Raw(Model.Condition)
-
-            @if (ViewBag.IsSolved == false)
-            {
-                if (ViewBag.CreateUserId != ViewBag.UserId) { 
-                <input type="text" placeholder="Your Answer" id="answer">
-                <div id="answerZone"></div>
-                <button class="btn-default" id="AnswerSubmit">Ответить</button>
-                }
-                else
-                {
-                    <div>It`s your task</div>
-                }
-            }
-            else
-            {
-                <div>You are answer</div>
-            }
-            <input type="text" placeholder="Your Comment" id="comment">
-            <button class="btn-default" id="CommentSubmit">Add Comment</button>
-            <button class="btn-default" id="UpdateComment">Update Comment</button>
-            @if (ViewBag.IsRate == true)
-            {
-                <input type="number" placeholder="Set Rate" id="rate">
-                <button class="btn-default" id="RateSubmit">Prog</button>
-            }
-        </dd>
-
-    </dl>
-    <div id="comments"></div>
-</div>
-
-<script>
-    $(document).ready(function () {
-    var count = 0;
-        $.ajax({
-            type: "Post",
-            url: '@Url.Action("GetTagsById", "Tag")',
-            data:
-            { 
-                tagsStringId: '@string.Join("%",@Model.TagsId)',
-                splitElement : "%"
-            },
-            success: function (data) {
-                $('#taskTags').html(data);
-            }
-        });
-        $.ajax({
-            type: "Post",
-            url: '@Url.Action("GetRate", "Rate")',
-            data:
-            {
-                taskId: '@Model.Id',
-            },
-            success: function (data) {
-                $('#Rate').html(data);
-            }
-        });
-        $.ajax({
-            type: "Post",
-            url: '@Url.Action("GetComment", "Comment")',
-            data: {
-                taskId: '@Model.Id',
-                begin : 0,
-                count :10
-            },
-            success: function(data) {
-                $('#comments').html(data);
-                count += 10;
-                console.log(data);
-            }
-        });
-   });
-    $('#AnswerSubmit').click(function () {
-       $.ajax({
-            type:"Post",
-            url: '@Url.Action("CheckAnswer","Answer")',
-            data: {
-                taskId: '@Model.Id',
-                answer: $('#answer').val()
-            },
-            success: function (data) {
-                if (data == 'True') {
-                    console.log(1);
-                    var element = document.createElement("span");
-                    element.className = "glyphicon glyphicon-ok"
-                    $('#answerZone').html(element);
-                    $('#answer').hide();
-                    $('#AnswerSubmit').hide();
-
->>>>>>> 98b1ef0c04f074e0e5924b06837b9d9b65f5ee41
                 }
             });
             $.ajax({
@@ -322,7 +189,6 @@
                     if (data == "True") {
                     }
                 }
-<<<<<<< HEAD
             })
         });
         $('#UpdateComment').click(function () {
@@ -350,23 +216,6 @@
                     $('#RateSubmit').hide();
                 }
             })
-=======
-            }
-        })
-    });
-    $('#UpdateComment').click(function () {
-        $.ajax({
-            type: "Post",
-            url: '@Url.Action("GetComment", "Comment")',
-            data: {
-                taskId: '@Model.Id',
-                begin :count,
-                count : count +10
-            },
-            success: function(data) {
-                $('#comments').append(data);
-            }
->>>>>>> 98b1ef0c04f074e0e5924b06837b9d9b65f5ee41
         });
 
 
