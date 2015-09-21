@@ -51,7 +51,7 @@
                     </div>
                     @if(ViewBag.UserId == ViewBag.CreateUserId){
                     <div class="form-group text-right col-1">
-                        <button type="delete" class="style-white-button">@GlobalRes.Delete</button>
+                        <button  id ="delete"class="style-white-button">@GlobalRes.Delete</button>
                     </div>
                     }
                      
@@ -103,7 +103,7 @@
                     <label class="control-label">@GlobalRes.AddComment:</label>
                 </div>
                 <input type="text" id="comment">
-                <div id="comments" class="margin-10"></div>
+                
                 <div class="form-group">
                     <button class="style-white-button-litle" id="CommentSubmit">@GlobalRes.Add</button>
                     <button class="style-white-button-litle" id="UpdateComment">@GlobalRes.Update</button>
@@ -120,11 +120,10 @@
                     <div class="form-group">
                         <div class="col-md-10">
                             <label class="control-label">
-                                <div id="comments">
-
-                                </div>
+                                
                             </label>
-                           
+                            <div id="comments" class="margin-10"></div>
+                            <button id="more" class="style-blue-button-litle" name="@GlobalRes.More"></button>
                         </div>
                     </div>
                 </div>
@@ -133,76 +132,78 @@
     </div>
 </div>
 <script>
-        $(document).ready(function () {
-            $.ajax({
-                type: "Post",
-                url: '@Url.Action("GetTagsById", "Tag")',
-                data:
-                {
-                    tagsStringId: '@string.Join("%",@Model.TagsId)',
-                    splitElement: "%"
-                },
-                success: function (data) {
-                    $('#taskTags').html(data);
-                }
-            });
-            $.ajax({
-                type: "Post",
-                url: '@Url.Action("GetRate", "Rate")',
-                data:
-                {
-                    taskId: '@Model.Id',
-                },
-                success: function (data) {
-                    $('#Rate').append(data);
-                }
-            });
-            $.ajax({
-                type: "Post",
-                url: '@Url.Action("GetComment", "Comment")',
-                data: {
-                    taskId: '@Model.Id',
-                    begin: 0,
-                    count:10
-                },
-                success: function (data) {
-                    $('#comments').html(data);
-                }
-            });
+    var count = 0;
+    $(document).ready(function () {
+        $.ajax({
+            type: "Post",
+            url: '@Url.Action("GetTagsById", "Tag")',
+            data:
+            {
+                tagsStringId: '@string.Join("%",@Model.TagsId)',
+                splitElement: "%"
+            },
+            success: function (data) {
+                $('#taskTags').html(data);
+            }
         });
-        $('#AnswerSubmit').click(function () {
-            $.ajax({
-                type: "Post",
-                url: '@Url.Action("CheckAnswer","Answer")',
-                data: {
-                    taskId: '@Model.Id',
-                    answer: $('#answer').val()
-                },
-                success: function (data) {
-                    if (data == 'True') {
-                        console.log(1);
-                        var element = document.createElement("span");
-                        element.className = "glyphicon glyphicon-ok"
-                        $('#answerZone').html(element);
-                        $('#answer').hide();
-                        $('#AnswerSubmit').hide();
+        $.ajax({
+            type: "Post",
+            url: '@Url.Action("GetRate", "Rate")',
+            data:
+            {
+                taskId: '@Model.Id',
+            },
+            success: function (data) {
+                $('#Rate').append(data);
+            }
+        });
+        $.ajax({
+            type: "Post",
+            url: '@Url.Action("GetComment", "Comment")',
+            data: {
+                taskId: '@Model.Id',
+                begin: 0,
+                count: 10
+            },
+            success: function (data) {
+                $('#comments').html(data);
+                count = 11;
+            }
+        });
+    });
+    $('#AnswerSubmit').click(function () {
+        $.ajax({
+            type: "Post",
+            url: '@Url.Action("CheckAnswer","Answer")',
+            data: {
+                taskId: '@Model.Id',
+                answer: $('#answer').val()
+            },
+            success: function (data) {
+                if (data == 'True') {
+                    console.log(1);
+                    var element = document.createElement("span");
+                    element.className = "glyphicon glyphicon-ok"
+                    $('#answerZone').html(element);
+                    $('#answer').hide();
+                    $('#AnswerSubmit').hide();
 
-                    }
-                    else {
-                        var element = document.createElement("span");
-                        element.className = "glyphicon glyphicon-remove"
-                        $('#answerZone').html(element);
-                    }
                 }
-            })
+                else {
+                    var element = document.createElement("span");
+                    element.className = "glyphicon glyphicon-remove"
+                    $('#answerZone').html(element);
+                }
+            }
         })
+    })
 
-        $('#CommentSubmit').click(function () {
-            $.ajax({
-                type: "Post",
-                url: '@Url.Action("CreateComment", "Comment")',
-                data: {
-                    taskId: '@Model.Id',
+    $('#CommentSubmit').click(function () {
+        $.ajax({
+            type: "Post",
+            url: '@Url.Action("CreateComment", "Comment")',
+            data: {
+                taskId: '@Model.Id',
                     text: $('#comment').val()
                 },
                 success: function (data) {
@@ -212,33 +213,63 @@
             })
         });
         $('#UpdateComment').click(function () {
-            $.ajax({
+             $.ajax({
                 type: "Post",
-                url: '@Url.Action("GetTaskComment", "Comment")',
+                url: '@Url.Action("GetComment", "Comment")',
                 data: {
-                    taskId: '@Model.Id'
+                    taskId: '@Model.Id',
+                    begin: 0,
+                    count:10
                 },
                 success: function (data) {
                     $('#comments').html(data);
+                    count = 11;
                 }
             });
         });
+    $('#more').click(function () {
+        $.ajax({
+            type: "Post",
+            url: '@Url.Action("GetComment", "Comment")',
+            data: {
+                taskId: '@Model.Id',
+                begin: count ,
+                count:  10
+            },
+            success: function (data) {
+                $('#comments').append(data);
+                count += 10;
+            }
+        });
+    });
     $('#RateSubmit').click(function () {
         console.log($('#RateNumber').val());
             $.ajax({
                 type: "Post",
                 url: '@Url.Action("UpdateRate", "Rate")',
-                data: {
-                    taskId: '@Model.Id',
-                    rate: $('#RateNumber').val()
-                },
-                success: function () {
+            data: {
+                taskId: '@Model.Id',
+                rate: $('#RateNumber').val()
+            },
+            success: function () {
 
-                    $('#rate').hide();
-                    $('#RateSubmit').hide();
-                }
-            })
-        });
+                $('#rate').hide();
+                $('#RateSubmit').hide();
+            }
+        })
+    });
+    $('#delete').click(function () {
+        $.ajax({
+            type: "Post",
+            url: '@Url.Action("BlockTask", "Task")',
+            data: {
+                taskId: '@Model.Id'
+            },
+            success: function () {
 
+                $('#delete').hide();
+            }
+        })
+    });
 
 </script>

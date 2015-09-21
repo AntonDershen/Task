@@ -20,6 +20,7 @@ namespace BusinessLogic.Interface.Services
         IEnumerable<TaskEntity> GetUserTasks(int userId);
         IEnumerable<TaskEntity> Search(string input);
         IEnumerable<TaskEntity> GetRandomTask(int count, int userId);
+        void BlockTask(int taskId);
         
     }
 }

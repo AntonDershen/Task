@@ -144,6 +144,15 @@ namespace DataAccess.Repository
                 return tasks.Skip(number).Take(count).ToList();
             }
         }
+        public void BlockTask(int taskId)
+        {
+           using(var database = new EntityModel())
+           {
+              var task =  database.Tasks.Find(taskId);
+              task.Activate = !task.Activate;
+              database.SaveChanges();
+           }
+        }
         public void Dispose()
         {
             context.Dispose();

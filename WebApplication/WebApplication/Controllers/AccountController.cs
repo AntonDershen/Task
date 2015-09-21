@@ -124,10 +124,21 @@ namespace WebApplication.Controllers
             ViewBag.AchivementLevel = userService.GetUserAchivement(user.Id);
             return View(user);
         }
+        public ActionResult UserProfile(int userId)
+        {
+            var user = userService.Find(userId).ToMvcUser();
+            var answersUserId = answerService.GetUsersSolvedAnswer(user.Id).Select(x => x.TaskId);
+            double complexity = 0;
+            foreach (var answerUserId in answersUserId)
+                complexity += taskService.Find(answerUserId).Complexity;
+            ViewBag.UserRate = complexity;
+            ViewBag.AchivementLevel = userService.GetUserAchivement(user.Id);
+            return View(user);
+        }
         public ActionResult GetUserTask(int userId)
         {
             var model = taskService
-                .GetUserTasks(userId)
+                .GetUserTasks(userId).Where(x=>x.Activate)
                 .Select(x => x.ToViewTaskModel()).ToList();
             return PartialView("_GetUserTask",model);
         }

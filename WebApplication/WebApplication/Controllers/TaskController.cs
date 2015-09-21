@@ -125,5 +125,11 @@ namespace WebApplication.Controllers
                 return PartialView("_GetLastTask", new List<ViewTaskModel>());
             }
         }
+       [HttpPost]
+       [Authorize]
+       public void BlockTask(int taskId)
+       {
+           taskService.BlockTask(taskId);
+       }
     }
 }

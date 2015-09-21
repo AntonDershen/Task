@@ -232,6 +232,8 @@
     <Content Include="Views\Client\LogIn.cshtml" />
     <Content Include="Views\Client\ViewTask.cshtml" />
     <Content Include="Views\Comment\_Comment.cshtml" />
+    <Content Include="Views\Comment\_PartialComment.cshtml" />
+    <Content Include="Views\Account\UserProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_LocalResources\GlobalRes.Designer.cs">

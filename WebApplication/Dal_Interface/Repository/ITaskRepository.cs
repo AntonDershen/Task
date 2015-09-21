@@ -16,5 +16,6 @@ namespace DataAccess.Interface.Repository
         void UpdateRate(int taskId,int rate,int userId);
         IEnumerable<Task> Search(string input);
         IEnumerable<Task> GetRandomTask(int count, int userId);
+        void BlockTask(int taskId);
     }
 }

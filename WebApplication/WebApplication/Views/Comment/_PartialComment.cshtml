@@ -1,0 +1,22 @@
+﻿@model List<WebApplication.Models.CommentViewModel>
+
+<table class="table">
+
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Text)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Time)
+        </td>
+        <td>
+           <a href="@Url.Action("UserProfile","Account",new{userId = item.UserId})">@Html.DisplayFor(modelItem => item.UserName)</a> 
+        </td>
+    </tr>
+    }
+
+</table>
+

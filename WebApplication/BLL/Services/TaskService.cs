@@ -99,5 +99,10 @@ namespace BusinessLogic.Services
         {
             return unitOfWork.TaskRepository.GetAll(x => x.UserId == userId, 0, 0).Select(x => x.ToTaskEntity()).ToList();
         }
+        public void BlockTask(int taskId)
+        {
+            unitOfWork.TaskRepository.BlockTask(taskId);
+
+        }
     }
 }
