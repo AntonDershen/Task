@@ -123,99 +123,96 @@
         </div>
     </div>
 </div>
-    <script>
-        $(document).ready(function () {
-            $.ajax({
-                type: "Post",
-                url: '@Url.Action("GetTagsById", "Tag")',
-                data:
-                {
-                    tagsStringId: '@string.Join("%",@Model.TagsId)',
-                    splitElement: "%"
-                },
-                success: function (data) {
-                    $('#taskTags').html(data);
-                }
-            });
-            $.ajax({
-                type: "Post",
-                url: '@Url.Action("GetRate", "Rate")',
-                data:
-                {
-                    taskId: '@Model.Id',
-                },
-                success: function (data) {
-                    $('#Rate').html(data);
-                }
-            });
+<script>
+    $(document).ready(function() {
+        $.ajax({
+            type: "Post",
+            url: '@Url.Action("GetTagsById", "Tag")',
+            data:
+            {
+                tagsStringId: '@string.Join("%", @Model.TagsId)',
+                splitElement: "%"
+            },
+            success: function(data) {
+                $('#taskTags').html(data);
+            }
         });
-        $('#AnswerSubmit').click(function () {
-            $.ajax({
-                type: "Post",
-                url: '@Url.Action("CheckAnswer","Answer")',
-                data: {
-                    taskId: '@Model.Id',
-                    answer: $('#answer').val()
-                },
-                success: function (data) {
-                    if (data == 'True') {
-                        console.log(1);
-                        var element = document.createElement("span");
-                        element.className = "glyphicon glyphicon-ok"
-                        $('#answerZone').html(element);
-                        $('#answer').hide();
-                        $('#AnswerSubmit').hide();
-
-                    }
-                    else {
-                        var element = document.createElement("span");
-                        element.className = "glyphicon glyphicon-remove"
-                        $('#answerZone').html(element);
-                    }
-                }
-            })
-        })
-
-        $('#CommentSubmit').click(function () {
-            $.ajax({
-                type: "Post",
-                url: '@Url.Action("CreateComment", "Comment")',
-                data: {
-                    taskId: '@Model.Id',
-                    text: $('#comment').val()
-                },
-                success: function (data) {
-                    if (data == "True") {
-                    }
-                }
-            })
+        $.ajax({
+            type: "Post",
+            url: '@Url.Action("GetRate", "Rate")',
+            data:
+            {
+                taskId: '@Model.Id',
+            },
+            success: function(data) {
+                $('#Rate').html(data);
+            }
         });
-        $('#UpdateComment').click(function () {
-            $.ajax({
-                type: "Post",
-                url: '@Url.Action("GetTaskComment", "Comment")',
-                data: {
-                    taskId: '@Model.Id'
-                },
-                success: function (data) {
-                    $('#comments').html(data);
-                }
-            });
-        });
-        $('#RateSubmit').click(function () {
-            $.ajax({
-                type: "Post",
-                url: '@Url.Action("UpdateRate", "Rate")',
-                data: {
-                    taskId: '@Model.Id',
-                    rate: $('#rate').val()
-                },
-                success: function (data) {
-                    $('#rate').hide();
-                    $('#RateSubmit').hide();
-                }
-            })
-        });
+    });
+    $('#AnswerSubmit').click(function() {
+        $.ajax({
+            type: "Post",
+            url: '@Url.Action("CheckAnswer", "Answer")',
+            data: {
+                taskId: '@Model.Id',
+                answer: $('#answer').val()
+            },
+            success: function(data) {
+                if (data == 'True') {
+                    console.log(1);
+                    var element = document.createElement("span");
+                    element.className = "glyphicon glyphicon-ok"
+                    $('#answerZone').html(element);
+                    $('#answer').hide();
+                    $('#AnswerSubmit').hide();
 
+                } else {
+                    var element = document.createElement("span");
+                    element.className = "glyphicon glyphicon-remove"
+                    $('#answerZone').html(element);
+                }
+            }
+        });
+    });
+    $('#CommentSubmit').click(function() {
+        $.ajax({
+            type: "Post",
+            url: '@Url.Action("CreateComment", "Comment")',
+            data: {
+                taskId: '@Model.Id',
+                text: $('#comment').val()
+            },
+            success: function(data) {
+                if (data == "True") {
+                }
+            }
+        });
+    });
+    $('#UpdateComment').click(function() {
+        $.ajax({
+            type: "Post",
+            url: '@Url.Action("GetTaskComment", "Comment")',
+            data: {
+                taskId: '@Model.Id'
+            },
+            success: function(data) {
+                $('#comments').html(data);
+            }
+        });
+    });
+    $('#RateSubmit').click(function() {
+        $.ajax({
+            type: "Post",
+            url: '@Url.Action("UpdateRate", "Rate")',
+            data: {
+                taskId: '@Model.Id',
+                rate: $('#rate').val()
+            },
+            success: function(data) {
+                $('#rate').hide();
+                $('#RateSubmit').hide();
+            }
+        });
+    });
+</script>
 
-    </script>

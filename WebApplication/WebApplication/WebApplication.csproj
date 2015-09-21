@@ -150,6 +150,7 @@
     <Content Include="App_Data\Database_log.ldf" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrapDark.css" />
+    <Content Include="Content\bootstrapLight.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\style.css" />
     <Content Include="fonts\fontawesome-webfont.svg" />

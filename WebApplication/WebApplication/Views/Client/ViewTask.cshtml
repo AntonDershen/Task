@@ -1,9 +1,7 @@
 ﻿@model WebApplication.Models.ViewTaskModel
-
 @{
     Layout = null;
 }
-
 <!DOCTYPE html>
 
 <html>
@@ -15,79 +13,134 @@
     <script src="~/Scripts/jquery-1.9.1.js"></script>
 </head>
 <body>
-    <div>
-        <h4>@Model.Name</h4>
-    	<hr />
-        <dl class="dl-horizontal">
-            <dd>
-                @Html.DisplayFor(model => model.Complexity)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.Category)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.Category)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.Condition)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.Condition)
-            </dd>
-    
-        </dl>
+    <div class="style-title-on-page">
+        <h3>Task</h3>
     </div>
-    @if (ViewBag.IsSolved == false)
-    {
-        if (ViewBag.CreateUserId != ViewBag.UserId)
-        {
-            <input type="text" placeholder="Your Answer" id="answer">
-            <div id="answerZone"></div>
-            <button class="btn-default" id="AnswerSubmit">Ответить</button>
-        }
-        else
-        {
-            <div>It`s your task</div>
-        }
-    }
-    else
-    {
-        <div>You are answer</div>
-    }
-    <p>
-        @Html.ActionLink("Go Back", "Index", "Client")
-    </p>
+    <div class="style-flex-row flex-content-row">
+        <div class="col-1">
+            <div class="panel panel-default margin-10">
+                <div class="panel-heading">
+                    <h4 class="text-uppercase">@Html.DisplayFor(model => model.Name)</h4>
+                </div>
+                <div class="panel-body">
+                    <div class="style-flex-row style-content-row">
+                        <div class="col-1">
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    <label class="control-label"> Complexity: @Html.DisplayFor(model => model.Complexity)</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    <label class="control-label"> Category: @Html.DisplayFor(model => model.Category)</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    <label class="control-label"> Count: @ViewBag.Count</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <label class="control-label"> Conditions:</label>
+                            <div class="style-content-widget col-1">
+                                @Html.Raw(Model.Condition)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-4">
+                            @if (ViewBag.IsSolved == false)
+                            {
+                                if (ViewBag.CreateUserId != ViewBag.UserId)
+                                {
+                                    <div class="style-content-widget col-1">
+                                        <div>
+                                            <label class="control-label"> YourAnswer:</label>
+                                        </div>
+                                        <input type="text" id="answer">
+                                        <div id="answerZone" class="margin-10"></div>
+                                        <div class="form-group">
+                                            <button class="style-blue-button-litle" id="AnswerSubmit">OK</button>
+                                        </div>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div>It`s your task</div>
+                                }
+                            }
+                            else
+                            {
+                                <div>You are answer</div>
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <p>
+                        @Html.ActionLink("Go Back", "Index", "Client")
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                type: "Post",
+                url: '@Url.Action("GetTagsById", "Tag")',
+                data:
+                {
+                    tagsStringId: '@string.Join("%", @Model.TagsId)',
+                    splitElement: "%"
+                },
+                success: function (data) {
+                    $('#taskTags').html(data);
+                }
+            });
+            $.ajax({
+                type: "Post",
+                url: '@Url.Action("GetRate", "Rate")',
+                data:
+                {
+                    taskId: '@Model.Id',
+                },
+                success: function (data) {
+                    $('#Rate').html(data);
+                }
+            });
+        });
+        $('#AnswerSubmit').click(function () {
+            $.ajax({
+                type: "Post",
+                url: '@Url.Action("CheckAnswer", "Answer")',
+                data: {
+                    taskId: '@Model.Id',
+                    answer: $('#answer').val()
+                },
+                success: function (data) {
+                    if (data == 'True') {
+                        console.log(1);
+                        var element = document.createElement("span");
+                        element.className = "glyphicon glyphicon-ok";
+                        $('#answerZone').html(element);
+                        $('#answer').hide();
+                        $('#AnswerSubmit').hide();
+
+                    } else {
+                        var element = document.createElement("span");
+                        element.className = "glyphicon glyphicon-remove";
+                        $('#answerZone').html(element);
+                    }
+                }
+            });
+        });
+    </script>
+
 </body>
 </html>
-<script>
-    $('#AnswerSubmit').click(function () {
-        $.ajax({
-            type: "Post",
-            url: '@Url.Action("CheckAnswer","Answer")',
-            data: {
-                taskId: '@Model.Id',
-                answer: $('#answer').val()
-            },
-            success: function (data) {
-                if (data == 'True') {
-                    console.log(1);
-                    var element = document.createElement("span");
-                    element.className = "glyphicon glyphicon-ok"
-                    $('#answerZone').html(element);
-                    $('#answer').hide();
-                    $('#AnswerSubmit').hide();
-
-                }
-                else {
-                    var element = document.createElement("span");
-                    element.className = "glyphicon glyphicon-remove"
-                    $('#answerZone').html(element);
-                }
-            }
-        })
-    });
-</script>
