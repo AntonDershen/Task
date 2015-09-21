@@ -375,4 +375,10 @@
   <data name="Update" xml:space="preserve">
     <value>Update</value>
   </data>
+  <data name="Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="SearchRes" xml:space="preserve">
+    <value>Search Result</value>
+  </data>
 </root>
