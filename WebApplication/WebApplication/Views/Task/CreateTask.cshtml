@@ -1,54 +1,8 @@
 ﻿@model WebApplication.Models.CreateTaskModel
+
 @{
-    ViewBag.Title = GlobalRes.MyTasks;
+    ViewBag.Title = GlobalRes.CreateDocument;
 }
-<div class="style-title-on-page">
-    <h1>@GlobalRes.MyTasks</h1>
-</div>
-<div class="style-content-widget no-padding">
-    <div class="panel panel-default table-responsive">
-        <table class="table table-striped table-bordered style-user-table">
-            <thead>
-            <tr>
-                <td><a href="" class="white-text">#  </a></td>
-                <td><a href="" class="white-text">@GlobalRes.Title  </a></td>
-                <td><a href="" class="white-text">@GlobalRes.Complexity  </a></td>
-                <td><a href="" class="white-text">@GlobalRes.Category  </a></td>
-                <td><a href="" class="white-text">@GlobalRes.Tag  </a></td>
-                <td>@GlobalRes.Delete</td>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>1.</td>
-                <td>124</td>
-                <td>244</td>
-                <td>2422</td>
-                <td>js; company; com</td>
-                <td><a href="" class="style-link">Delete</a></td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
-<div class="style-flex-row flex-content-row">
-    <div class="style-content-widget pink-bg col-1" onclick="">
-        <i class="fa fa-times"></i>
-        <h2 class="text-uppercase margin-bottom-10">@GlobalRes.LatestTask</h2>
-        <p class="margin-bottom-0" id="lastTask"></p>
-        <div class="form-group text-right">
-            <button type="reset" class="style-white-button-litle">@GlobalRes.Delete</button>
-        </div>
-    </div>
-    <div class="style-content-widget blue-bg col-1" onclick="">
-        <i class="fa fa-times"></i>
-        <h2 class="text-uppercase margin-bottom-10">@GlobalRes.MaxRateTask</h2>
-        <p class="margin-bottom-0" id="maxRateTask"></p>
-        <div class="form-group text-right">
-            <button type="reset" class="style-white-button-litle">@GlobalRes.Delete</button>
-        </div>
-    </div>
-</div>
 <div class="style-flex-row flex-content-row">
     <div class="col-1">
         <div class="panel panel-default margin-10">
@@ -136,26 +90,26 @@
 
 @section Scripts {
     <script>
-        $(document).ready(function() {
-            var imageUrl = $('img.content-bg-img').attr('src');
-            $('.style-content-img-bg').css('background-image', 'url(' + imageUrl + ')');
-            $('img.content-bg-img').hide();
-            $.ajax({
-                url: '@Url.Action("GetLastUserTask", "Task")',
-                type: "POST",
-                data: "count=" + 1,
-                success: function (msg) {
-                    $('#lastTask').html(msg);
-                }
-            });
-            $.ajax({
-                url: '@Url.Action("GetUserMaxRate", "Rate")',
-                type: "POST",
-                success: function (msg) {
-                    $('#maxRateTask').html(msg);
-                }
-            });
+    $(document).ready(function () {
+        var imageUrl = $('img.content-bg-img').attr('src');
+        $('.style-content-img-bg').css('background-image', 'url(' + imageUrl + ')');
+        $('img.content-bg-img').hide();
+        $.ajax({
+            url: '@Url.Action("GetLastUserTask", "Task")',
+            type: "POST",
+            data: "count=" + 1,
+            success: function (msg) {
+                $('#lastTaskUser').html(msg);
+            }
         });
+        $.ajax({
+            url: '@Url.Action("GetUserMaxRate", "Rate")',
+            type: "POST",
+            success: function (msg) {
+                $('#maxRateTask').html(msg);
+            }
+        });
+    });
     </script>
     <script>
         $(function() {
@@ -225,7 +179,8 @@
                 "searchreplace  code ",
                 "insertdatetime table contextmenu paste"
             ],
-            toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
+            toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter" +
+                " alignright alignjustify | bullist numlist outdent indent | link image"
         });
     </script>
 }

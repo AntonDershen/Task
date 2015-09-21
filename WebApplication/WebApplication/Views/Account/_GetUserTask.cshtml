@@ -1,8 +1,21 @@
 ﻿@model IEnumerable<WebApplication.Models.ViewTaskModel>
-@foreach (var item in Model) {
-    <tr>
-        <td>
-           <a href="@Url.Action("ViewTask", "Task", new {taskId = item.Id })">@item.Name</a>
-        </td>
-     </tr>
-}
+
+<div class="panel panel-default table-responsive">
+    <table class="table table-striped table-bordered style-user-table">
+        <thead>
+            <tr>
+                <td><a href="" class="white-text">@GlobalRes.Title  </a></td>
+                <td><a href="" class="white-text">@GlobalRes.Complexity  </a></td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var taskmodel in Model)
+            {
+                <tr>
+                    <td><a href="@Url.Action("ViewTask", "Task", new { taskId = taskmodel.Id})">@taskmodel.Name</a></td>
+                    <td>@taskmodel.Complexity</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
