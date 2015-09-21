@@ -1,5 +1,4 @@
 ﻿@model List<WebApplication.Models.ViewTaskModel>
-
 <!DOCTYPE html>
 @{
     Layout = null;
@@ -7,20 +6,29 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>GetRandomTask</title>
+    <title>GetRandom Tasks</title>
 
     <link href="~/Content/bootstrapLight.css" rel="stylesheet" />
 </head>
 <body>
-        <table class="table">
-    @foreach (var item in Model) {
-        <tr>
-            <td class="col-md-12">
-                <a href="@Url.Action("ViewTask","Client",new{taskId = item.Id})">@item.Name</a>
-            </td>
-       </tr>
-    }
-    
-    </table>
+    <div class="style-title-on-page">
+        <h3>RandomTask:</h3>
+    </div>
+    <div class="style-content-widget col-1">
+        <div class="panel panel-default text-center">
+            <div class="table-responsive">
+                <table class="table">
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td class="col-md-12">
+                                <a href="@Url.Action("ViewTask", "Client", new {taskId = item.Id})">@item.Name</a>
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
