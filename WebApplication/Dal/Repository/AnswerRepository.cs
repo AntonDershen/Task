@@ -23,6 +23,7 @@ namespace DataAccess.Repository
                 Text = text
             });
         }
+      
         public bool CheckAnswer(int taskId, string name, int userId)
         {
             name = name.ToLower();

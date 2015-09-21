@@ -73,9 +73,9 @@ namespace BusinessLogic.Services
         }
         public bool IsRated(int taskId, int userId)
         {
-            var userAnswers = unitOfWork.UserAnswerRepository.FindUserAnswer(taskId).ToList();
-            foreach (var userAnswer in userAnswers)
-                if (userAnswer.UserId == userId)
+            var taskRates = unitOfWork.UserAnswerRepository.GetTaskRate(taskId).ToList();
+            foreach (var taskRate in taskRates)
+                if (taskRate.UserId == userId)
                     return false;
             var task = unitOfWork.TaskRepository.Find(taskId);
             if (task.UserId == userId)

@@ -14,7 +14,7 @@ namespace DataAccess.Interface.Repository
        UserAnswers FindUserAnswer(int taskId, int userId);
        void IncrementAnswerCount(int taskId, int userId);
        void UpdateTrueAnswer(int taskId, int userId);
-
+       IEnumerable<Rate> GetTaskRate(int taskId);
 
     }
 }

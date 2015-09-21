@@ -13,12 +13,12 @@
                 <h2 class="text-uppercase">@Html.DisplayFor(model => model.Name)</h2>
             </div>
             <div class="panel-body">
-                <div class ="style-flex-row style-content-row">
+                <div class="style-flex-row style-content-row">
                     <div class="col-1">
                         <div class="form-group">
                             <div class="col-md-8">
                                 <label class="control-label">@GlobalRes.Author:</label>
-                                @* <a href="@Url.Action("Profile", "Account", new {Id = item.Id })">@item.Name</a>*@
+                                <a href="@Url.Action("Profile", "Account", new {Id = @ViewBag.CreateUserId})">@ViewBag.CreateUserName</a>
                             </div>
                         </div>
                         <div class="form-group">
@@ -35,22 +35,26 @@
                         </div>
                         <div class="form-group">
                             <div class="col-md-10">
+                                <label class="control-label" id="Rate">@GlobalRes.Rate: </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-10">
                                 <label class="control-label">@GlobalRes.Category: @Html.DisplayFor(model => model.Category)</label>
                             </div>
                         </div>
-                        @*if(Author != User)*@
                         <div class="form-group">
                             <div class="col-md-10">
                                 <label class="control-label">@GlobalRes.Count: @ViewBag.Count</label>
                             </div>
                         </div>
-                        @*END if(Author != User)*@
                     </div>
-                    @*if(Author == User)*@
+                    @if(ViewBag.UserId == ViewBag.CreateUserId){
                     <div class="form-group text-right col-1">
                         <button type="delete" class="style-white-button">@GlobalRes.Delete</button>
                     </div>
-                    @*END if(Author == User)*@
+                    }
+                     
                 </div>
 
                 <div class="form-group">
@@ -61,51 +65,52 @@
                         </div>
                     </div>
                 </div>
-                
-                @*if(Author != User)*@
+<div class="form-group">
+    @if (ViewBag.CreateUserId != ViewBag.UserId) {
+
+        <div class="col-md-4">
+            <div class="style-content-widget col-1">
+                <div>
+                    <label class="control-label">@GlobalRes.YourAnswer:</label>
+                </div>
+                <input type="text" id="answer">
+                <div id="answerZone" class="margin-10"></div>
                 <div class="form-group">
-                    <div class="col-md-4">
-                        <div class="style-content-widget col-1">
-                            <div>
-                                <label class="control-label">@GlobalRes.YourAnswer:</label>
-                            </div>
-                            <input type="text" id="answer">
-                            <div id="answerZone" class="margin-10"></div>
-                            <div class="form-group">
-                                <button class="style-blue-button-litle" id="AnswerSubmit">OK</button>
-                            </div>
-                        </div>
+                    <button class="style-blue-button-litle" id="AnswerSubmit">OK</button>
+                </div>
+            </div>
+        </div>
+        if (ViewBag.IsRate == true)
+                        {
+            <div class="col-md-4">
+                <div class="style-content-widget col-1">
+                    <div>
+                        <label class="control-label">@GlobalRes.RateSet:</label>
                     </div>
-                    @if (ViewBag.IsRate == true)
-                    {
-                        <div class="col-md-4">
-                            <div class="style-content-widget col-1">
-                                <div>
-                                    <label class="control-label">@GlobalRes.RateSet:</label>
-                                </div>
-                                <input type="number" id="Rate">
-                                <div class="margin-10"></div>
-                                <div class="form-group">
-                                    <button class="style-blue-button-litle" id="RateSubmit">OK</button>
-                                </div>
-                            </div>
-                        </div>
-                    }
-                    @*END if(Author != User)*@
-                    <div class="col-md-4">
-                        <div class="style-content-widget col-1">
-                            <div>
-                                <label class="control-label">@GlobalRes.AddComment:</label>
-                            </div>
-                            <input type="text" id="comment">
-                            <div id="comments" class="margin-10"></div>
-                            <div class="form-group">
-                                <button class="style-white-button-litle" id="CommentSubmit">@GlobalRes.Add</button>
-                                <button class="style-white-button-litle" id="UpdateComment">@GlobalRes.Update</button>
-                            </div>
-                        </div>
+                    <input type="number" id="RateNumber">
+                    <div class="margin-10"></div>
+                    <div class="form-group">
+                        <button class="style-blue-button-litle" id="RateSubmit">OK</button>
                     </div>
                 </div>
+            </div>
+                        }
+
+    }
+        <div class="col-md-4">
+            <div class="style-content-widget col-1">
+                <div>
+                    <label class="control-label">@GlobalRes.AddComment:</label>
+                </div>
+                <input type="text" id="comment">
+                <div id="comments" class="margin-10"></div>
+                <div class="form-group">
+                    <button class="style-white-button-litle" id="CommentSubmit">@GlobalRes.Add</button>
+                    <button class="style-white-button-litle" id="UpdateComment">@GlobalRes.Update</button>
+                </div>
+            </div>
+        </div>
+            </div>
             </div>
             <div class="panel panel-default-comment margin-10">
                 <div class="panel-heading-comment">
@@ -114,8 +119,12 @@
                 <div class="panel-body">
                     <div class="form-group">
                         <div class="col-md-10">
-                            <label class="control-label">ДОБАВИТЬ СЮДА ОБРАБОТКУ КОММЕНТАРИЕВ</label>
-                            @*!!!!!!!!!!!!!!!!!!!!!!!!COMMENTS*@
+                            <label class="control-label">
+                                <div id="comments">
+
+                                </div>
+                            </label>
+                           
                         </div>
                     </div>
                 </div>
@@ -124,95 +133,112 @@
     </div>
 </div>
 <script>
-    $(document).ready(function() {
-        $.ajax({
-            type: "Post",
-            url: '@Url.Action("GetTagsById", "Tag")',
-            data:
-            {
-                tagsStringId: '@string.Join("%", @Model.TagsId)',
-                splitElement: "%"
-            },
-            success: function(data) {
-                $('#taskTags').html(data);
-            }
+        $(document).ready(function () {
+            $.ajax({
+                type: "Post",
+                url: '@Url.Action("GetTagsById", "Tag")',
+                data:
+                {
+                    tagsStringId: '@string.Join("%",@Model.TagsId)',
+                    splitElement: "%"
+                },
+                success: function (data) {
+                    $('#taskTags').html(data);
+                }
+            });
+            $.ajax({
+                type: "Post",
+                url: '@Url.Action("GetRate", "Rate")',
+                data:
+                {
+                    taskId: '@Model.Id',
+                },
+                success: function (data) {
+                    $('#Rate').append(data);
+                }
+            });
+            $.ajax({
+                type: "Post",
+                url: '@Url.Action("GetComment", "Comment")',
+                data: {
+                    taskId: '@Model.Id',
+                    begin: 0,
+                    count:10
+                },
+                success: function (data) {
+                    $('#comments').html(data);
+                }
+            });
         });
-        $.ajax({
-            type: "Post",
-            url: '@Url.Action("GetRate", "Rate")',
-            data:
-            {
-                taskId: '@Model.Id',
-            },
-            success: function(data) {
-                $('#Rate').html(data);
-            }
-        });
-    });
-    $('#AnswerSubmit').click(function() {
-        $.ajax({
-            type: "Post",
-            url: '@Url.Action("CheckAnswer", "Answer")',
-            data: {
-                taskId: '@Model.Id',
-                answer: $('#answer').val()
-            },
-            success: function(data) {
-                if (data == 'True') {
-                    console.log(1);
-                    var element = document.createElement("span");
-                    element.className = "glyphicon glyphicon-ok"
-                    $('#answerZone').html(element);
-                    $('#answer').hide();
-                    $('#AnswerSubmit').hide();
+        $('#AnswerSubmit').click(function () {
+            $.ajax({
+                type: "Post",
+                url: '@Url.Action("CheckAnswer","Answer")',
+                data: {
+                    taskId: '@Model.Id',
+                    answer: $('#answer').val()
+                },
+                success: function (data) {
+                    if (data == 'True') {
+                        console.log(1);
+                        var element = document.createElement("span");
+                        element.className = "glyphicon glyphicon-ok"
+                        $('#answerZone').html(element);
+                        $('#answer').hide();
+                        $('#AnswerSubmit').hide();
 
-                } else {
-                    var element = document.createElement("span");
-                    element.className = "glyphicon glyphicon-remove"
-                    $('#answerZone').html(element);
+                    }
+                    else {
+                        var element = document.createElement("span");
+                        element.className = "glyphicon glyphicon-remove"
+                        $('#answerZone').html(element);
+                    }
                 }
-            }
-        });
-    });
-    $('#CommentSubmit').click(function() {
-        $.ajax({
-            type: "Post",
-            url: '@Url.Action("CreateComment", "Comment")',
-            data: {
-                taskId: '@Model.Id',
-                text: $('#comment').val()
-            },
-            success: function(data) {
-                if (data == "True") {
+            })
+        })
+
+        $('#CommentSubmit').click(function () {
+            $.ajax({
+                type: "Post",
+                url: '@Url.Action("CreateComment", "Comment")',
+                data: {
+                    taskId: '@Model.Id',
+                    text: $('#comment').val()
+                },
+                success: function (data) {
+                    if (data == "True") {
+                    }
                 }
-            }
+            })
         });
-    });
-    $('#UpdateComment').click(function() {
-        $.ajax({
-            type: "Post",
-            url: '@Url.Action("GetTaskComment", "Comment")',
-            data: {
-                taskId: '@Model.Id'
-            },
-            success: function(data) {
-                $('#comments').html(data);
-            }
+        $('#UpdateComment').click(function () {
+            $.ajax({
+                type: "Post",
+                url: '@Url.Action("GetTaskComment", "Comment")',
+                data: {
+                    taskId: '@Model.Id'
+                },
+                success: function (data) {
+                    $('#comments').html(data);
+                }
+            });
         });
-    });
-    $('#RateSubmit').click(function() {
-        $.ajax({
-            type: "Post",
-            url: '@Url.Action("UpdateRate", "Rate")',
-            data: {
-                taskId: '@Model.Id',
-                rate: $('#rate').val()
-            },
-            success: function(data) {
-                $('#rate').hide();
-                $('#RateSubmit').hide();
-            }
+    $('#RateSubmit').click(function () {
+        console.log($('#RateNumber').val());
+            $.ajax({
+                type: "Post",
+                url: '@Url.Action("UpdateRate", "Rate")',
+                data: {
+                    taskId: '@Model.Id',
+                    rate: $('#RateNumber').val()
+                },
+                success: function () {
+
+                    $('#rate').hide();
+                    $('#RateSubmit').hide();
+                }
+            })
         });
-    });
+
+
 </script>
-

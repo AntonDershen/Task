@@ -26,6 +26,10 @@ namespace DataAccess.Repository
                 UserId = userId
             });
         }
+        public IEnumerable<Rate> GetTaskRate(int taskId)
+        {
+            return context.Set<Rate>().Where(x => x.TaskId == taskId).ToList();
+        }
         public IEnumerable<UserAnswers> FindUserAnswer(int taskId)
         {
             return context.Set<UserAnswers>().Where(x => x.TaskId == taskId).ToList();
