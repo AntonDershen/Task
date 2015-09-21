@@ -1,17 +1,16 @@
-﻿WebApplication.Models.ViewTaskModel
+﻿@model List<WebApplication.Models.ViewTaskModel>
 @{
     ViewBag.Title = GlobalRes.Search;
 }
 <div class="style-title-on-page">
     <h1>@GlobalRes.SearchRes</h1>
 </div>
-<div class="style-content-widget col-1 text-center">
-    <h2>
-        <i class="glyphicon glyphicon-search"></i>@ViewBag.SearchQuery
-    </h2>
-    @*Выше вевести что ищем можно тут повесить еще одно поле ввода поиска*@
-</div>
-<div class="style-content-widget col-1">
-    <div class="style-content-widget no-padding" id="search">
-    </div>
-</div>
+
+@foreach (var taskmodel in Model)
+{
+    <dl class="dl-horizontal">
+        <dt>
+            <a href="@Url.Action("ViewTask", "Task", new {taskId = taskmodel.Id})">@taskmodel.Name</a>
+        </dt>
+    </dl>
+}

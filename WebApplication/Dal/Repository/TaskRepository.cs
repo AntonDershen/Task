@@ -119,6 +119,10 @@ namespace DataAccess.Repository
                 return null;
             }
         }
+        public void CreateIndex(Task task)
+        {
+            Lucene.LuceneSearch.AddUpdateLuceneIndex(task);
+        }
         public IEnumerable<Task> Search(string input)
         {
             var searchResults = Lucene.LuceneSearch.Search(input);

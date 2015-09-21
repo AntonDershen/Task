@@ -92,7 +92,7 @@ namespace WebApplication.Controllers
                 {
                     authorization.Confirm = true;
                     authService.UpdateAuthorization(authorization);
-                    return RedirectToAction("Home", "Index");
+                    return RedirectToAction("Index", "Home");
                 }
                 
             }

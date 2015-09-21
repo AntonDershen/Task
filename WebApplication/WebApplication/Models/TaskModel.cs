@@ -17,6 +17,7 @@ namespace WebApplication.Models
         [Display(ResourceType = typeof(GlobalRes), Name = "Name")]
         [Required]
         public string Name { get; set; }
+        
         [Display(ResourceType = typeof(GlobalRes), Name = "Complexity")]
         [Required]
         public int Complexity { get; set; }

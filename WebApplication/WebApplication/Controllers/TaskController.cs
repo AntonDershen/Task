@@ -78,8 +78,11 @@ namespace WebApplication.Controllers
             ViewBag.IsSolved = answerService.IsSolved(taskId, userService.GetUserId(User.Identity.Name));
             ViewBag.CreateUserId = task.CreateUserId;
             ViewBag.UserId = userService.GetUserId(User.Identity.Name);
-            //List<byte> photo = photoService.FindPhoto(task.PhotoId[0]).ToList();
-            //ViewBag.Photo = Encoding.Default.GetString(photo.ToArray(),0,photo.Count);
+            if (task.PhotoId.Count > 0)
+            {
+                List<byte> photo = photoService.FindPhoto(task.PhotoId[0]).ToList();
+                ViewBag.Photo =string.Format("data:image/gif;base64,{0}", Convert.ToBase64String(photo.ToArray()));
+            }
             ViewBag.CreateUserName = userService.Find(userService.GetUserId(User.Identity.Name)).UserName;
             return View(task.ToViewTaskModel());
         }

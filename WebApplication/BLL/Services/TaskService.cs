@@ -26,6 +26,8 @@ namespace BusinessLogic.Services
             unitOfWork.AchievementRepository.Update(achievement);
             var tasks = unitOfWork.TaskRepository.GetAll(x => x.Condition == taskEntity.Condition,0,0);
             int id = tasks.LastOrDefault(x => x.UserId == taskEntity.CreateUserId).Id;
+            taskEntity.Id= id;
+            unitOfWork.TaskRepository.CreateIndex(taskEntity.ToTask());
             foreach (var answer in taskEntity.Answers)
             {
                 unitOfWork.AnswerRepository.CreateAnswer(answer, id);
