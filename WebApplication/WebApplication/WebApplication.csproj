@@ -235,6 +235,7 @@
     <Content Include="Views\Comment\_Comment.cshtml" />
     <Content Include="Views\Comment\_PartialComment.cshtml" />
     <Content Include="Views\Account\UserProfile.cshtml" />
+    <Content Include="Views\Client\_Partial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_LocalResources\GlobalRes.Designer.cs">

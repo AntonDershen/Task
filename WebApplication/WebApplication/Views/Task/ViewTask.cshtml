@@ -38,6 +38,7 @@
                                 <label class="control-label" id="Rate">@GlobalRes.Rate: </label>
                             </div>
                         </div>
+                     
                         <div class="form-group">
                             <div class="col-md-10">
                                 <label class="control-label">@GlobalRes.Category: @Html.DisplayFor(model => model.Category)</label>
@@ -65,10 +66,15 @@
                         </div>
                     </div>
                 </div>
-                @if(Model.PhotoId.Count>0)
+                @if (Model.PhotoId.Count > 0)
                 {
-                    <img src="@ViewBag.Photo" width="100" height="100" />
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <img src="@ViewBag.Photo" class="img-thumbnail" width="100" height="100" />
+                        </div>
+                    </div>
                 }
+               
 <div class="form-group">
     @if (ViewBag.CreateUserId != ViewBag.UserId) {
 
@@ -127,7 +133,7 @@
                                 
                             </label>
                             <div id="comments" class="margin-10"></div>
-                            <button id="more" class="style-blue-button-litle" name="@GlobalRes.More"></button>
+                            <button id="more" class="style-blue-button-litle">@GlobalRes.More</button>
                         </div>
                     </div>
                 </div>

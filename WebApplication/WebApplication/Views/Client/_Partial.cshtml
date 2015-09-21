@@ -1,0 +1,14 @@
+﻿@model List<WebApplication.Models.ViewTaskModel>
+@{
+    ViewBag.Title = "_Partial";
+}
+<table>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td class="col-md-12">
+                <a href="@Url.Action("ViewTask", "Client", new {taskId = item.Id})">@item.Name</a>
+            </td>
+        </tr>
+    }
+</table>

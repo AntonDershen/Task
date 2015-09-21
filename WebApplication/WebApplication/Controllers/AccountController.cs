@@ -152,5 +152,10 @@ namespace WebApplication.Controllers
             FormsAuthentication.SignOut();
             return RedirectToAction("Index", "Home");
         }
+        public ActionResult ClientLogOff()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Client", "Home");
+        }
 	}
 }

@@ -28,7 +28,7 @@ namespace WebApplication.Controllers
         public ActionResult Index()
         {
             if (User.Identity.IsAuthenticated)
-                return RedirectToAction("GetRandomTask");
+                return RedirectToAction("Menu");
             else
                 return RedirectToAction("LogIn");
 
@@ -53,12 +53,16 @@ namespace WebApplication.Controllers
             }
             return View(model);
         }
-
+        [HttpPost]
         public ActionResult GetRandomTask(int count=10)
         {
             var model = taskService.GetRandomTask(count,userService.GetUserId(User.Identity.Name))
                 .Select(x=>x.ToViewTaskModel()).ToList();
-            return View(model);
+            return View("_Partial",model);
+        }
+        public ActionResult Menu()
+        {
+            return View("GetRandomtask");
         }
 
         public ActionResult ViewTask(int taskId)
