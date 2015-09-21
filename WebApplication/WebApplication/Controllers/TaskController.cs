@@ -73,9 +73,9 @@ namespace WebApplication.Controllers
             ViewBag.IsSolved = answerService.IsSolved(taskId, userService.GetUserId(User.Identity.Name));
             ViewBag.CreateUserId = task.CreateUserId;
             ViewBag.UserId = userService.GetUserId(User.Identity.Name);
-            List<byte> photo = photoService.FindPhoto(task.PhotoId[0]).ToList();
-            ViewBag.Photo = Encoding.Default.GetString(photo.ToArray(),0,photo.Count);
-             
+            //List<byte> photo = photoService.FindPhoto(task.PhotoId[0]).ToList();
+            //ViewBag.Photo = Encoding.Default.GetString(photo.ToArray(),0,photo.Count);
+            ViewBag.CreateUserName = userService.Find(userService.GetUserId(User.Identity.Name)).UserName;
             return View(task.ToViewTaskModel());
         }
         public ActionResult ViewTaskList(string categoryName)
@@ -95,7 +95,8 @@ namespace WebApplication.Controllers
         {
             try
             {
-                return PartialView("_GetLastTask", taskService.GetLastTask(count,category).Select(x => x.ToViewTaskModel()).ToList());
+                var tasks = taskService.GetLastTask(count,category).Select(x => x.ToViewTaskModel()).ToList();
+                return PartialView("_GetLastTask", tasks);
             }
             catch
             {

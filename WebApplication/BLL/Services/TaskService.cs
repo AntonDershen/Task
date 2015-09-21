@@ -48,9 +48,9 @@ namespace BusinessLogic.Services
         {
             try
             {
-                int taskCount = unitOfWork.TaskRepository.GetTaskCount();
-                return unitOfWork.TaskRepository.GetAll(x => x.Category == category, taskCount - count, count)
+                var tasks = unitOfWork.TaskRepository.GetAll(x => x.Category == category, 1, 0)
                     .Select(x => x.ToTaskEntity()).ToList();
+                return tasks.Skip(tasks.Count - count).Take(count);
             }
             catch { return null; }
         }

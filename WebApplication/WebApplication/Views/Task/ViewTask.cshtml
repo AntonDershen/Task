@@ -13,12 +13,12 @@
                 <h2 class="text-uppercase">@Html.DisplayFor(model => model.Name)</h2>
             </div>
             <div class="panel-body">
-                <div class ="style-flex-row style-content-row">
+                <div class="style-flex-row style-content-row">
                     <div class="col-1">
                         <div class="form-group">
                             <div class="col-md-8">
                                 <label class="control-label">@GlobalRes.Author:</label>
-                                @* <a href="@Url.Action("Profile", "Account", new {Id = item.Id })">@item.Name</a>*@
+                                <a href="@Url.Action("Profile", "Account", new {Id = @ViewBag.CreateUserId})">@ViewBag.CreateUserName</a>
                             </div>
                         </div>
                         <div class="form-group">
@@ -38,20 +38,18 @@
                                 <label class="control-label">@GlobalRes.Category: @Html.DisplayFor(model => model.Category)</label>
                             </div>
                         </div>
-                        @*if(Author != User)*@
                         <div class="form-group">
                             <div class="col-md-10">
                                 <label class="control-label">@GlobalRes.Count: @ViewBag.Count</label>
                             </div>
                         </div>
-                        @*END if(Author != User)*@
                     </div>
-                    @*if(Author == User)*@
+                    @if(ViewBag.UserId == ViewBag.CreateUserId){
                     <div class="form-group text-right col-1">
-                        <button type="change" class="style-blue-button">@GlobalRes.Change</button>
                         <button type="delete" class="style-white-button">@GlobalRes.Delete</button>
                     </div>
-                    @*END if(Author == User)*@
+                    }
+                     
                 </div>
 
                 <div class="form-group">
@@ -62,51 +60,52 @@
                         </div>
                     </div>
                 </div>
-                
-                @*if(Author != User)*@
+<div class="form-group">
+    @if (ViewBag.CreateUserId != ViewBag.UserId) {
+
+        <div class="col-md-4">
+            <div class="style-content-widget col-1">
+                <div>
+                    <label class="control-label">@GlobalRes.YourAnswer:</label>
+                </div>
+                <input type="text" id="answer">
+                <div id="answerZone" class="margin-10"></div>
                 <div class="form-group">
-                    <div class="col-md-4">
-                        <div class="style-content-widget col-1">
-                            <div>
-                                <label class="control-label">@GlobalRes.YourAnswer:</label>
-                            </div>
-                            <input type="text" id="answer">
-                            <div id="answerZone" class="margin-10"></div>
-                            <div class="form-group">
-                                <button class="style-blue-button-litle" id="AnswerSubmit">OK</button>
-                            </div>
-                        </div>
+                    <button class="style-blue-button-litle" id="AnswerSubmit">OK</button>
+                </div>
+            </div>
+        </div>
+        if (ViewBag.IsRate == true)
+                        {
+            <div class="col-md-4">
+                <div class="style-content-widget col-1">
+                    <div>
+                        <label class="control-label">@GlobalRes.RateSet:</label>
                     </div>
-                    @if (ViewBag.IsRate == true)
-                    {
-                        <div class="col-md-4">
-                            <div class="style-content-widget col-1">
-                                <div>
-                                    <label class="control-label">@GlobalRes.RateSet:</label>
-                                </div>
-                                <input type="number" id="Rate">
-                                <div class="margin-10"></div>
-                                <div class="form-group">
-                                    <button class="style-blue-button-litle" id="RateSubmit">OK</button>
-                                </div>
-                            </div>
-                        </div>
-                    }
-                    @*END if(Author != User)*@
-                    <div class="col-md-4">
-                        <div class="style-content-widget col-1">
-                            <div>
-                                <label class="control-label">@GlobalRes.AddComment:</label>
-                            </div>
-                            <input type="text" id="comment">
-                            <div id="comments" class="margin-10"></div>
-                            <div class="form-group">
-                                <button class="style-white-button-litle" id="CommentSubmit">@GlobalRes.Add</button>
-                                <button class="style-white-button-litle" id="UpdateComment">@GlobalRes.Update</button>
-                            </div>
-                        </div>
+                    <input type="number" id="Rate">
+                    <div class="margin-10"></div>
+                    <div class="form-group">
+                        <button class="style-blue-button-litle" id="RateSubmit">OK</button>
                     </div>
                 </div>
+            </div>
+                        }
+
+    }
+        <div class="col-md-4">
+            <div class="style-content-widget col-1">
+                <div>
+                    <label class="control-label">@GlobalRes.AddComment:</label>
+                </div>
+                <input type="text" id="comment">
+                <div id="comments" class="margin-10"></div>
+                <div class="form-group">
+                    <button class="style-white-button-litle" id="CommentSubmit">@GlobalRes.Add</button>
+                    <button class="style-white-button-litle" id="UpdateComment">@GlobalRes.Update</button>
+                </div>
+            </div>
+        </div>
+            </div>
             </div>
             <div class="panel panel-default-comment margin-10">
                 <div class="panel-heading-comment">
@@ -116,7 +115,7 @@
                     <div class="form-group">
                         <div class="col-md-10">
                             <label class="control-label">ДОБАВИТЬ СЮДА ОБРАБОТКУ КОММЕНТАРИЕВ</label>
-                            @*!!!!!!!!!!!!!!!!!!!!!!!!COMMENTS*@
+                           
                         </div>
                     </div>
                 </div>
@@ -124,7 +123,7 @@
         </div>
     </div>
 </div>
-    <script>
+<script>
         $(document).ready(function () {
             $.ajax({
                 type: "Post",
@@ -219,4 +218,4 @@
         });
 
 
-    </script>
+</script>
