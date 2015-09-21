@@ -1,0 +1,17 @@
+﻿@model List<WebApplication.Models.ViewTaskModel>
+<div>
+    @foreach (var taskmodel in Model)
+    {
+        <div class="panel-body">
+            <div class="name-task">
+                <h2 class="margin-bottom-10">
+                    <a href="@Url.Action("ViewTask", "Task", new {taskId = taskmodel.Id})">@taskmodel.Name</a>
+                </h2>
+            </div>
+            <p>@GlobalRes.Category:</p>
+            <h4 class="margin-bottom-10">@taskmodel.Category</h4>
+            <p>@GlobalRes.Complexity:</p>
+            <h4 class="margin-bottom-10">@taskmodel.Complexity</h4>
+        </div>
+    }
+</div>

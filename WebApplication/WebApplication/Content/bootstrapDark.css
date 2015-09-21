@@ -52,7 +52,11 @@ template {
 }
 a {
   background-color: transparent;
+<<<<<<< HEAD
+    color: #CED0CE;
+=======
   color:#CED0CE;
+>>>>>>> 604a5ddeb0420f908e79751a548c6ffe2fc11c84
 }
 a:active,
 a:hover {

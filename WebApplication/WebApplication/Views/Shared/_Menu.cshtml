@@ -24,7 +24,7 @@
             @if (Request.IsAuthenticated)
             {
                 <li><a href="@Url.Action("Profile", "Account")"><i class="fa fa-male fa-fw"></i>@GlobalRes.Profile</a></li>
-                <li><a href="@Url.Action("CreateTask", "Task")"><i class="fa fa-pencil fa-fw"></i>@GlobalRes.MyDocuments</a></li>
+                <li><a href="@Url.Action("CreateTask", "Task")"><i class="fa fa-pencil fa-fw"></i>@GlobalRes.CreateDocument</a></li>
                 <li><a href="@Url.Action("LogOff", "Account")"><i class="fa fa-arrow-left fa-fw"></i>@GlobalRes.LogOut</a></li>
             }
             else

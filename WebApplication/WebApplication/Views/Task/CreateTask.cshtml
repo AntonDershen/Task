@@ -1,7 +1,10 @@
 ﻿@model WebApplication.Models.CreateTaskModel
+
 @{
-    ViewBag.Title = GlobalRes.MyTasks;
+    ViewBag.Title = GlobalRes.CreateDocument;
 }
+<<<<<<< HEAD
+=======
 <div class="style-title-on-page">
     <h1>@GlobalRes.MyTasks</h1>
 </div>
@@ -42,6 +45,7 @@
         </div>
     </div>
 </div>
+>>>>>>> 604a5ddeb0420f908e79751a548c6ffe2fc11c84
 <div class="style-flex-row flex-content-row">
     <div class="col-1">
         <div class="panel panel-default margin-10">
@@ -129,26 +133,26 @@
 
 @section Scripts {
     <script>
-        $(document).ready(function() {
-            var imageUrl = $('img.content-bg-img').attr('src');
-            $('.style-content-img-bg').css('background-image', 'url(' + imageUrl + ')');
-            $('img.content-bg-img').hide();
-            $.ajax({
-                url: '@Url.Action("GetLastUserTask", "Task")',
-                type: "POST",
-                data: "count=" + 1,
-                success: function (msg) {
-                    $('#lastTask').html(msg);
-                }
-            });
-            $.ajax({
-                url: '@Url.Action("GetUserMaxRate", "Rate")',
-                type: "POST",
-                success: function (msg) {
-                    $('#maxRateTask').html(msg);
-                }
-            });
+    $(document).ready(function () {
+        var imageUrl = $('img.content-bg-img').attr('src');
+        $('.style-content-img-bg').css('background-image', 'url(' + imageUrl + ')');
+        $('img.content-bg-img').hide();
+        $.ajax({
+            url: '@Url.Action("GetLastUserTask", "Task")',
+            type: "POST",
+            data: "count=" + 1,
+            success: function (msg) {
+                $('#lastTaskUser').html(msg);
+            }
         });
+        $.ajax({
+            url: '@Url.Action("GetUserMaxRate", "Rate")',
+            type: "POST",
+            success: function (msg) {
+                $('#maxRateTask').html(msg);
+            }
+        });
+    });
     </script>
     <script>
         $(function() {
@@ -218,7 +222,8 @@
                 "searchreplace  code ",
                 "insertdatetime table contextmenu paste"
             ],
-            toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
+            toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter" +
+                " alignright alignjustify | bullist numlist outdent indent | link image"
         });
     </script>
 }

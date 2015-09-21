@@ -56,7 +56,7 @@
             <div class="style-content-widget blue-bg">
                 <i class="fa fa-times"></i>
                 <h2 class="text-uppercase margin-bottom-10">@GlobalRes.LatestTask</h2>
-                <p class="margin-bottom-0" id="lastTask"></p>
+                <p class="margin-bottom-0" id="lastTaskUser"></p>
             </div>
             <div class="style-content-widget violet-bg">
                 <i class="fa fa-times"></i>
@@ -68,23 +68,25 @@
 </div>
 <script>
     $(document).ready(function () {
+     
         $.ajax({
             type: "Post",
             url: '@Url.Action("GetUserTask", "Account")',
             data:
             {
-               userId: '@Model.Id'
+                userId: '@Model.Id'
             },
-            success: function (data) {
+            success: function(data) {
                 $('#userTask').html(data);
             }
-        });
+            
+    });
         $.ajax({
             url: '@Url.Action("GetLastUserTask", "Task")',
             type: "POST",
             data: "count=" + 1,
             success: function (msg) {
-                $('#lastTask').html(msg);
+                $('#lastTaskUser').html(msg);
             }
         });
         $.ajax({
